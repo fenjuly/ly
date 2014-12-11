@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="P电位降低或消失"
+            android:textSize="14sp"
+            />
+        <CheckBox
+            android:layout_gravity="center_vertical"
+            android:id="@+id/pdianweijiangdihuoxiaoshi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingTop="8dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="舒张期电位消失"
+            android:textSize="14sp"
+            />
+        <CheckBox
+            android:layout_gravity="center_vertical"
+            android:id="@+id/shuzhangqidianweixiaoshi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingTop="8dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="碎裂电位完全消失"
+            android:textSize="14sp"
+            />
+        <CheckBox
+            android:layout_gravity="center_vertical"
+            android:id="@+id/suiliedianweiwanquanxiaoshi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="LSQ电刺激室速不能被诱发"
+            android:textSize="14sp"
+            />
+        <CheckBox
+            android:layout_gravity="center_vertical"
+            android:id="@+id/lsqdiancijishisubunengbeiyoufa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="电刺激室速不能诱发"
+            android:textSize="14sp"
+            />
+        <CheckBox
+            android:layout_gravity="center_vertical"
+            android:id="@+id/diancijishisubunengyoufa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            />
+    </LinearLayout>
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/shuruqita"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:hint="输入其他"
+        android:layout_marginTop="12dp"
+        app:floatingLabel="highlight"
+        />
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:cpb_textComplete="完成"
+        app:cpb_textError="出错"
+        app:cpb_textIdle="确定" />
+
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="200dp"
+        />
+
+    <View
+        android:layout_below="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#999999" />
+
+    <RelativeLayout
+        android:id="@+id/bingli_area"
+        android:layout_below="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        >
+
+        <ImageView
+            android:id="@+id/folder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/folder"
+            android:layout_marginLeft="20dp"
+            />
+        <TextView
+            android:id="@+id/number"
+            android:layout_toRightOf="@+id/folder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="共计46份病例"
+            android:layout_marginLeft="16dp"
+            android:paddingBottom="12dp"
+            android:layout_alignBottom="@+id/folder"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:src="@drawable/chevron_right"
+            android:layout_alignBottom="@+id/number"
+            />
+
+        </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_below="@+id/bingli_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/xinzeng"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:id="@+id/add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/add"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/add"
+                android:text="新 增"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                />
+
+            </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/chazhao"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            >
+            <ImageView
+                android:id="@+id/search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/search"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/search"
+                android:text="查 找"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                />
+        </RelativeLayout>
+        </LinearLayout>
+
+</RelativeLayout>

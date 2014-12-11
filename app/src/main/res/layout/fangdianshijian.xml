@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/youxiaobadian"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:hint="有效靶点"
+        app:floatingLabel="highlight"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="总放电时间"
+            android:textSize="14sp"
+            />
+        <EditText
+            android:layout_gravity="center_vertical"
+            android:id="@+id/zongfangdianshijian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:focusable="false"
+            />
+    </LinearLayout>
+
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/confirm"
+        android:layout_below="@+id/xiaorongjingxian"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:cpb_textComplete="完成"
+        app:cpb_textError="出错"
+        app:cpb_textIdle="确定" />
+
+</LinearLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/symbol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="心血管家"
+        android:textSize="60dp"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        />
+
+    <RelativeLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_below="@+id/symbol"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        >
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="医生 ID"
+            android:numeric="integer"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            app:floatingLabel="highlight"
+            app:baseColor="#0056d3"/>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/certification"
+            android:layout_below="@+id/id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="行医资格证"
+            android:numeric="integer"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            app:floatingLabel="highlight"
+            app:baseColor="#0056d3"
+            />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/password"
+            android:layout_below="@+id/certification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入密码"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:password="true"
+            app:floatingLabel="highlight"
+            app:baseColor="#0056d3"
+            />
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/repeat_password"
+            android:layout_below="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入密码"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:password="true"
+            app:floatingLabel="highlight"
+            app:baseColor="#0056d3"
+            />
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/confirm"
+            android:layout_below="@+id/repeat_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:cpb_textComplete="完成"
+            app:cpb_textError="出错"
+            app:cpb_textIdle="注册" />
+
+
+        </RelativeLayout>
+
+    <TextView
+        android:id="@+id/to_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="已有账号？点击登陆"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginEnd="8dp"
+        />
+</RelativeLayout>

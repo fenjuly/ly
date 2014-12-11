@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".DoctorInformationCenter">
+
+    <item android:id="@+id/drawer_icon"
+        android:showAsAction="always"
+        android:title="drawer"
+        android:icon="@drawable/ic_drawer"
+        />
+</menu>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="15dp"
+    >
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/time"
+        android:layout_below="@+id/certification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="手术时间"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:enabled="false"
+        app:floatingLabel="highlight"
+        />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/detail"
+        android:layout_below="@+id/time"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:hint="手术详情"
+        android:gravity="top"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        app:floatingLabel="highlight"
+        />
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/confirm"
+        android:layout_below="@+id/detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:cpb_textComplete="完成"
+        app:cpb_textError="出错"
+        app:cpb_textIdle="保存" />
+
+</RelativeLayout>

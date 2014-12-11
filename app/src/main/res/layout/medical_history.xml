@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+<RelativeLayout
+    android:id="@+id/history_1"
+    android:layout_marginTop="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="50dp">
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="心脏病手术史"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/add"
+        />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/history1"
+        android:layout_below="@+id/history_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:id="@+id/history_2"
+        android:layout_below="@id/history1"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="基础疾病"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/add"
+            />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/history2"
+        android:layout_below="@+id/history_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/next"
+        android:layout_below="@+id/history2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:cpb_textComplete="完成"
+        app:cpb_textError="出错"
+        app:cpb_textIdle="下一步" />
+
+</RelativeLayout>
