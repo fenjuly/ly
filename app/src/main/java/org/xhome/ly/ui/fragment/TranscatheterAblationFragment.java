@@ -496,7 +496,7 @@ public class TranscatheterAblationFragment extends BaseFragment {
         return rootView;
     }
 
-    private void saveCase1() {
+    public void saveCase1() {
         if(case1 != null) {
             xinqiangneizaoying = xingQiangNeiZaoYing.getText().toString();
             youfafangshi = youFaFangShi.getText().toString();
@@ -542,32 +542,5 @@ public class TranscatheterAblationFragment extends BaseFragment {
     }
 
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        saveCase1();
-        super.onSaveInstanceState(outState);
-        Log.e("onSaveInstanceState", "invoked");
-    }
 
-    @Override
-    public void onDestroy() {
-        saveCase1();
-        super.onDestroy();
-        Log.e("onDestroy", "invoked");
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
-        try {
-            case1DataChangedListener = (Case1DataChangedListener) activity;
-            nextStepListner = (NextStepListner) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement Case1DataChangedListener");
-        }
-    }
 }

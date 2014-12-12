@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/pic_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:text="图片"
+        />
+
+    <LinearLayout
+        android:layout_below="@+id/pic_text"
+        android:id="@+id/pic_area"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:id="@+id/pic"
+                android:src="@drawable/favicon"
+                android:layout_weight="1"
+                />
+
+            <com.getbase.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addpic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:fab_icon="@drawable/add"
+                app:fab_colorNormal="#99CC99"
+                app:fab_colorPressed="#CCFFCC"
+                android:layout_weight="1"
+                />
+            </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/progress_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:visibility="invisible"
+            >
+            <TextView
+                android:id="@+id/progress_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="当前第0个，共0个"
+                />
+
+            <com.daimajia.numberprogressbar.NumberProgressBar
+                android:id="@+id/number_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <TextView
+        android:layout_below="@+id/pic_area"
+        android:id="@+id/remark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:text="备注"
+        />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_below="@id/remark"
+        android:id="@+id/beizhu"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:hint="备注"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="12dp"
+        app:floatingLabel="highlight"
+        />
+
+
+
+    <com.dd.CircularProgressButton
+        android:id="@+id/confirm"
+        android:layout_below="@+id/beizhu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="18dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:cpb_textComplete="完成"
+        app:cpb_textError="出错"
+        app:cpb_textIdle="提交" />
+
+</RelativeLayout>
+</ScrollView>

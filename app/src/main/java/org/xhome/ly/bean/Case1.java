@@ -5,6 +5,7 @@ import android.database.Cursor;
 
 import org.xhome.ly.dao.Case1DataHelper;
 
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -33,7 +34,7 @@ public static Case1 fromCursor(Cursor cursor) {
     case1.setId(cursor.getInt(cursor.getColumnIndex(Case1DataHelper.Case1DB.ID)));
     case1.setName(cursor.getString(cursor.getColumnIndex(Case1DataHelper.Case1DB.NAME)));
     case1.setInterrogationRecordId(cursor.getInt(cursor.getColumnIndex(Case1DataHelper.Case1DB.INTERROGATOPM_RECORD_ID)));
-    case1.setOperationData(cursor.getString(cursor.getColumnIndex(Case1DataHelper.Case1DB.OPERATION_DATA)));
+//    case1.setOperationData(cursor.getString(cursor.getColumnIndex(Case1DataHelper.Case1DB.OPERATION_DATA)));
     case1.setOperatorName(cursor.getString(cursor.getColumnIndex(Case1DataHelper.Case1DB.OPERATOR_NAME)));
     case1.setOperatorDetail(cursor.getString(cursor.getColumnIndex(Case1DataHelper.Case1DB.OPERATOR_DETAIL)));
     case1.setVtType(cursor.getString(cursor.getColumnIndex(Case1DataHelper.Case1DB.VT_TYPE)));
@@ -107,7 +108,7 @@ public static Case1 fromCursor(Cursor cursor) {
 
     private Integer interrogationRecordId;
 
-    private String operationData;
+    private Date operationData;
 
     private String operatorName;
 
@@ -318,11 +319,11 @@ public static Case1 fromCursor(Cursor cursor) {
         this.interrogationRecordId = interrogationRecordId;
     }
 
-    public String getOperationData() {
+    public Date getOperationData() {
         return operationData;
     }
 
-    public void setOperationData(String operationData) {
+    public void setOperationData(Date operationData) {
         this.operationData = operationData;
     }
 

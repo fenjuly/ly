@@ -13,4 +13,9 @@ public class Api {
 
     //病人
     public static final String PATIENT = HOST + "/api/patient";
+
+
+    //病例1
+    public static final String  CASE1 = HOST + "/api/case1";
+
 }

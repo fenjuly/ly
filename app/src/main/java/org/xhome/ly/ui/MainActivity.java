@@ -27,11 +27,11 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.shuzhongxinxi);
-        userId = (MaterialEditText) findViewById(R.id.id);
-        certificationNumber = (MaterialEditText) findViewById(R.id.certification);
-        password = (MaterialEditText) findViewById(R.id.password);
-        repeat_password = (MaterialEditText) findViewById(R.id.repeat_password);
+        setContentView(R.layout.fulu);
+//        userId = (MaterialEditText) findViewById(R.id.id);
+//        certificationNumber = (MaterialEditText) findViewById(R.id.certification);
+//        password = (MaterialEditText) findViewById(R.id.password);
+//        repeat_password = (MaterialEditText) findViewById(R.id.repeat_password);
 
     }
 

@@ -1,11 +1,10 @@
 package org.xhome.ly.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,9 +12,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.kbeanie.imagechooser.api.ChooserType;
+
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1;
 import org.xhome.ly.ui.fragment.AblationResultFragment;
+import org.xhome.ly.ui.fragment.AppendixFragment;
 import org.xhome.ly.ui.fragment.BaseFragment;
 import org.xhome.ly.ui.fragment.BeforeOperationMessageFragment;
 import org.xhome.ly.ui.fragment.DiagnosticMessageFragment;
@@ -44,6 +46,9 @@ public class Case1InformationActivity extends BaseActivity implements BaseFragme
     public Case1 case1 = new Case1();
 
     private List<BaseFragment> fragments = new ArrayList<BaseFragment>();
+
+    private BaseFragment currentFragment;
+    private AppendixFragment appendixFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,10 +87,11 @@ public class Case1InformationActivity extends BaseActivity implements BaseFragme
         fragments.add(TranscatheterAblationFragment.newInstance(case1));
         fragments.add(AblationResultFragment.newInstance(case1));
         fragments.add(UnderOperationMessageFragment.newInstance(case1));
-        fragments.add(DiagnosticMessageFragment.newInstance(case1));
+        fragments.add(AppendixFragment.newInstance(case1));
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                currentFragment.saveCase1();
                 switch (position) {
                     case 0 :
                         setTitle("诊断信息");
@@ -109,7 +115,7 @@ public class Case1InformationActivity extends BaseActivity implements BaseFragme
                         break;
                     case 5:
                         setTitle("附录");
-                        setFragment(DiagnosticMessageFragment.newInstance(case1));
+                        setFragment(AppendixFragment.newInstance(case1));
                         break;
                 }
             }
@@ -117,7 +123,11 @@ public class Case1InformationActivity extends BaseActivity implements BaseFragme
     }
 
 
-    private void setFragment(Fragment fragment) {
+    private void setFragment(BaseFragment fragment) {
+        currentFragment = fragment;
+        if (currentFragment instanceof AppendixFragment) {
+            appendixFragment = (AppendixFragment)currentFragment;
+        }
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
         mDrawerLayout.closeDrawers();
     }
@@ -162,6 +172,7 @@ public class Case1InformationActivity extends BaseActivity implements BaseFragme
 
     @Override
     public void OnNextStepClicked(int position) {
+        currentFragment.saveCase1();
         switch (position) {
             case 0 :
                 setTitle("诊断信息");
@@ -185,8 +196,22 @@ public class Case1InformationActivity extends BaseActivity implements BaseFragme
                 break;
             case 5:
                 setTitle("附录");
-                setFragment(DiagnosticMessageFragment.newInstance(case1));
+                setFragment(AppendixFragment.newInstance(case1));
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK
+                && (requestCode == ChooserType.REQUEST_PICK_PICTURE
+                || requestCode == ChooserType.REQUEST_CAPTURE_PICTURE)) {
+            if (appendixFragment.imageChooserManager == null) {
+                appendixFragment.reinitializeImageChooser();
+            }
+            appendixFragment.imageChooserManager.submit(requestCode, data);
+        } else {
+            appendixFragment.progressDialog.dismiss();
         }
     }
 }

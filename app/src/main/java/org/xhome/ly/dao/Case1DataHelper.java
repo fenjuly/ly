@@ -32,7 +32,7 @@ public class Case1DataHelper extends BaseDataHelper {
         values.put(Case1DB.ID, case1.getId());
         values.put(Case1DB.NAME, case1.getName());
         values.put(Case1DB.INTERROGATOPM_RECORD_ID, case1.getInterrogationRecordId());
-        values.put(Case1DB.OPERATION_DATA, case1.getOperationData());
+//        values.put(Case1DB.OPERATION_DATA, case1.getOperationData());
         values.put(Case1DB.OPERATOR_NAME, case1.getOperatorName());
         values.put(Case1DB.OPERATOR_DETAIL, case1.getOperatorDetail());
         values.put(Case1DB.VT_TYPE, case1.getVtType());

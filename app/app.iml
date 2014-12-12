@@ -91,12 +91,15 @@
     <orderEntry type="library" exported="" name="library-0.0.2" level="project" />
     <orderEntry type="library" exported="" name="library-1.5.0" level="project" />
     <orderEntry type="library" exported="" name="library-1.5.2" level="project" />
+    <orderEntry type="library" exported="" name="library-1.2" level="project" />
+    <orderEntry type="library" exported="" name="image-chooser-library-1.3.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-21.0.2" level="project" />
     <orderEntry type="library" exported="" name="library-1.1.3" level="project" />
     <orderEntry type="library" exported="" name="1_library-1.1.3" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.0.0" level="project" />
     <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="universal-image-loader-1.9.1" level="project" />
+    <orderEntry type="module" module-name="android-floating-action-button" exported="" />
   </component>
 </module>
 

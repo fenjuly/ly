@@ -1,9 +1,6 @@
 package org.xhome.ly.ui;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.Response;

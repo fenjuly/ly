@@ -25,6 +25,7 @@ import org.xhome.ly.bean.Case1;
 import org.xhome.ly.dao.Case1DataHelper;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -253,7 +254,7 @@ public class DiagnosticMessageFragment extends BaseFragment  {
         return rootView;
     }
 
-    private void saveCase1() {
+    public void saveCase1() {
         if (case1 != null) {
             shoushuriqi = shouShuRiQi.getText().toString();
             shoushubianhao = shouShuBianHao.getText().toString();
@@ -265,7 +266,6 @@ public class DiagnosticMessageFragment extends BaseFragment  {
             shuhouzhenduan = shuHouZhenDuan.getText().toString();
             jizhi = jiZhi.getText().toString();
             buwei = buWei.getText().toString();
-            case1.setOperationData(shoushuriqi);
             case1.setOperationNumber(shoushubianhao);
             case1.setOperatorName(shuzhe);
             case1.setVtType(spinnertext);
@@ -307,6 +307,8 @@ public class DiagnosticMessageFragment extends BaseFragment  {
 
         @Override
         public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
+            Date date = new Date(year - 1900, month, day);
+            case1.setOperationData(date);
             shouShuRiQi.setText(year+ "年" + month + "月" + day + "日");
         }
     }
@@ -320,32 +322,4 @@ public class DiagnosticMessageFragment extends BaseFragment  {
     }
 
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        saveCase1();
-        super.onSaveInstanceState(outState);
-        Log.e("onSaveInstanceState", "invoked");
-    }
-
-    @Override
-    public void onDestroy() {
-        saveCase1();
-        super.onDestroy();
-        Log.e("onDestroy", "invoked");
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
-        try {
-            case1DataChangedListener = (Case1DataChangedListener) activity;
-            nextStepListner = (NextStepListner) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement Case1DataChangedListener");
-        }
-    }
 }

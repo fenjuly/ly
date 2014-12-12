@@ -1,6 +1,7 @@
 package org.xhome.ly.ui.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class UnderOperationMessageFragment extends BaseFragment {
     EditText xiaoRongQianXinLv;
     EditText shuZhongXinLv;
     EditText bingFaZheng;
+    CircularProgressButton confirm;
 
     String shuzhongdianfulv;
     String xiaorongqianxinlv;
@@ -93,6 +95,7 @@ public class UnderOperationMessageFragment extends BaseFragment {
         xiaoRongQianXinLv = (EditText) rootView.findViewById(R.id.xiaorongqianxinlv);
         shuZhongXinLv = (EditText) rootView.findViewById(R.id.shuzhongxinlv);
         bingFaZheng = (EditText) rootView.findViewById(R.id.bingfazheng);
+        confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
         xiaoRongQianXinLv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -256,7 +259,7 @@ public class UnderOperationMessageFragment extends BaseFragment {
                     public void onClick(View view) {
                         shuzhongxinlvtext = "";
                         shuzhong_beizhutext = beizhu.getText().toString();
-                        shuzhongxinlvtext = "消融前心律:" + shuzhong_xiaorongqianxinlvtext + "\n\n"
+                        shuzhongxinlvtext = "束中心律:" + shuzhong_xiaorongqianxinlvtext + "\n\n"
                                 + "室速:" + shuzhong_shisutext + "\n\n"
                                 + "室早:" + shuzhong_shizaotext;
                         shuZhongXinLv.setText(shuzhongxinlvtext + "\n\n"
@@ -494,6 +497,44 @@ public class UnderOperationMessageFragment extends BaseFragment {
 
             }
         });
+
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextStepListner.OnNextStepClicked(5);
+            }
+        });
         return rootView;
+    }
+
+    @Override
+    public void saveCase1() {
+        if(case1 != null) {
+
+            bingfazheng = bingFaZheng.getText().toString();
+            case1.setBeforeHeartRate(xiaorongqianxinlvtext);
+            case1.setBeforeVt(xiaorongqian_shisutext);
+            case1.setBeforeRont(xiaorongqian_shizaotext);
+            case1.setBeforeRemarks(xiaorongqian_beizhutext);
+            case1.setInHeartRate(shuzhongxinlvtext);
+            case1.setInVt(shuzhong_shisutext);
+            case1.setInRont(shuzhong_shizaotext);
+            case1.setInRemarks(shuzhong_beizhutext);
+            case1.setComplication(bingfazheng);
+            case1DataChangedListener.OnCase1DataChanged(case1);
+        }
+    }
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if (!isInActivity) {
+            isInActivity = true;
+            shuZhongDianFuLv.setText("");
+            xiaoRongQianXinLv.setText("");
+            shuZhongXinLv.setText("");
+            bingFaZheng.setText("");
+        }
+
     }
 }
