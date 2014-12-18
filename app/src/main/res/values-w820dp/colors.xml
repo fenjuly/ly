@@ -13,6 +13,8 @@
     <color name="blue_semi_transparent_pressed">#80738ffe</color>
     <color name="green_pressed">#CCFFCC</color>
     <color name="green">#99CC99</color>
+    <color name="actionbar_background">#37b898</color>
+    <color name="main_bg">#37b898</color>
 
     <color name="divider">#999999</color>
 

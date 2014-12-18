@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#37b898"
+    >
 
     <TextView
         android:id="@+id/logo"
@@ -10,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="心血管家"
+        android:textColor="#ffffff"
         android:textSize="40sp"
         android:gravity="center_horizontal"
         android:layout_marginBottom="25dp"
@@ -23,6 +26,7 @@
         android:layout_centerVertical="true"
         android:textSize="20sp"
         android:text="v1.0"
+        android:textColor="#ffffff"
         />
 
 </RelativeLayout>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        >
+        <EditText
+            android:id="@+id/xinqiangneizaoying"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="心腔内造影"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:focusable="false"
+            />
+
+        <EditText
+            android:id="@+id/youfafangshi"
+            android:layout_below="@+id/xinqiangneizaoying"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="120dp"
+            android:hint="诱发方式"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:focusable="false"
+            />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/xindongguosufazuoshifouguize"
+            android:layout_below="@+id/youfafangshi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="心动过速发作是否规则"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            app:floatingLabel="highlight"
+            />
+
+        <EditText
+            android:id="@+id/zhouchang"
+            android:layout_below="@+id/xindongguosufazuoshifouguize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="周长(CCL)"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:focusable="false"
+            />
+
+        <EditText
+            android:id="@+id/biaocefangfa"
+            android:layout_below="@+id/zhouchang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="标测方法"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:focusable="false"
+            />
+
+        <EditText
+            android:id="@+id/biaocefangshi"
+            android:layout_below="@+id/biaocefangfa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="标测方式"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            />
+
+        <EditText
+            android:id="@+id/xiaorongshushi"
+            android:layout_below="@+id/biaocefangshi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="12dp"
+            android:hint="消融术式"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:focusable="false"
+            />
+
+
+
+        <EditText
+            android:id="@+id/xiaorongjingxian"
+            android:layout_below="@+id/xiaorongshushi"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:hint="消融径线"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:focusable="false"
+            />
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/confirm"
+            android:layout_below="@+id/xiaorongjingxian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:cpb_textComplete="完成"
+            app:cpb_textError="出错"
+            app:cpb_textIdle="下一步" />
+
+    </RelativeLayout>
+</ScrollView>

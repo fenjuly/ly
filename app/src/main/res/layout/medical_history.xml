@@ -16,6 +16,7 @@
         />
 
     <ImageView
+        android:id="@+id/add_xinzangbingshoushushi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -28,7 +29,8 @@
         android:id="@+id/history1"
         android:layout_below="@+id/history_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="180dp"
+        />
 
     <RelativeLayout
         android:id="@+id/history_2"
@@ -45,6 +47,7 @@
             />
 
         <ImageView
+            android:id="@+id/add_jichubingqing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -57,16 +60,17 @@
         android:id="@+id/history2"
         android:layout_below="@+id/history_2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="180dp"
+        />
 
     <com.dd.CircularProgressButton
         android:id="@+id/next"
-        android:layout_below="@+id/history2"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
+        android:layout_marginBottom="8dp"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:cpb_textComplete="完成"

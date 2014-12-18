@@ -33,6 +33,7 @@ import me.drakeet.materialdialog.MaterialDialog;
  */
 public class DoctorInformationCenter extends BaseActivity {
 
+    MaterialEditText id;
     MaterialEditText name;
     MaterialEditText contactWay;
 
@@ -52,6 +53,10 @@ public class DoctorInformationCenter extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.doctor_information);
+        Intent intent = getIntent();
+        String userId = intent.getStringExtra("userId");
+        id = (MaterialEditText) findViewById(R.id.id);
+        id.setText(userId);
         name = (MaterialEditText) findViewById(R.id.name);
         contactWay = (MaterialEditText) findViewById(R.id.lianxifangshi);
         keShi = (EditText) findViewById(R.id.keshi);

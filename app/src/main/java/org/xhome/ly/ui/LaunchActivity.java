@@ -16,6 +16,9 @@ public class LaunchActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getActionBar() != null) {
+            getActionBar().hide();
+        }
         setContentView(R.layout.lunch_activity);
         if (SharePerferenceUtils.getInformation(SharePerferenceUtils.AUTHENTICATION).equals("")) {
             new Handler().postDelayed(new Runnable() {

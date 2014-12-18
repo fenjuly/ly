@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:hint="输入姓名，身份证或手机"
+            android:gravity="top"
+            android:layout_weight="1"
+            app:floatingLabel="highlight"
+            />
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:cpb_textComplete="完成"
+            android:layout_weight="5"
+            app:cpb_textError="出错"
+            app:cpb_textIdle="搜索" />
+
+        </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

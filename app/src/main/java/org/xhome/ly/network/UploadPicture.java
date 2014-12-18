@@ -2,6 +2,9 @@ package org.xhome.ly.network;
 
 import android.util.Log;
 
+import org.xhome.ly.api.Api;
+import org.xhome.ly.util.SharePerferenceUtils;
+
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,7 +30,8 @@ public class UploadPicture {
         String BOUNDARY = UUID.randomUUID().toString(); // 边界标识 随机生成
         String PREFIX = "--", LINE_END = "\r\n";
         String CONTENT_TYPE = "multipart/form-data"; // 内容类型
-        String RequestURL = "http://192.168.0.166:8081/yl/api/file?interrogationRecordId=2";
+        String RequestURL = Api.HOST + "/api/file?interrogationRecordId="+ SharePerferenceUtils.getInformation("interrogationRecordId");
+        Log.e("requestUrl", RequestURL);
         try {
             URL url = new URL(RequestURL);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();

@@ -1,7 +1,6 @@
-package org.xhome.ly.ui.fragment;
+package org.xhome.ly.ui.fragment.af;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,6 +17,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.daimajia.numberprogressbar.NumberProgressBar;
 import com.dd.CircularProgressButton;
 import com.getbase.floatingactionbutton.FloatingActionButton;
@@ -32,14 +33,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.xhome.ly.R;
 import org.xhome.ly.api.Api;
-import org.xhome.ly.bean.Case1;
+import org.xhome.ly.bean.Case2;
 import org.xhome.ly.bean.Response;
 import org.xhome.ly.network.GsonRequest;
 import org.xhome.ly.network.UploadPicture;
-import org.xhome.ly.ui.DoctorCenterActivity;
 import org.xhome.ly.util.SharePerferenceUtils;
 import org.xhome.ly.util.TaskUtils;
-
+import org.xhome.ly.util.ToastUtils;
 
 import java.io.File;
 import java.util.HashMap;
@@ -69,19 +69,20 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
     LinearLayout progressArea;
 
     CircularProgressButton confirm;
+    CircularProgressButton upload;
     MaterialEditText beiZhu;
 
-    public static AppendixFragment newInstance(Case1 case1) {
+    public static AppendixFragment newInstance(Case2 case2) {
         if (fragment == null) {
             fragment = new AppendixFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
         }
 
         return fragment;
@@ -95,6 +96,7 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
                 R.layout.fulu, container, false);
         init();
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
+        upload = (CircularProgressButton) rootView.findViewById(R.id.upload);
         beiZhu = (MaterialEditText) rootView.findViewById(R.id.beizhu);
         numberProgressBar = (NumberProgressBar) rootView.findViewById(R.id.number_progress_bar);
         progressText = (TextView) rootView.findViewById(R.id.progress_text);
@@ -144,16 +146,17 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveCase1();
-//                progressArea.setVisibility(View.VISIBLE);
-//                TaskUtils.executeAsyncTask(new UploadTask());
+                saveCase2();
+
                 JSONObject jsonObject = null;
                 try {
-                     jsonObject = new JSONObject(new Gson().toJson(case1));
-                    long millis = case1.getOperationData().getTime();
-                    jsonObject.remove("operationData");
+                     jsonObject = new JSONObject(new Gson().toJson(case2));
+                    if (case2.getOperationData() != null) {
+                        long millis = case2.getOperationData().getTime();
+                        jsonObject.remove("operationData");
+                        jsonObject.put("operationData", String.valueOf(millis));
+                    }
                     jsonObject.remove("_id");
-                    jsonObject.put("operationData", String.valueOf(millis));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -161,9 +164,23 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
                 Map<String, String> headers = new HashMap<String, String>();
                 headers.put("Authentication", SharePerferenceUtils.getInformation(SharePerferenceUtils.AUTHENTICATION));
                 confirm.setProgress(50);
-                executeRequest(new GsonRequest(Request.Method.POST, Api.CASE1+ "?doctorId=1&patientId=1",
+                executeRequest(new GsonRequest(Request.Method.POST, Api.CASE1+ "?doctorId="+ SharePerferenceUtils.getInformation(SharePerferenceUtils.DOCTOR_ID)+"&patientId=" + SharePerferenceUtils.getInformation(SharePerferenceUtils.PATIENT_ID),
                         jsonObject.toString(), responseListener(), errorListener(),
                         Response.class, headers));
+            }
+        });
+
+        upload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveCase2();
+                if (case2.getKeyword2() == null || case2.getKeyword2().equals("")) {
+                    ToastUtils.showLong("没有图片需要上传");
+                    getActivity().finish();
+                } else {
+                    progressArea.setVisibility(View.VISIBLE);
+                    TaskUtils.executeAsyncTask(new UploadTask());
+                }
             }
         });
         return rootView;
@@ -175,7 +192,16 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
             public void onResponse(Response response) {
                 int status = response.getStatus();
                 if (status == 0) {
+                    float mInterrogationRecordId = Float.valueOf(response.getBody().toString());
+                    int interrogationRecordId = (int) mInterrogationRecordId;
+                    SharePerferenceUtils.addOther("interrogationRecordId", String.valueOf(interrogationRecordId));
                     confirm.setProgress(100);
+                    YoYo.with(Techniques.FadeOutUp)
+                            .duration(2000)
+                            .playOn(confirm);
+                    confirm.setVisibility(View.GONE);
+
+                    upload.setVisibility(View.VISIBLE);
 
                 } else {
                     confirm.setProgress(0);
@@ -255,8 +281,8 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
                 filePath = savedInstanceState.getString("media_path");
             }
         }
-       if (case1.getKeyword1() != null && !case1.getKeyword1().equals("")) {
-           String[] strs = case1.getKeyword1().split(";");
+       if (case2.getKeyword1() != null && !case2.getKeyword1().equals("")) {
+           String[] strs = case2.getKeyword1().split(";");
            for (String url : strs) {
                ImageView imageView = new ImageView(linearLayout.getContext());
                imageView.setImageURI(Uri.parse(url));
@@ -298,29 +324,30 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
     }
 
     @Override
-    public void saveCase1() {
-        if (case1 != null) {
+    public void saveCase2() {
+        if (case2 != null) {
 
-            String keyword1 = case1.getKeyword1();
+            String keyword1 = case2.getKeyword1();
             if (!picUrl.equals("")) {
                 if (keyword1  == null || keyword1.equals("")) {
-                    case1.setKeyword1(picUrl);
+                    case2.setKeyword1(picUrl);
                 } else {
-                    case1.setKeyword1(keyword1 + ";" + picUrl);
+                    case2.setKeyword1(keyword1 + ";" + picUrl);
                 }
             }
 
-            String keyword2 = case1.getKeyword2();
+            String keyword2 = case2.getKeyword2();
             if (!originalPicUrl.equals("")) {
                 if (keyword2  == null || keyword2.equals("") ) {
-                    case1.setKeyword2(originalPicUrl);
+                    case2.setKeyword2(originalPicUrl);
                 } else {
-                    case1.setKeyword2(keyword2 + ";" + originalPicUrl);
+                    case2.setKeyword2(keyword2 + ";" + originalPicUrl);
                 }
             }
             originalPicUrl = "";
             picUrl = "";
-            case1DataChangedListener.OnCase1DataChanged(case1);
+            case2.setGlobalRemarks(beiZhu.getText().toString());
+            case2DataChangedListener.OnCase2DataChanged(case2);
         }
     }
 
@@ -329,7 +356,7 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
         @Override
         protected Integer[] doInBackground(Integer... objects) {
             int[] statuses = new int[]{1, 1, 1, 1, 1, 1};
-            String keyword2 = case1.getKeyword2();
+            String keyword2 = case2.getKeyword2();
             if (keyword2 != null && !keyword2.equals("")) {
                 String[] strs = keyword2.split(";");
                 final int length = strs.length;
@@ -366,10 +393,16 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
         protected void onPostExecute(Integer[] integers) {
             super.onPostExecute(integers);
             int[] statuses = toPrimitive(integers);
+            boolean success = true;
             for (int i = 0; i < statuses.length; i++) {
                 if (statuses[i] != 1) {
+                    success = false;
                     Toast.makeText(getActivity(), "第" + i + "个失败", Toast.LENGTH_SHORT);
                 }
+            }
+            if (success) {
+                getActivity().finish();
+                ToastUtils.showLong("上传成功");
             }
         }
     }

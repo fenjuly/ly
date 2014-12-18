@@ -230,7 +230,6 @@ public static Case1 fromCursor(Cursor cursor) {
 
     private String keyword3;
 
-
     public String getOperationNumber() {
         return operationNumber;
     }

@@ -95,13 +95,14 @@ public class RegistActivity extends BaseActivity {
             @Override
             public void onResponse(Response response) {
                 int status = response.getStatus();
-                float mDataId = Float.valueOf(response.getBody().toString());
-                int dataId = (int) mDataId;
                 if (status == 0) {
+                    float mDataId = Float.valueOf(response.getBody().toString());
+                    int dataId = (int) mDataId;
                     confirm.setProgress(100);
                     SharePerferenceUtils.addOther(SharePerferenceUtils.AUTHENTICATION, id + "%" + pwd);
                     SharePerferenceUtils.addOther(SharePerferenceUtils.DOCTOR_ID, String.valueOf(dataId));
                     Intent intent = new Intent(RegistActivity.this, DoctorInformationCenter.class);
+                    intent.putExtra("userId", id);
                     startActivity(intent);
                     finish();
                 } else {

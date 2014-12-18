@@ -33,6 +33,11 @@
         <activity android:name=".ui.DoctorInformationCenter"/>
         <activity android:name=".ui.Case1InformationActivity"/>
         <activity android:name=".ui.PatientInformationActivity"/>
+        <activity android:name=".ui.MedicalHistoryInformationActivity"/>
+        <activity android:name=".ui.SearchCaseActivity"/>
+        <activity android:name=".ui.SearchResultActivity"/>
+        <activity android:name=".ui.SearchCaseResultActivity"/>
+        <activity android:name=".ui.ShowCase1InformationActivity"/>
     </application>
 
 </manifest>

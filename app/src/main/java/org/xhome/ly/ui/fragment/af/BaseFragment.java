@@ -1,4 +1,4 @@
-package org.xhome.ly.ui.fragment;
+package org.xhome.ly.ui.fragment.af;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 
 import org.xhome.ly.bean.Case1;
+import org.xhome.ly.bean.Case2;
 import org.xhome.ly.dao.Case1DataHelper;
 import org.xhome.ly.network.RequestManager;
 import org.xhome.ly.util.ToastUtils;
@@ -20,35 +21,34 @@ import org.xhome.ly.util.ToastUtils;
  */
 public abstract class BaseFragment extends Fragment {
 
-    protected Case1DataHelper case1DataHelper;
-    protected Case1DataChangedListener case1DataChangedListener;
+    protected Case2DataChangedListener case2DataChangedListener;
 
     protected NextStepListner nextStepListner;
     public boolean isInActivity = true;
 
-    protected Case1 case1;
+    protected Case2 case2;
     protected void parseArgument() {
         Bundle bundle = getArguments();
-        case1 = new Gson().fromJson(bundle.getString("case1"), Case1.class);
+        case2 = new Gson().fromJson(bundle.getString("case2"), Case2.class);
     }
     protected void init(){
         parseArgument();
         Log.e("case:", getArguments().toString());
     }
 
-    public interface Case1DataChangedListener {
-        public void OnCase1DataChanged(Case1 case1);
+    public interface Case2DataChangedListener {
+        public void OnCase2DataChanged(Case2 case2);
     }
 
     public interface NextStepListner {
         public  void OnNextStepClicked(int position);
     }
 
-    public abstract void saveCase1();
+    public abstract void saveCase2();
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        saveCase1();
+        saveCase2();
         super.onSaveInstanceState(outState);
         Log.e("onSaveInstanceState", "invoked");
     }
@@ -67,7 +67,7 @@ public abstract class BaseFragment extends Fragment {
         // This makes sure that the container activity has implemented
         // the callback interface. If not, it throws an exception
         try {
-            case1DataChangedListener = (Case1DataChangedListener) activity;
+            case2DataChangedListener = (Case2DataChangedListener) activity;
             nextStepListner = (NextStepListner) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()

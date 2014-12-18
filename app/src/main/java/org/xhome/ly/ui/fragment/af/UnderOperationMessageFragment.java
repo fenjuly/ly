@@ -1,4 +1,4 @@
-package org.xhome.ly.ui.fragment;
+package org.xhome.ly.ui.fragment.af;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +17,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1;
+import org.xhome.ly.bean.Case2;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -39,15 +40,15 @@ public class UnderOperationMessageFragment extends BaseFragment {
     String bingfazheng;
 
     String xiaorongqianxinlvtext;
-    String xiaorongqian_xiaorongqianxinlvtext;
-    String xiaorongqian_shisutext;
-    String xiaorongqian_shizaotext;
+    String xiaorongqian_duxingxinlvtext;
+    String xiaorongqian_fangsutext;
+    String xiaorongqian_fangzaotext;
     String xiaorongqian_beizhutext;
 
     String shuzhongxinlvtext;
-    String shuzhong_xiaorongqianxinlvtext;
-    String shuzhong_shisutext;
-    String shuzhong_shizaotext;
+    String shuzhong_duxingxinlvtext;
+    String shuzhong_fangsutext;
+    String shuzhong_fangzaotext;
     String shuzhong_beizhutext;
 
     String bingfazhengtext;
@@ -69,17 +70,17 @@ public class UnderOperationMessageFragment extends BaseFragment {
     String qitatext;
 
 
-    public static UnderOperationMessageFragment newInstance(Case1 case1) {
+    public static UnderOperationMessageFragment newInstance(Case2 case2) {
         if (fragment == null) {
             fragment = new UnderOperationMessageFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
         }
 
         return fragment;
@@ -100,22 +101,22 @@ public class UnderOperationMessageFragment extends BaseFragment {
         xiaoRongQianXinLv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                xiaorongqian_xiaorongqianxinlvtext = "";
-                xiaorongqian_shisutext = "";
-                xiaorongqian_shizaotext = "";
+                xiaorongqian_duxingxinlvtext = "";
+                xiaorongqian_fangsutext = "";
+                xiaorongqian_fangzaotext = "";
                 xiaorongqian_beizhutext = "";
-                View v = LayoutInflater.from(getActivity()).inflate(R.layout.xiaorongqianxinlv, null);
+                View v = LayoutInflater.from(getActivity()).inflate(R.layout.afxiaorongqianxinlv, null);
                 final MaterialDialog alert = new MaterialDialog(getActivity())
                         .setTitle("消融前心律")
                         .setContentView(v);
                 alert.show();
-                final EditText xiaorongqianxinlv = (EditText) v.findViewById(R.id.xiaorongqianxinlv);
-                final EditText shisu = (EditText) v.findViewById(R.id.shisu);
-                final EditText shizao = (EditText) v.findViewById(R.id.shizao);
+                final EditText duxingxinlv = (EditText) v.findViewById(R.id.duxingxinlv);
+                final EditText fangsu = (EditText) v.findViewById(R.id.fangsu);
+                final EditText fangzao = (EditText) v.findViewById(R.id.fangzao);
                 final MaterialEditText beizhu = (MaterialEditText) v.findViewById(R.id.beizhu);
                 CircularProgressButton confirm = (CircularProgressButton) v.findViewById(R.id.confirm);
 
-                xiaorongqianxinlv.setOnClickListener(new View.OnClickListener() {
+                duxingxinlv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         NumberPickerBuilder numberPickerBuilder = new NumberPickerBuilder()
@@ -125,14 +126,14 @@ public class UnderOperationMessageFragment extends BaseFragment {
                         numberPickerBuilder.addNumberPickerDialogHandler(new NumberPickerDialogFragment.NumberPickerDialogHandler() {
                             @Override
                             public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative, double fullNumber) {
-                                xiaorongqian_xiaorongqianxinlvtext = fullNumber + "BPM";
-                                xiaorongqianxinlv.setText(xiaorongqian_xiaorongqianxinlvtext);
+                                xiaorongqian_duxingxinlvtext = fullNumber + "BPM";
+                                duxingxinlv.setText(xiaorongqian_duxingxinlvtext);
                             }
                         });
                     }
                 });
 
-                shisu.setOnClickListener(new View.OnClickListener() {
+                fangsu.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         NumberPickerBuilder numberPickerBuilder = new NumberPickerBuilder()
@@ -142,14 +143,14 @@ public class UnderOperationMessageFragment extends BaseFragment {
                         numberPickerBuilder.addNumberPickerDialogHandler(new NumberPickerDialogFragment.NumberPickerDialogHandler() {
                             @Override
                             public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative, double fullNumber) {
-                                xiaorongqian_shisutext = fullNumber + "BPM";
-                                shisu.setText(xiaorongqian_shisutext);
+                                xiaorongqian_fangsutext = fullNumber + "BPM";
+                                fangsu.setText(xiaorongqian_fangsutext);
                             }
                         });
                     }
                 });
 
-                shizao.setOnClickListener(new View.OnClickListener() {
+                fangzao.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         NumberPickerBuilder numberPickerBuilder = new NumberPickerBuilder()
@@ -159,8 +160,8 @@ public class UnderOperationMessageFragment extends BaseFragment {
                         numberPickerBuilder.addNumberPickerDialogHandler(new NumberPickerDialogFragment.NumberPickerDialogHandler() {
                             @Override
                             public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative, double fullNumber) {
-                                xiaorongqian_shizaotext = fullNumber + "BPM";
-                                shizao.setText(xiaorongqian_shizaotext);
+                                xiaorongqian_fangzaotext = fullNumber + "BPM";
+                                fangzao.setText(xiaorongqian_fangzaotext);
                             }
                         });
                     }
@@ -171,9 +172,9 @@ public class UnderOperationMessageFragment extends BaseFragment {
                     public void onClick(View view) {
                         xiaorongqianxinlvtext = "";
                         xiaorongqian_beizhutext = beizhu.getText().toString();
-                        xiaorongqianxinlvtext = "消融前心律:" + xiaorongqian_xiaorongqianxinlvtext + "\n\n"
-                                + "室速:" + xiaorongqian_shisutext + "\n\n"
-                                + "室早:" + xiaorongqian_shizaotext;
+                        xiaorongqianxinlvtext = "消融前心律:" + xiaorongqian_duxingxinlvtext + "\n\n"
+                                + "房速:" + xiaorongqian_fangsutext + "\n\n"
+                                + "房早:" + xiaorongqian_fangzaotext;
                         xiaoRongQianXinLv.setText(xiaorongqianxinlvtext + "\n\n"
                                         + "备注:" + xiaorongqian_beizhutext
                         );
@@ -187,23 +188,23 @@ public class UnderOperationMessageFragment extends BaseFragment {
         shuZhongXinLv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                shuzhong_xiaorongqianxinlvtext = "";
-                shuzhong_shisutext = "";
-                shuzhong_shizaotext = "";
+                shuzhong_duxingxinlvtext = "";
+                shuzhong_fangsutext = "";
+                shuzhong_fangzaotext = "";
                 shuzhong_beizhutext = "";
-                View v = LayoutInflater.from(getActivity()).inflate(R.layout.shuzhongxinlv, null);
+                View v = LayoutInflater.from(getActivity()).inflate(R.layout.afshuzhongxinlv, null);
                 final MaterialDialog alert = new MaterialDialog(getActivity())
                         .setTitle("术中心律")
                         .setContentView(v);
                 alert.show();
 
-                final EditText xiaorongqianxinlv = (EditText) v.findViewById(R.id.xiaorongqianxinlv);
-                final EditText shisu = (EditText) v.findViewById(R.id.shisu);
-                final EditText shizao = (EditText) v.findViewById(R.id.shizao);
+                final EditText duxingxinlv = (EditText) v.findViewById(R.id.duxingxinlv);
+                final EditText fangsu = (EditText) v.findViewById(R.id.fangsu);
+                final EditText fangzao = (EditText) v.findViewById(R.id.fangzao);
                 final MaterialEditText beizhu = (MaterialEditText) v.findViewById(R.id.beizhu);
                 CircularProgressButton confirm = (CircularProgressButton) v.findViewById(R.id.confirm);
 
-                xiaorongqianxinlv.setOnClickListener(new View.OnClickListener() {
+                duxingxinlv.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         NumberPickerBuilder numberPickerBuilder = new NumberPickerBuilder()
@@ -213,14 +214,14 @@ public class UnderOperationMessageFragment extends BaseFragment {
                         numberPickerBuilder.addNumberPickerDialogHandler(new NumberPickerDialogFragment.NumberPickerDialogHandler() {
                             @Override
                             public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative, double fullNumber) {
-                                shuzhong_xiaorongqianxinlvtext = fullNumber + "BPM";
-                                xiaorongqianxinlv.setText(shuzhong_xiaorongqianxinlvtext);
+                                shuzhong_duxingxinlvtext = fullNumber + "BPM";
+                                duxingxinlv.setText(shuzhong_duxingxinlvtext);
                             }
                         });
                     }
                 });
 
-                shisu.setOnClickListener(new View.OnClickListener() {
+                fangsu.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         NumberPickerBuilder numberPickerBuilder = new NumberPickerBuilder()
@@ -230,14 +231,14 @@ public class UnderOperationMessageFragment extends BaseFragment {
                         numberPickerBuilder.addNumberPickerDialogHandler(new NumberPickerDialogFragment.NumberPickerDialogHandler() {
                             @Override
                             public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative, double fullNumber) {
-                                shuzhong_shisutext = fullNumber + "BPM";
-                                shisu.setText(shuzhong_shisutext);
+                                shuzhong_fangsutext = fullNumber + "BPM";
+                                fangsu.setText(shuzhong_fangsutext);
                             }
                         });
                     }
                 });
 
-                shizao.setOnClickListener(new View.OnClickListener() {
+                fangzao.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         NumberPickerBuilder numberPickerBuilder = new NumberPickerBuilder()
@@ -247,8 +248,8 @@ public class UnderOperationMessageFragment extends BaseFragment {
                         numberPickerBuilder.addNumberPickerDialogHandler(new NumberPickerDialogFragment.NumberPickerDialogHandler() {
                             @Override
                             public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative, double fullNumber) {
-                                shuzhong_shizaotext = fullNumber + "BPM";
-                                shizao.setText(shuzhong_shizaotext);
+                                shuzhong_fangzaotext = fullNumber + "BPM";
+                                fangzao.setText(shuzhong_fangzaotext);
                             }
                         });
                     }
@@ -259,9 +260,9 @@ public class UnderOperationMessageFragment extends BaseFragment {
                     public void onClick(View view) {
                         shuzhongxinlvtext = "";
                         shuzhong_beizhutext = beizhu.getText().toString();
-                        shuzhongxinlvtext = "束中心律:" + shuzhong_xiaorongqianxinlvtext + "\n\n"
-                                + "室速:" + shuzhong_shisutext + "\n\n"
-                                + "室早:" + shuzhong_shizaotext;
+                        shuzhongxinlvtext = "术中心律:" + shuzhong_duxingxinlvtext + "\n\n"
+                                + "房速:" + shuzhong_fangsutext + "\n\n"
+                                + "房早:" + shuzhong_fangzaotext;
                         shuZhongXinLv.setText(shuzhongxinlvtext + "\n\n"
                                         + "备注:" + shuzhong_beizhutext
                         );
@@ -490,7 +491,8 @@ public class UnderOperationMessageFragment extends BaseFragment {
                                 + jixingguanmaibisetext + " " + pixiaxuechongtext + " "
                                 + jiaxingdongmailiutext + " " + dongjingmaiweitext + " "
                                 + fumohouchuxuetext + " " + banmosunshangtext + " "
-                                + siwangtext + " " + qitatext ;                        bingFaZheng.setText("并发症:" + bingfazhengtext);
+                                + siwangtext + " " + qitatext ;
+                        bingFaZheng.setText("并发症:" + bingfazhengtext);
                         alert.dismiss();
                     }
                 });
@@ -508,20 +510,20 @@ public class UnderOperationMessageFragment extends BaseFragment {
     }
 
     @Override
-    public void saveCase1() {
-        if(case1 != null) {
-
+    public void saveCase2() {
+        if(case2 != null) {
+            shuzhongdianfulv = shuZhongDianFuLv.getText().toString();
             bingfazheng = bingFaZheng.getText().toString();
-            case1.setBeforeHeartRate(xiaorongqianxinlvtext);
-            case1.setBeforeVt(xiaorongqian_shisutext);
-            case1.setBeforeRont(xiaorongqian_shizaotext);
-            case1.setBeforeRemarks(xiaorongqian_beizhutext);
-            case1.setInHeartRate(shuzhongxinlvtext);
-            case1.setInVt(shuzhong_shisutext);
-            case1.setInRont(shuzhong_shizaotext);
-            case1.setInRemarks(shuzhong_beizhutext);
-            case1.setComplication(bingfazheng);
-            case1DataChangedListener.OnCase1DataChanged(case1);
+            case2.setBeforeHeartRate(xiaorongqianxinlvtext);
+            case2.setBeforeVt(xiaorongqian_fangsutext);
+            case2.setBeforeRont(xiaorongqian_fangzaotext);
+            case2.setBeforeRemarks(xiaorongqian_beizhutext);
+            case2.setInHeartRate(shuzhongxinlvtext);
+            case2.setInVt(shuzhong_fangsutext);
+            case2.setInRont(shuzhong_fangzaotext);
+            case2.setInRemarks(shuzhong_beizhutext);
+            case2.setComplication(bingfazheng);
+            case2DataChangedListener.OnCase2DataChanged(case2);
         }
     }
 

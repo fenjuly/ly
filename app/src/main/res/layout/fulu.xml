@@ -114,5 +114,20 @@
         app:cpb_textError="出错"
         app:cpb_textIdle="提交" />
 
+    <com.dd.CircularProgressButton
+        android:id="@+id/upload"
+        android:layout_below="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="18dp"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:cpb_textComplete="完成"
+        app:cpb_textError="出错"
+        app:cpb_textIdle="上传图片" />
+
 </RelativeLayout>
 </ScrollView>

@@ -6,8 +6,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.android.volley.Request;
 
 import org.xhome.ly.R;
+import org.xhome.ly.api.Api;
+import org.xhome.ly.bean.Response;
+import org.xhome.ly.network.GsonRequest;
+import org.xhome.ly.util.SharePerferenceUtils;
+import org.xhome.ly.util.ToastUtils;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -17,12 +28,40 @@ import me.drakeet.materialdialog.MaterialDialog;
 public class DoctorCenterActivity extends BaseActivity {
 
     View xinZeng;
+    View chaZhao;
+    View bingLiArea;
+    TextView number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
+        bingLiArea = findViewById(R.id.bingli_area);
         xinZeng = findViewById(R.id.xinzeng);
+        number = (TextView) findViewById(R.id.number);
+        chaZhao = findViewById(R.id.chazhao);
+
+        Map<String, String> headers = new HashMap<String, String>();
+        headers.put("Authentication", SharePerferenceUtils.getInformation(SharePerferenceUtils.AUTHENTICATION));
+        executeRequest(new GsonRequest(Request.Method.GET, Api.CASE1_COUNT + "?doctorId=" + SharePerferenceUtils.getInformation(SharePerferenceUtils.DOCTOR_ID),
+                responseListener(), errorListener(),
+                Response.class, headers));
+
+        bingLiArea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DoctorCenterActivity.this, SearchCaseActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        chaZhao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DoctorCenterActivity.this, SearchResultActivity.class);
+                startActivity(intent);
+            }
+        });
 
         xinZeng.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,7 +87,7 @@ public class DoctorCenterActivity extends BaseActivity {
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                         switch (position) {
                             case 0:
-                                Intent intent = new Intent(DoctorCenterActivity.this, Case1InformationActivity.class);
+                                Intent intent = new Intent(DoctorCenterActivity.this, PatientInformationActivity.class);
                                 alert.dismiss();
                                 startActivity(intent);
                         }
@@ -58,5 +97,25 @@ public class DoctorCenterActivity extends BaseActivity {
                 alert.show();
             }
         });
+
+
     }
+
+    private com.android.volley.Response.Listener<Response> responseListener() {
+        return new com.android.volley.Response.Listener<Response>() {
+            @Override
+            public void onResponse(Response response) {
+                int status = response.getStatus();
+                if (status == 0) {
+                    float mCounts = Float.valueOf(response.getBody().toString());
+                    int counts = (int) mCounts;
+                    SharePerferenceUtils.addOther("counts", String.valueOf(counts));
+                    number.setText("共计" + counts + "个病例");
+                } else {
+                    ToastUtils.showLong("未知错误");
+                }
+            }
+        };
+    }
+
 }

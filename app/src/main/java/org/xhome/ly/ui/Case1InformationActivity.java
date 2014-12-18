@@ -16,13 +16,13 @@ import com.kbeanie.imagechooser.api.ChooserType;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1;
-import org.xhome.ly.ui.fragment.AblationResultFragment;
-import org.xhome.ly.ui.fragment.AppendixFragment;
-import org.xhome.ly.ui.fragment.BaseFragment;
-import org.xhome.ly.ui.fragment.BeforeOperationMessageFragment;
-import org.xhome.ly.ui.fragment.DiagnosticMessageFragment;
-import org.xhome.ly.ui.fragment.TranscatheterAblationFragment;
-import org.xhome.ly.ui.fragment.UnderOperationMessageFragment;
+import org.xhome.ly.ui.fragment.vt.AblationResultFragment;
+import org.xhome.ly.ui.fragment.vt.AppendixFragment;
+import org.xhome.ly.ui.fragment.vt.BaseFragment;
+import org.xhome.ly.ui.fragment.vt.BeforeOperationMessageFragment;
+import org.xhome.ly.ui.fragment.vt.DiagnosticMessageFragment;
+import org.xhome.ly.ui.fragment.vt.TranscatheterAblationFragment;
+import org.xhome.ly.ui.fragment.vt.UnderOperationMessageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,6 +54,7 @@ public class Case1InformationActivity extends BaseActivity implements BaseFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_case1_information);
+        case1.setName("室速");
         fragmentManager = getSupportFragmentManager();
         mDrawerAapter = new ArrayAdapter<String>(this,
                 R.layout.drawer_item

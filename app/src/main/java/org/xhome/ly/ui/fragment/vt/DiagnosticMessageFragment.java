@@ -1,9 +1,7 @@
-package org.xhome.ly.ui.fragment;
+package org.xhome.ly.ui.fragment.vt;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -307,6 +305,7 @@ public class DiagnosticMessageFragment extends BaseFragment  {
 
         @Override
         public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
+            month ++;
             Date date = new Date(year - 1900, month, day);
             case1.setOperationData(date);
             shouShuRiQi.setText(year+ "年" + month + "月" + day + "日");
@@ -317,6 +316,7 @@ public class DiagnosticMessageFragment extends BaseFragment  {
 
         @Override
         public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
+            month ++;
             shiSuBingCheng.setText(year+ "年" + month + "月" + day + "日");
         }
     }
