@@ -36,6 +36,7 @@ public class DoctorCenterActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
+        setTitle("妙手医生");
         bingLiArea = findViewById(R.id.bingli_area);
         xinZeng = findViewById(R.id.xinzeng);
         number = (TextView) findViewById(R.id.number);

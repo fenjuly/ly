@@ -1,8 +1,8 @@
-apply plugin: 'com.android.application'
+apply plugin: 'android'
 
 android {
     compileSdkVersion 19
-    buildToolsVersion "21.1.1"
+    buildToolsVersion '19.1.0'
 
     defaultConfig {
         applicationId "org.xhome.ly"
@@ -15,6 +15,14 @@ android {
         release {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    dexOptions {
+        preDexLibraries = false
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
