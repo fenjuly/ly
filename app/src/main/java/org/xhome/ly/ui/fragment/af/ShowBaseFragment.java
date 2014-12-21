@@ -8,6 +8,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 
 import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.bean.Case2Up;
 import org.xhome.ly.network.RequestManager;
 
 /**
@@ -18,10 +19,10 @@ public class ShowBaseFragment extends Fragment{
     protected NextStepListner nextStepListner;
     public boolean isInActivity = true;
 
-    protected Case1Up case1;
+    protected Case2Up case2;
     protected void parseArgument() {
         Bundle bundle = getArguments();
-        case1 = new Gson().fromJson(bundle.getString("case1"), Case1Up.class);
+        case2 = new Gson().fromJson(bundle.getString("case2"), Case2Up.class);
     }
     protected void init(){
         parseArgument();

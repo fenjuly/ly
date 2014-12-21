@@ -22,35 +22,8 @@
             />
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/ecgshuzhizuzhileixing"
-            android:layout_below="@+id/shuqianucg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="ECG束支阻滞类型"
-            android:gravity="top"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            app:floatingLabel="highlight"
-            />
-
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/dianzhoupianyi"
-            android:layout_below="@+id/ecgshuzhizuzhileixing"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="电轴偏移"
-            android:gravity="top"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            app:floatingLabel="highlight"
-            />
-
-
-        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/shuqiankangxinlvshichangyaowu"
-            android:layout_below="@+id/dianzhoupianyi"
+            android:layout_below="@+id/shuqianucg"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:hint="术前抗心律失常药物"

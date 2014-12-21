@@ -13,6 +13,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.bean.Case2Up;
 
 
 /**
@@ -29,17 +30,17 @@ public class ShowUnderOperationMessageFragment extends ShowBaseFragment {
     CircularProgressButton confirm;
 
 
-    public static ShowUnderOperationMessageFragment newInstance(Case1Up case1) {
+    public static ShowUnderOperationMessageFragment newInstance(Case2Up case2) {
         if (fragment == null) {
             fragment = new ShowUnderOperationMessageFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
         }
 
         return fragment;
@@ -49,7 +50,7 @@ public class ShowUnderOperationMessageFragment extends ShowBaseFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(
-                R.layout.shuzhongxinxi, container, false);
+                R.layout.afshuzhongxinxi, container, false);
         init();
         shuZhongDianFuLv = (MaterialEditText) rootView.findViewById(R.id.shuzhongdianfulv);
         xiaoRongQianXinLv = (EditText) rootView.findViewById(R.id.xiaorongqianxinlv);
@@ -57,28 +58,28 @@ public class ShowUnderOperationMessageFragment extends ShowBaseFragment {
         bingFaZheng = (EditText) rootView.findViewById(R.id.bingfazheng);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
-        if (case1.getIntraoperativeCableRate() != null) {
-            shuZhongDianFuLv.setText(case1.getIntraoperativeCableRate());
+        if (case2.getIntraoperativeCableRate() != null) {
+            shuZhongDianFuLv.setText(case2.getIntraoperativeCableRate());
         }
 
-        if (case1.getBeforeHeartRate() != null || case1.getBeforeVt() != null
-                || case1.getBeforeRont() != null || case1.getBeforeRemarks() != null) {
-            xiaoRongQianXinLv.setText(case1.getBeforeHeartRate() + "\n\n"
-                    + "室速:" + case1.getBeforeVt() + "\n\n"
-                    + "室早:" + case1.getBeforeRont() + "\n\n"
-                    + "备注:" + case1.getBeforeRemarks()) ;
+        if (case2.getBeforeHeartRate() != null || case2.getBeforeVt() != null
+                || case2.getBeforeRont() != null || case2.getBeforeRemarks() != null) {
+            xiaoRongQianXinLv.setText(case2.getBeforeHeartRate() + "\n\n"
+                    + "房速:" + case2.getBeforeVt() + "\n\n"
+                    + "房早:" + case2.getBeforeRont() + "\n\n"
+                    + "备注:" + case2.getBeforeRemarks()) ;
         }
 
-        if (case1.getInHeartRate() != null || case1.getInVt() != null
-                || case1.getInRont() != null || case1.getInRemarks() != null) {
-            shuZhongXinLv.setText(case1.getInHeartRate() + "\n\n"
-                    + "室速:" + case1.getInVt() + "\n\n"
-                    + "室早:" + case1.getInRont() + "\n\n"
-                    + "备注:" + case1.getInRemarks()) ;
+        if (case2.getInHeartRate() != null || case2.getInVt() != null
+                || case2.getInRont() != null || case2.getInRemarks() != null) {
+            shuZhongXinLv.setText(case2.getInHeartRate() + "\n\n"
+                    + "房速:" + case2.getInVt() + "\n\n"
+                    + "房早:" + case2.getInRont() + "\n\n"
+                    + "备注:" + case2.getInRemarks()) ;
         }
 
-        if ((case1.getComplication() != null)) {
-            bingFaZheng.setText(case1.getComplication());
+        if ((case2.getComplication() != null)) {
+            bingFaZheng.setText(case2.getComplication());
         }
 
         confirm.setOnClickListener(new View.OnClickListener() {

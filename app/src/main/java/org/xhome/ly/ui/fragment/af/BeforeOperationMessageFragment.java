@@ -31,8 +31,8 @@ public class BeforeOperationMessageFragment extends BaseFragment {
     private static final String[] la_types = {"未检测", "有血栓", "无血栓"};
 
     EditText shuQiangUcg;
-    MaterialEditText ecgShuZhiZhuZhiLeiXing;
-    MaterialEditText dianZhouPianYi;
+//    MaterialEditText ecgShuZhiZhuZhiLeiXing;
+//    MaterialEditText dianZhouPianYi;
     MaterialEditText shuQianKangXinLvShiChangYaoWu;
     MaterialEditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
     MaterialEditText shuQianHeBingXinLvShiChang;
@@ -87,8 +87,8 @@ public class BeforeOperationMessageFragment extends BaseFragment {
                 R.layout.afshuqianxinxi, container, false);
         init();
         shuQiangUcg = (EditText) rootView.findViewById(R.id.shuqianucg);
-        ecgShuZhiZhuZhiLeiXing = (MaterialEditText) rootView.findViewById(R.id.ecgshuzhizuzhileixing);
-        dianZhouPianYi = (MaterialEditText) rootView.findViewById(R.id.dianzhoupianyi);
+//        ecgShuZhiZhuZhiLeiXing = (MaterialEditText) rootView.findViewById(R.id.ecgshuzhizuzhileixing);
+//        dianZhouPianYi = (MaterialEditText) rootView.findViewById(R.id.dianzhoupianyi);
         shuQianKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqiankangxinlvshichangyaowu);
         shuQianWuXiaoDeKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
         shuQianHeBingXinLvShiChang = (MaterialEditText) rootView.findViewById(R.id.shuqianhebingxinlvshichang);
@@ -308,8 +308,8 @@ public class BeforeOperationMessageFragment extends BaseFragment {
     public void saveCase2() {
         if(case2 != null) {
             shuqianucg = shuQiangUcg.getText().toString();
-            ecgshuzhizhuzhileixing = ecgShuZhiZhuZhiLeiXing.getText().toString();
-            dianzhoupianyi = dianZhouPianYi.getText().toString();
+//            ecgshuzhizhuzhileixing = ecgShuZhiZhuZhiLeiXing.getText().toString();
+//            dianzhoupianyi = dianZhouPianYi.getText().toString();
             shuqiankangxinlvshichangyaowu = shuQianKangXinLvShiChangYaoWu.getText().toString();
             shuqianwuxiaodekangxinlvshichangyaowu = shuQianWuXiaoDeKangXinLvShiChangYaoWu.getText().toString();
             shuqianhebingxinlvshichang = shuQianHeBingXinLvShiChang.getText().toString();
@@ -339,8 +339,8 @@ public class BeforeOperationMessageFragment extends BaseFragment {
         if (!isInActivity) {
             isInActivity = true;
             shuQiangUcg.setText("");
-            ecgShuZhiZhuZhiLeiXing.setText("");
-            dianZhouPianYi.setText("");
+//            ecgShuZhiZhuZhiLeiXing.setText("");
+//            dianZhouPianYi.setText("");
             shuQianKangXinLvShiChangYaoWu.setText("");
             shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("");
             shuQianHeBingXinLvShiChang.setText("");

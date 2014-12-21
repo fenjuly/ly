@@ -13,6 +13,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.bean.Case2Up;
 
 
 /**
@@ -25,24 +26,26 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
     EditText shuQiangUcg;
     MaterialEditText ecgShuZhiZhuZhiLeiXing;
     MaterialEditText dianZhouPianYi;
-    MaterialEditText shuQianQiTaJianChaZhongYaoYangXingMiaoShu;
     MaterialEditText shuQianKangXinLvShiChangYaoWu;
     MaterialEditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
     MaterialEditText shuQianHeBingXinLvShiChang;
+    EditText shiFouZuoGuoFangChanXiaoRongZhiLiao;
+    MaterialEditText shuQianKangNingYaoWu;
+    EditText shuQianLaXueShuanJianCe;
     CircularProgressButton confirm;
 
 
-    public static ShowBeforeOperationMessageFragment newInstance(Case1Up case1) {
+    public static ShowBeforeOperationMessageFragment newInstance(Case2Up case2) {
         if (fragment == null) {
             fragment = new ShowBeforeOperationMessageFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
         }
 
         return fragment;
@@ -52,43 +55,44 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(
-                R.layout.shuqianxinxi, container, false);
+                R.layout.afshuqianxinxi, container, false);
         init();
         shuQiangUcg = (EditText) rootView.findViewById(R.id.shuqianucg);
         ecgShuZhiZhuZhiLeiXing = (MaterialEditText) rootView.findViewById(R.id.ecgshuzhizuzhileixing);
         dianZhouPianYi = (MaterialEditText) rootView.findViewById(R.id.dianzhoupianyi);
-        shuQianQiTaJianChaZhongYaoYangXingMiaoShu = (MaterialEditText) rootView.findViewById(R.id.shuqianqitajianchazhongyaoyangxingmiaoshu);
         shuQianKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqiankangxinlvshichangyaowu);
         shuQianWuXiaoDeKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
         shuQianHeBingXinLvShiChang = (MaterialEditText) rootView.findViewById(R.id.shuqianhebingxinlvshichang);
+        shiFouZuoGuoFangChanXiaoRongZhiLiao = (EditText) rootView.findViewById(R.id.shifouzuoguofangchanxiaorongzhiliao);
+        shuQianKangNingYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqiankangningyaowu);
+        shuQianLaXueShuanJianCe = (EditText) rootView.findViewById(R.id.shuqianlaxueshuanjiance);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
-        shuQiangUcg.setText("LA内径:" + case1.getLaBore() + "\n\n"
-                + "RA内径:" + case1.getRaBore() + "\n\n"
-                + "LV内径:" + case1.getLvBore() + "\n\n"
-                + "RV内径:" + case1.getRvBore() + "\n\n"
-                + "LVEF内径:" + case1.getLvefBore() + "\n\n"
-                + "备注:" + case1.getUcgRemarks());
-        if (case1.getEcgType() != null) {
-            ecgShuZhiZhuZhiLeiXing.setText(case1.getEcgType());
-        }
-        if (case1.getElectricalOffset() != null) {
-            dianZhouPianYi.setText(case1.getElectricalOffset());
-        }
-        if (case1.getPreopreativeExamination() != null) {
-            shuQianQiTaJianChaZhongYaoYangXingMiaoShu.setText(case1.getPreopreativeExamination());
-        }
-        if (case1.getAntiArrhythmiaDrugs() != null) {
-            shuQianKangXinLvShiChangYaoWu.setText(case1.getAntiArrhythmiaDrugs());
-        }
-        if (case1.getInvaliDantiArrhythmiaDrugs() != null) {
-            shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText(case1.getInvaliDantiArrhythmiaDrugs());
-        }
-        if (case1.getMergerArrhythmia() != null) {
-            shuQianHeBingXinLvShiChang.setText(case1.getMergerArrhythmia());
-        }
+        shuQiangUcg.setText("LA内径:" + case2.getLaBore() + "\n\n"
+                + "RA内径:" + case2.getRaBore() + "\n\n"
+                + "LV内径:" + case2.getLvBore() + "\n\n"
+                + "RV内径:" + case2.getRvBore() + "\n\n"
+                + "LVEF内径:" + case2.getLvefBore() + "\n\n"
+                + "备注:" + case2.getUcgRemarks());
 
-
+        if (case2.getAntiArrhythmiaDrugs() != null) {
+            shuQianKangXinLvShiChangYaoWu.setText(case2.getAntiArrhythmiaDrugs());
+        }
+        if (case2.getInvaliDantiArrhythmiaDrugs() != null) {
+            shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText(case2.getInvaliDantiArrhythmiaDrugs());
+        }
+        if (case2.getMergerArrhythmia() != null) {
+            shuQianHeBingXinLvShiChang.setText(case2.getMergerArrhythmia());
+        }
+        if (case2.getAfAblationTreatment() != null) {
+            shiFouZuoGuoFangChanXiaoRongZhiLiao.setText(case2.getAfAblationTreatment());
+        }
+        if (case2.getBeforeAnticoagulant() != null) {
+            shuQianKangNingYaoWu.setText(case2.getBeforeAnticoagulant());
+        }
+        if (case2.getLaThrombusDetection() != null) {
+            shuQianLaXueShuanJianCe.setText(case2.getLaThrombusDetection());
+        }
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,7 +112,6 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
             shuQiangUcg.setText("");
             ecgShuZhiZhuZhiLeiXing.setText("");
             dianZhouPianYi.setText("");
-            shuQianQiTaJianChaZhongYaoYangXingMiaoShu.setText("");
             shuQianKangXinLvShiChangYaoWu.setText("");
             shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("");
             shuQianHeBingXinLvShiChang.setText("");

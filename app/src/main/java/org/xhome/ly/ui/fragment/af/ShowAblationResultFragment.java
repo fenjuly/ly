@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
-import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.bean.Case2Up;
 
 
 /**
@@ -24,8 +24,6 @@ public class ShowAblationResultFragment extends ShowBaseFragment {
 
     MaterialEditText baDianBuWei;
     EditText nengYuanXiaoRong;
-    MaterialEditText qingShuRuXiaoRongNengYuan;
-    EditText panDuanXiaoRongYouXiaoZhiBiao;
     EditText xiaoRongZhongDian;
     EditText fangDianShiJian;
     EditText xXianBaoGuangShiJian;
@@ -33,17 +31,17 @@ public class ShowAblationResultFragment extends ShowBaseFragment {
 
     CircularProgressButton confirm;
 
-    public static ShowAblationResultFragment newInstance(Case1Up case1) {
+    public static ShowAblationResultFragment newInstance(Case2Up case2) {
         if (fragment == null) {
             fragment = new ShowAblationResultFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
         }
 
         return fragment;
@@ -53,39 +51,34 @@ public class ShowAblationResultFragment extends ShowBaseFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(
-                R.layout.xiaorongjieguo, container, false);
+                R.layout.afxiaorongjieguo, container, false);
         init();
         baDianBuWei = (MaterialEditText) rootView.findViewById(R.id.badianbuwei);
         nengYuanXiaoRong = (EditText) rootView.findViewById(R.id.nengyuanxiaorong);
-        qingShuRuXiaoRongNengYuan = (MaterialEditText) rootView.findViewById(R.id.qingshuruxiaorongnengyuan);
-        panDuanXiaoRongYouXiaoZhiBiao = (EditText) rootView.findViewById(R.id.panduanxiaorongyouxiaozhibiao);
         xiaoRongZhongDian = (EditText) rootView.findViewById(R.id.xiaorongzhongdian);
         fangDianShiJian = (EditText) rootView.findViewById(R.id.fangdianshijian);
         xXianBaoGuangShiJian = (EditText) rootView.findViewById(R.id.xxianbaoguanshijia);
         xiaoRongCiShu = (EditText) rootView.findViewById(R.id.xiaorongcishu);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
-        if (case1.getTargetPosition() != null) {
-            baDianBuWei.setText(case1.getTargetPosition());
+        if (case2.getTargetPosition() != null) {
+            baDianBuWei.setText(case2.getTargetPosition());
         }
-        if (case1.getAblationEnergy() != null) {
-            nengYuanXiaoRong.setText(case1.getAblationEnergy());
+        if (case2.getAblationEnergy() != null) {
+            nengYuanXiaoRong.setText(case2.getAblationEnergy());
         }
-        if (case1.getAblationJudgement() != null) {
-            panDuanXiaoRongYouXiaoZhiBiao.setText(case1.getAblationJudgement());
+        if (case2.getAblationEndPoint() != null) {
+            xiaoRongZhongDian.setText(case2.getAblationEndPoint());
         }
-        if (case1.getAblationEndPoint() != null) {
-            xiaoRongZhongDian.setText(case1.getAblationEndPoint());
+        if (case2.getEffectiveTargetSite() != null || case2.getDischargeTime() != null) {
+            fangDianShiJian.setText("有效靶点:" + case2.getEffectiveTargetSite() + "\n\n"
+                    + "总放电时间:" + case2.getDischargeTime());
         }
-        if (case1.getEffectiveTargetSite() != null || case1.getDischargeTime() != null) {
-            fangDianShiJian.setText("有效靶点:" + case1.getEffectiveTargetSite() + "\n\n"
-                    + "总放电时间:" + case1.getDischargeTime());
+        if (case2.getXrayExposureTime() != null) {
+            xXianBaoGuangShiJian.setText(case2.getXrayExposureTime());
         }
-        if (case1.getXrayExposureTime() != null) {
-            xXianBaoGuangShiJian.setText(case1.getXrayExposureTime());
-        }
-        if (case1.getAblationTimes() != null) {
-            xiaoRongCiShu.setText(String.valueOf(case1.getAblationTimes()) + "次");
+        if (case2.getAblationTimes() != null) {
+            xiaoRongCiShu.setText(String.valueOf(case2.getAblationTimes()) + "次");
         }
 
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -104,8 +97,6 @@ public class ShowAblationResultFragment extends ShowBaseFragment {
             isInActivity = true;
             baDianBuWei.setText("");
             nengYuanXiaoRong.setText("");
-            qingShuRuXiaoRongNengYuan.setText("");
-            panDuanXiaoRongYouXiaoZhiBiao.setText("");
             xiaoRongZhongDian.setText("");
             fangDianShiJian.setText("");
             xXianBaoGuangShiJian.setText("");

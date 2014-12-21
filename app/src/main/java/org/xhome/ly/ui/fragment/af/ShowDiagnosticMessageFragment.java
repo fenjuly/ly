@@ -13,6 +13,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.bean.Case2Up;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -30,8 +31,8 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
     EditText shouShuRiQi;
     MaterialEditText shouShuBianHao;
     MaterialEditText shuZhe;
-    EditText shiSuLeiXing;
-    EditText shiSuBingCheng;
+    EditText fangSuLeiXing;
+    EditText fangSuBingCheng;
     MaterialEditText linChuangXinLvShiChangZhenDuan;
     MaterialEditText dianShengLiJianChaZhenDuan;
     MaterialEditText shuHouZhenDuan;
@@ -41,17 +42,17 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
     CircularProgressButton confirm;
 
 
-    public static ShowDiagnosticMessageFragment newInstance(Case1Up case1) {
+    public static ShowDiagnosticMessageFragment newInstance(Case2Up case2) {
         if (fragment == null) {
             fragment = new ShowDiagnosticMessageFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
         }
 
         return fragment;
@@ -62,13 +63,13 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(
-                R.layout.zhenduanxinxi, container, false);
+                R.layout.afzhenduanxinxi, container, false);
         init();
         shouShuRiQi = (EditText) rootView.findViewById(R.id.shoushuriqi);
         shouShuBianHao = (MaterialEditText) rootView.findViewById(R.id.shoushubianhao);
         shuZhe = (MaterialEditText) rootView.findViewById(R.id.shuzhe);
-        shiSuLeiXing = (EditText) rootView.findViewById(R.id.shisuleixing);
-        shiSuBingCheng = (EditText) rootView.findViewById(R.id.shisubingcheng);
+        fangSuLeiXing = (EditText) rootView.findViewById(R.id.fangsuleixing);
+        fangSuBingCheng = (EditText) rootView.findViewById(R.id.fangsubingcheng);
         linChuangXinLvShiChangZhenDuan = (MaterialEditText) rootView.findViewById(R.id.linchuangxinlvshichangzhenduan);
         dianShengLiJianChaZhenDuan = (MaterialEditText) rootView.findViewById(R.id.dianshenglijianchazhenduan);
         shuHouZhenDuan = (MaterialEditText) rootView.findViewById(R.id.shuhouzhenduan);
@@ -77,40 +78,40 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
-        if (case1.getOperationData() != 0) {
-            shouShuRiQi.setText(dateFormat.format(new Date(case1.getOperationData())));
+        if (case2.getOperationData() != 0) {
+            shouShuRiQi.setText(dateFormat.format(new Date(case2.getOperationData())));
         }
-        if (case1.getOperationNumber() != null) {
-            shouShuBianHao.setText(case1.getOperationNumber());
+        if (case2.getOperationNumber() != null) {
+            shouShuBianHao.setText(case2.getOperationNumber());
         }
-        if (case1.getOperatorName() != null) {
-            shuZhe.setText(case1.getOperatorName());
+        if (case2.getOperatorName() != null) {
+            shuZhe.setText(case2.getOperatorName());
         }
-        if (case1.getVtType() != null && !case1.getVtType().equals("")) {
-            shiSuLeiXing.setText("类型:" + case1.getVtType() + "\n\n"
-                    + "频度:" + case1.getVtFrequency() + "\n\n"
-                    + "每次发作持续时间:" + case1.getVtEveryAttackTime() + "\n\n"
-                    + "最近发作持续时间:" + case1.getVtLastAttackTime() + "\n\n"
-                    + "曾用转复方法:" + case1.getCardioversionMethod() + "\n\n"
-                    + "转律用药:" + case1.getCardioversionMedication());
+        if (case2.getAfType() != null && !case2.getAfType().equals("")) {
+            fangSuLeiXing.setText("类型:" + case2.getAfType() + "\n\n"
+                    + "频度:" + case2.getAfFrequency() + "\n\n"
+                    + "每次发作持续时间:" + case2.getAfEveryAttackTime() + "\n\n"
+                    + "最近发作持续时间:" + case2.getAfLastAttackTime() + "\n\n"
+                    + "曾用转复方法:" + case2.getCardioversionMethod() + "\n\n"
+                    + "转律用药:" + case2.getCardioversionMedication());
         }
-        if (case1.getVtCourseDisease() != null) {
-            shiSuBingCheng.setText(case1.getVtCourseDisease());
+        if (case2.getAfCourseDisease() != null) {
+            fangSuBingCheng.setText(case2.getAfCourseDisease());
         }
-        if (case1.getArrhythmiaDiagnose() != null) {
-            linChuangXinLvShiChangZhenDuan.setText(case1.getArrhythmiaDiagnose());
+        if (case2.getArrhythmiaDiagnose() != null) {
+            linChuangXinLvShiChangZhenDuan.setText(case2.getArrhythmiaDiagnose());
         }
-        if (case1.getElectrophysiologyDiagnose() != null) {
-            dianShengLiJianChaZhenDuan.setText(case1.getElectrophysiologyDiagnose());
+        if (case2.getElectrophysiologyDiagnose() != null) {
+            dianShengLiJianChaZhenDuan.setText(case2.getElectrophysiologyDiagnose());
         }
-        if (case1.getPostoperationDiagnose() != null) {
-            shuHouZhenDuan.setText(case1.getPostoperationDiagnose());
+        if (case2.getPostoperationDiagnose() != null) {
+            shuHouZhenDuan.setText(case2.getPostoperationDiagnose());
         }
-        if (case1.getMechanism() != null) {
-            jiZhi.setText(case1.getMechanism());
+        if (case2.getMechanism() != null) {
+            jiZhi.setText(case2.getMechanism());
         }
-        if (case1.getPart() != null) {
-            buWei.setText(case1.getPart());
+        if (case2.getPart() != null) {
+            buWei.setText(case2.getPart());
         }
 
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -131,8 +132,8 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
             shouShuRiQi.setText("");
             shouShuBianHao.setText("");
             shuZhe.setText("");
-            shiSuLeiXing.setText("");
-            shiSuBingCheng.setText("");
+            fangSuLeiXing.setText("");
+            fangSuBingCheng.setText("");
             linChuangXinLvShiChangZhenDuan.setText("");
             dianShengLiJianChaZhenDuan.setText("");
             shuHouZhenDuan.setText("");

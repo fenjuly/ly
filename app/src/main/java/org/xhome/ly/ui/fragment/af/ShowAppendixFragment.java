@@ -9,7 +9,7 @@ import com.google.gson.Gson;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
-import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.bean.Case2Up;
 
 /**
  * Created by liurongchan on 14/12/15.
@@ -20,17 +20,17 @@ public class ShowAppendixFragment extends ShowBaseFragment {
 
     MaterialEditText beiZhu;
 
-    public static ShowAppendixFragment newInstance(Case1Up case1) {
+    public static ShowAppendixFragment newInstance(Case2Up case2) {
         if (fragment == null) {
             fragment = new ShowAppendixFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case2", new Gson().toJson(case2));
         }
 
         return fragment;
@@ -43,8 +43,8 @@ public class ShowAppendixFragment extends ShowBaseFragment {
                 R.layout.fulu, container, false);
         init();
         beiZhu = (MaterialEditText) rootView.findViewById(R.id.beizhu);
-        if (case1.getGlobalRemarks() != null) {
-            beiZhu.setText(case1.getGlobalRemarks());
+        if (case2.getGlobalRemarks() != null) {
+            beiZhu.setText(case2.getGlobalRemarks());
         }
         return rootView;
     }
