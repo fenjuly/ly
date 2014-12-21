@@ -59,10 +59,6 @@ public class Case2Up  {
 
     private String inspectionMethod;
 
-    private String diastolicPotential;
-
-    private String pPotentialExamination;
-
     private String ablationProcedure;
 
     private String ablationLines;
@@ -85,17 +81,17 @@ public class Case2Up  {
 
     private String beforeHeartRate;
 
-    private String beforeVt;
+    private String beforeRr;
 
-    private String beforeRont;
+    private String beforeRe;
 
     private String beforeRemarks;
 
     private String inHeartRate;
 
-    private String inVt;
+    private String inRr;
 
-    private String inRont;
+    private String inRe;
 
     private String inRemarks;
 
@@ -111,11 +107,11 @@ public class Case2Up  {
 
     private String caseNumber;
 
-    private String afFrequency;
+    private String rrFrequency;
 
-    private String afEveryAttackTime;
+    private String rrEveryAttackTime;
 
-    private String afLastAttackTime;
+    private String rrLastAttackTime;
 
     private String cardioversionMethod;
 
@@ -123,19 +119,29 @@ public class Case2Up  {
 
     private String complication;
 
-    private String afAblationTreatment;
+    private String rrAblationTreatment;
 
     private String beforeAnticoagulant;
 
-    private String afType;
+    private String rrType;
 
-    private String afCourseDisease;
+    private String rrCourseDisease;
 
     private String laThrombusDetection;
 
     private String mappingMode;
 
-    private PatientUp patient;     //查询时返回与病例相关联的病人信息
+    private String rrDuration;
+
+    private PatientUp patient;
+
+    public PatientUp getPatient() {
+        return patient;
+    }
+
+    public void setPatient(PatientUp patient) {
+        this.patient = patient;
+    }
 
     public Integer getId() {
         return id;
@@ -345,22 +351,6 @@ public class Case2Up  {
         this.inspectionMethod = inspectionMethod == null ? null : inspectionMethod.trim();
     }
 
-    public String getDiastolicPotential() {
-        return diastolicPotential;
-    }
-
-    public void setDiastolicPotential(String diastolicPotential) {
-        this.diastolicPotential = diastolicPotential == null ? null : diastolicPotential.trim();
-    }
-
-    public String getpPotentialExamination() {
-        return pPotentialExamination;
-    }
-
-    public void setpPotentialExamination(String pPotentialExamination) {
-        this.pPotentialExamination = pPotentialExamination == null ? null : pPotentialExamination.trim();
-    }
-
     public String getAblationProcedure() {
         return ablationProcedure;
     }
@@ -449,20 +439,20 @@ public class Case2Up  {
         this.beforeHeartRate = beforeHeartRate == null ? null : beforeHeartRate.trim();
     }
 
-    public String getBeforeVt() {
-        return beforeVt;
+    public String getBeforeRr() {
+        return beforeRr;
     }
 
-    public void setBeforeVt(String beforeVt) {
-        this.beforeVt = beforeVt == null ? null : beforeVt.trim();
+    public void setBeforeRr(String beforeRr) {
+        this.beforeRr = beforeRr == null ? null : beforeRr.trim();
     }
 
-    public String getBeforeRont() {
-        return beforeRont;
+    public String getBeforeRe() {
+        return beforeRe;
     }
 
-    public void setBeforeRont(String beforeRont) {
-        this.beforeRont = beforeRont == null ? null : beforeRont.trim();
+    public void setBeforeRe(String beforeRe) {
+        this.beforeRe = beforeRe == null ? null : beforeRe.trim();
     }
 
     public String getBeforeRemarks() {
@@ -481,20 +471,20 @@ public class Case2Up  {
         this.inHeartRate = inHeartRate == null ? null : inHeartRate.trim();
     }
 
-    public String getInVt() {
-        return inVt;
+    public String getInRr() {
+        return inRr;
     }
 
-    public void setInVt(String inVt) {
-        this.inVt = inVt == null ? null : inVt.trim();
+    public void setInRr(String inRr) {
+        this.inRr = inRr == null ? null : inRr.trim();
     }
 
-    public String getInRont() {
-        return inRont;
+    public String getInRe() {
+        return inRe;
     }
 
-    public void setInRont(String inRont) {
-        this.inRont = inRont == null ? null : inRont.trim();
+    public void setInRe(String inRe) {
+        this.inRe = inRe == null ? null : inRe.trim();
     }
 
     public String getInRemarks() {
@@ -553,28 +543,28 @@ public class Case2Up  {
         this.caseNumber = caseNumber == null ? null : caseNumber.trim();
     }
 
-    public String getAfFrequency() {
-        return afFrequency;
+    public String getRrFrequency() {
+        return rrFrequency;
     }
 
-    public void setAfFrequency(String afFrequency) {
-        this.afFrequency = afFrequency == null ? null : afFrequency.trim();
+    public void setRrFrequency(String rrFrequency) {
+        this.rrFrequency = rrFrequency == null ? null : rrFrequency.trim();
     }
 
-    public String getAfEveryAttackTime() {
-        return afEveryAttackTime;
+    public String getRrEveryAttackTime() {
+        return rrEveryAttackTime;
     }
 
-    public void setAfEveryAttackTime(String afEveryAttackTime) {
-        this.afEveryAttackTime = afEveryAttackTime == null ? null : afEveryAttackTime.trim();
+    public void setRrEveryAttackTime(String rrEveryAttackTime) {
+        this.rrEveryAttackTime = rrEveryAttackTime == null ? null : rrEveryAttackTime.trim();
     }
 
-    public String getAfLastAttackTime() {
-        return afLastAttackTime;
+    public String getRrLastAttackTime() {
+        return rrLastAttackTime;
     }
 
-    public void setAfLastAttackTime(String afLastAttackTime) {
-        this.afLastAttackTime = afLastAttackTime == null ? null : afLastAttackTime.trim();
+    public void setRrLastAttackTime(String rrLastAttackTime) {
+        this.rrLastAttackTime = rrLastAttackTime == null ? null : rrLastAttackTime.trim();
     }
 
     public String getCardioversionMethod() {
@@ -601,12 +591,12 @@ public class Case2Up  {
         this.complication = complication == null ? null : complication.trim();
     }
 
-    public String getAfAblationTreatment() {
-        return afAblationTreatment;
+    public String getRrAblationTreatment() {
+        return rrAblationTreatment;
     }
 
-    public void setAfAblationTreatment(String afAblationTreatment) {
-        this.afAblationTreatment = afAblationTreatment == null ? null : afAblationTreatment.trim();
+    public void setRrAblationTreatment(String rrAblationTreatment) {
+        this.rrAblationTreatment = rrAblationTreatment == null ? null : rrAblationTreatment.trim();
     }
 
     public String getBeforeAnticoagulant() {
@@ -617,20 +607,20 @@ public class Case2Up  {
         this.beforeAnticoagulant = beforeAnticoagulant == null ? null : beforeAnticoagulant.trim();
     }
 
-    public String getAfType() {
-        return afType;
+    public String getRrType() {
+        return rrType;
     }
 
-    public void setAfType(String afType) {
-        this.afType = afType == null ? null : afType.trim();
+    public void setRrType(String rrType) {
+        this.rrType = rrType == null ? null : rrType.trim();
     }
 
-    public String getAfCourseDisease() {
-        return afCourseDisease;
+    public String getRrCourseDisease() {
+        return rrCourseDisease;
     }
 
-    public void setAfCourseDisease(String afCourseDisease) {
-        this.afCourseDisease = afCourseDisease == null ? null : afCourseDisease.trim();
+    public void setRrCourseDisease(String rrCourseDisease) {
+        this.rrCourseDisease = rrCourseDisease == null ? null : rrCourseDisease.trim();
     }
 
     public String getLaThrombusDetection() {
@@ -649,11 +639,11 @@ public class Case2Up  {
         this.mappingMode = mappingMode == null ? null : mappingMode.trim();
     }
 
-    public PatientUp getPatient() {
-        return patient;
+    public String getRrDuration() {
+        return rrDuration;
     }
 
-    public void setPatient(PatientUp patient) {
-        this.patient = patient;
+    public void setRrDuration(String rrDuration) {
+        this.rrDuration = rrDuration == null ? null : rrDuration.trim();
     }
 }

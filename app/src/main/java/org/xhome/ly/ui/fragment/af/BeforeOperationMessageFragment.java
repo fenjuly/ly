@@ -323,7 +323,7 @@ public class BeforeOperationMessageFragment extends BaseFragment {
             case2.setRaBore(raneijingtext);
             case2.setRvBore(rvneijingtext);
             case2.setUcgRemarks(beizhutext);
-            case2.setAfAblationTreatment(shifouzuoguofangchanxiaorongzhiliao);
+            case2.setRrAblationTreatment(shifouzuoguofangchanxiaorongzhiliao);
             case2.setBeforeAnticoagulant(shuqiankangningyaowu);
             case2.setAntiArrhythmiaDrugs(shuqiankangxinlvshichangyaowu);
             case2.setInvaliDantiArrhythmiaDrugs(shuqianwuxiaodekangxinlvshichangyaowu);

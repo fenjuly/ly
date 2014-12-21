@@ -531,8 +531,6 @@ public class TranscatheterAblationFragment extends BaseFragment {
             case2.setTachycardiaRegulation(xindongguosufazuoshifouguize);
             case2.setCcl(zhouchang);
             case2.setInspectionMethod(biaocefangfa);
-            case2.setDiastolicPotential(shuzhangqidianwei);
-            case2.setpPotentialExamination(pdianweibiaoce);
             case2.setAblationProcedure(xiaorongshushi);
             case2.setAblationLines(xiaorongjingxian);
             case2DataChangedListener.OnCase2DataChanged(case2);

@@ -62,19 +62,19 @@ public class ShowUnderOperationMessageFragment extends ShowBaseFragment {
             shuZhongDianFuLv.setText(case2.getIntraoperativeCableRate());
         }
 
-        if (case2.getBeforeHeartRate() != null || case2.getBeforeVt() != null
-                || case2.getBeforeRont() != null || case2.getBeforeRemarks() != null) {
+        if (case2.getBeforeHeartRate() != null || case2.getBeforeRr() != null
+                || case2.getBeforeRe() != null || case2.getBeforeRemarks() != null) {
             xiaoRongQianXinLv.setText(case2.getBeforeHeartRate() + "\n\n"
-                    + "房速:" + case2.getBeforeVt() + "\n\n"
-                    + "房早:" + case2.getBeforeRont() + "\n\n"
+                    + "房速:" + case2.getBeforeRr() + "\n\n"
+                    + "房早:" + case2.getBeforeRe() + "\n\n"
                     + "备注:" + case2.getBeforeRemarks()) ;
         }
 
-        if (case2.getInHeartRate() != null || case2.getInVt() != null
-                || case2.getInRont() != null || case2.getInRemarks() != null) {
+        if (case2.getInHeartRate() != null || case2.getInRr() != null
+                || case2.getInRr() != null || case2.getInRemarks() != null) {
             shuZhongXinLv.setText(case2.getInHeartRate() + "\n\n"
-                    + "房速:" + case2.getInVt() + "\n\n"
-                    + "房早:" + case2.getInRont() + "\n\n"
+                    + "房速:" + case2.getInRr() + "\n\n"
+                    + "房早:" + case2.getInRe() + "\n\n"
                     + "备注:" + case2.getInRemarks()) ;
         }
 

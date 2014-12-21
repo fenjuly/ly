@@ -87,16 +87,16 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
         if (case2.getOperatorName() != null) {
             shuZhe.setText(case2.getOperatorName());
         }
-        if (case2.getAfType() != null && !case2.getAfType().equals("")) {
-            fangSuLeiXing.setText("类型:" + case2.getAfType() + "\n\n"
-                    + "频度:" + case2.getAfFrequency() + "\n\n"
-                    + "每次发作持续时间:" + case2.getAfEveryAttackTime() + "\n\n"
-                    + "最近发作持续时间:" + case2.getAfLastAttackTime() + "\n\n"
+        if (case2.getRrType() != null && !case2.getRrType().equals("")) {
+            fangSuLeiXing.setText("类型:" + case2.getRrType() + "\n\n"
+                    + "频度:" + case2.getRrFrequency() + "\n\n"
+                    + "每次发作持续时间:" + case2.getRrEveryAttackTime() + "\n\n"
+                    + "最近发作持续时间:" + case2.getRrLastAttackTime() + "\n\n"
                     + "曾用转复方法:" + case2.getCardioversionMethod() + "\n\n"
                     + "转律用药:" + case2.getCardioversionMedication());
         }
-        if (case2.getAfCourseDisease() != null) {
-            fangSuBingCheng.setText(case2.getAfCourseDisease());
+        if (case2.getRrCourseDisease() != null) {
+            fangSuBingCheng.setText(case2.getRrCourseDisease());
         }
         if (case2.getArrhythmiaDiagnose() != null) {
             linChuangXinLvShiChangZhenDuan.setText(case2.getArrhythmiaDiagnose());

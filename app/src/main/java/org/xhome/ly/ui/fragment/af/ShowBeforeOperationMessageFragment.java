@@ -84,8 +84,8 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
         if (case2.getMergerArrhythmia() != null) {
             shuQianHeBingXinLvShiChang.setText(case2.getMergerArrhythmia());
         }
-        if (case2.getAfAblationTreatment() != null) {
-            shiFouZuoGuoFangChanXiaoRongZhiLiao.setText(case2.getAfAblationTreatment());
+        if (case2.getRrAblationTreatment() != null) {
+            shiFouZuoGuoFangChanXiaoRongZhiLiao.setText(case2.getRrAblationTreatment());
         }
         if (case2.getBeforeAnticoagulant() != null) {
             shuQianKangNingYaoWu.setText(case2.getBeforeAnticoagulant());

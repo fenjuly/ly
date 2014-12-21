@@ -263,13 +263,13 @@ public class DiagnosticMessageFragment extends BaseFragment {
             buwei = buWei.getText().toString();
             case2.setOperationNumber(shoushubianhao);
             case2.setOperatorName(shuzhe);
-            case2.setAfType(spinnertext);
-            case2.setAfFrequency(pindutext);
-            case2.setAfEveryAttackTime(meicifazuochixushijiantext);
-            case2.setAfLastAttackTime(zuijinfazuochixushijiantext);
+            case2.setRrType(spinnertext);
+            case2.setRrFrequency(pindutext);
+            case2.setRrEveryAttackTime(meicifazuochixushijiantext);
+            case2.setRrLastAttackTime(zuijinfazuochixushijiantext);
             case2.setCardioversionMethod(cengyongzhuanfufangfatext);
             case2.setCardioversionMedication(zhuanlvyongyaotext);
-            case2.setAfCourseDisease(fangsubingcheng);
+            case2.setRrCourseDisease(fangsubingcheng);
             case2.setArrhythmiaDiagnose(linchuangxinlvshichangzhenduan);
             case2.setElectrophysiologyDiagnose(dianshenlijianchazhenduan);
             case2.setPostoperationDiagnose(shuhouzhenduan);

@@ -515,12 +515,12 @@ public class UnderOperationMessageFragment extends BaseFragment {
             shuzhongdianfulv = shuZhongDianFuLv.getText().toString();
             bingfazheng = bingFaZheng.getText().toString();
             case2.setBeforeHeartRate(xiaorongqianxinlvtext);
-            case2.setBeforeVt(xiaorongqian_fangsutext);
-            case2.setBeforeRont(xiaorongqian_fangzaotext);
+            case2.setBeforeRr(xiaorongqian_fangsutext);
+            case2.setBeforeRe(xiaorongqian_fangzaotext);
             case2.setBeforeRemarks(xiaorongqian_beizhutext);
             case2.setInHeartRate(shuzhongxinlvtext);
-            case2.setInVt(shuzhong_fangsutext);
-            case2.setInRont(shuzhong_fangzaotext);
+            case2.setInRr(shuzhong_fangsutext);
+            case2.setInRe(shuzhong_fangzaotext);
             case2.setInRemarks(shuzhong_beizhutext);
             case2.setComplication(bingfazheng);
             case2DataChangedListener.OnCase2DataChanged(case2);
