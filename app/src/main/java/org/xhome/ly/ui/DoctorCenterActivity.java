@@ -85,13 +85,10 @@ public class DoctorCenterActivity extends BaseActivity {
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                        switch (position) {
-                            case 0:
-                                Intent intent = new Intent(DoctorCenterActivity.this, PatientInformationActivity.class);
-                                alert.dismiss();
-                                startActivity(intent);
-                        }
-                        alert.dismiss();
+                         Intent intent = new Intent(DoctorCenterActivity.this, PatientInformationActivity.class);
+                         intent.putExtra("caseNumber", position);
+                         alert.dismiss();
+                         startActivity(intent);
                     }
                 });
                 alert.show();

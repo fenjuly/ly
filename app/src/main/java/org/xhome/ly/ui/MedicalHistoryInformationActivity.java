@@ -65,10 +65,15 @@ public class MedicalHistoryInformationActivity extends BaseActivity {
     History1Adapter history1Adapter;
     History2Adapter history2Adapter;
 
+
+    //case position
+    private int position;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.medical_history);
+        position = getIntent().getIntExtra("caseNumber", 0);
         patientId = SharePerferenceUtils.getInformation(SharePerferenceUtils.PATIENT_ID);
         addXinZangBingShouShuShi = (ImageView) findViewById(R.id.add_xinzangbingshoushushi);
         addJiChuJiBing = (ImageView) findViewById(R.id.add_jichubingqing);
@@ -275,9 +280,22 @@ public class MedicalHistoryInformationActivity extends BaseActivity {
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MedicalHistoryInformationActivity.this, Case1InformationActivity.class);
-                startActivity(intent);
-                finish();
+                switch (position) {
+                    case 0:
+                        Intent intent = new Intent(MedicalHistoryInformationActivity.this, Case1InformationActivity.class);
+                        startActivity(intent);
+                        finish();
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        Intent intent2 = new Intent(MedicalHistoryInformationActivity.this, Case2InformationActivity.class);
+                        startActivity(intent2);
+                        finish();
+                        break;
+                    default:
+                        break;
+                }
             }
         });
 

@@ -27,6 +27,17 @@ public class Api {
     //病例1查找
     public static final String CASE1_SEARCH = HOST + "/api/case1s";
 
+
+    /**
+     * 病例2
+     */
+    //病例2
+    public static final String  CASE2 = HOST + "/api/case2";
+    //病例2总数
+    public static final String CASE2_COUNT = HOST + "/api/case2/counts";
+    //病例2查找
+    public static final String CASE2_SEARCH = HOST + "/api/case2s";
+
     /**
      * 病史
      */

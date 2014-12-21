@@ -30,7 +30,6 @@ public class AblationResultFragment extends BaseFragment {
 
     MaterialEditText baDianBuWei;
     EditText nengYuanXiaoRong;
-    MaterialEditText qingShuRuXiaoRongNengYuan;
     EditText xiaoRongZhongDian;
     EditText fangDianShiJian;
     EditText xXianBaoGuangShiJian;
@@ -40,7 +39,6 @@ public class AblationResultFragment extends BaseFragment {
 
     String badianbuwei;
     String nengyuanxiaorong;
-    String qingshuruxiaorongnengyuan;
     String xiaorongzhongdian;
     String fangdianshijian;
     String xxianbaoguanshijia;
@@ -87,7 +85,6 @@ public class AblationResultFragment extends BaseFragment {
         init();
         baDianBuWei = (MaterialEditText) rootView.findViewById(R.id.badianbuwei);
         nengYuanXiaoRong = (EditText) rootView.findViewById(R.id.nengyuanxiaorong);
-        qingShuRuXiaoRongNengYuan = (MaterialEditText) rootView.findViewById(R.id.qingshuruxiaorongnengyuan);
         xiaoRongZhongDian = (EditText) rootView.findViewById(R.id.xiaorongzhongdian);
         fangDianShiJian = (EditText) rootView.findViewById(R.id.fangdianshijian);
         xXianBaoGuangShiJian = (EditText) rootView.findViewById(R.id.xxianbaoguanshijia);
@@ -334,7 +331,6 @@ public class AblationResultFragment extends BaseFragment {
         if(case2 != null) {
             badianbuwei = baDianBuWei.getText().toString();
             nengyuanxiaorong = nengYuanXiaoRong.getText().toString();
-            qingshuruxiaorongnengyuan = qingShuRuXiaoRongNengYuan.getText().toString();
             xiaorongzhongdian = xiaoRongZhongDian.getText().toString();
             fangdianshijian = fangDianShiJian.getText().toString();
             xxianbaoguanshijia = xXianBaoGuangShiJian.getText().toString();
@@ -358,7 +354,6 @@ public class AblationResultFragment extends BaseFragment {
             isInActivity = true;
             baDianBuWei.setText("");
             nengYuanXiaoRong.setText("");
-            qingShuRuXiaoRongNengYuan.setText("");
             xiaoRongZhongDian.setText("");
             fangDianShiJian.setText("");
             xXianBaoGuangShiJian.setText("");

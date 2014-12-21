@@ -28,26 +28,28 @@ public class BeforeOperationMessageFragment extends BaseFragment {
 
     private static BeforeOperationMessageFragment fragment;
 
+    private static final String[] la_types = {"未检测", "有血栓", "无血栓"};
+
     EditText shuQiangUcg;
     MaterialEditText ecgShuZhiZhuZhiLeiXing;
     MaterialEditText dianZhouPianYi;
-    MaterialEditText shuQianQiTaJianChaZhongYaoYangXingMiaoShu;
     MaterialEditText shuQianKangXinLvShiChangYaoWu;
     MaterialEditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
     MaterialEditText shuQianHeBingXinLvShiChang;
     EditText shiFouZuoGuoFangChanXiaoRongZhiLiao;
     MaterialEditText shuQianKangNingYaoWu;
+    EditText shuQianLaXueShuanJianCe;
     CircularProgressButton confirm;
 
     String shuqianucg;
     String ecgshuzhizhuzhileixing;
     String dianzhoupianyi;
-    String shuqianqitajianchazhongyaoyangxingmiaoshu;
     String shuqiankangxinlvshichangyaowu;
     String shuqianwuxiaodekangxinlvshichangyaowu;
     String shuqianhebingxinlvshichang;
     String shifouzuoguofangchanxiaorongzhiliao;
     String shuqiankangningyaowu;
+    String shuqianlaxueshuanjiance;
 
 
 
@@ -82,17 +84,17 @@ public class BeforeOperationMessageFragment extends BaseFragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(
-                R.layout.shuqianxinxi, container, false);
+                R.layout.afshuqianxinxi, container, false);
         init();
         shuQiangUcg = (EditText) rootView.findViewById(R.id.shuqianucg);
         ecgShuZhiZhuZhiLeiXing = (MaterialEditText) rootView.findViewById(R.id.ecgshuzhizuzhileixing);
         dianZhouPianYi = (MaterialEditText) rootView.findViewById(R.id.dianzhoupianyi);
-        shuQianQiTaJianChaZhongYaoYangXingMiaoShu = (MaterialEditText) rootView.findViewById(R.id.shuqianqitajianchazhongyaoyangxingmiaoshu);
         shuQianKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqiankangxinlvshichangyaowu);
         shuQianWuXiaoDeKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
         shuQianHeBingXinLvShiChang = (MaterialEditText) rootView.findViewById(R.id.shuqianhebingxinlvshichang);
         shiFouZuoGuoFangChanXiaoRongZhiLiao = (EditText) rootView.findViewById(R.id.shifouzuoguofangchanxiaorongzhiliao);
         shuQianKangNingYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqiankangningyaowu);
+        shuQianLaXueShuanJianCe = (EditText) rootView.findViewById(R.id.shuqianlaxueshuanjiance);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
 
@@ -262,6 +264,35 @@ public class BeforeOperationMessageFragment extends BaseFragment {
             }
         });
 
+        shuQianLaXueShuanJianCe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        getActivity(),
+                        android.R.layout.simple_list_item_1
+                );
+                for(String la_type : la_types) {
+                    arrayAdapter.add(la_type);
+                }
+                ListView listView = new ListView(getActivity());
+                float scale = getResources().getDisplayMetrics().density;
+                int dpAsPixels = (int) (8 * scale + 0.5f);
+                listView.setPadding(0, dpAsPixels, 0, dpAsPixels);
+                listView.setDividerHeight(0);
+                listView.setAdapter(arrayAdapter);
+                final MaterialDialog alert = new MaterialDialog(getActivity())
+                        .setTitle("选择类型")
+                        .setContentView(listView);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        shuQianLaXueShuanJianCe.setText(la_types[position]);
+                        alert.dismiss();
+                    }
+                });
+                alert.show();
+            }
+        });
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -279,12 +310,12 @@ public class BeforeOperationMessageFragment extends BaseFragment {
             shuqianucg = shuQiangUcg.getText().toString();
             ecgshuzhizhuzhileixing = ecgShuZhiZhuZhiLeiXing.getText().toString();
             dianzhoupianyi = dianZhouPianYi.getText().toString();
-            shuqianqitajianchazhongyaoyangxingmiaoshu = shuQianQiTaJianChaZhongYaoYangXingMiaoShu.getText().toString();
             shuqiankangxinlvshichangyaowu = shuQianKangXinLvShiChangYaoWu.getText().toString();
             shuqianwuxiaodekangxinlvshichangyaowu = shuQianWuXiaoDeKangXinLvShiChangYaoWu.getText().toString();
             shuqianhebingxinlvshichang = shuQianHeBingXinLvShiChang.getText().toString();
             shifouzuoguofangchanxiaorongzhiliao = shiFouZuoGuoFangChanXiaoRongZhiLiao.getText().toString();
             shuqiankangningyaowu = shuQianKangNingYaoWu.getText().toString();
+            shuqianlaxueshuanjiance = shuQianLaXueShuanJianCe.getText().toString();
 
             case2.setLaBore(laneijingtext);
             case2.setLvBore(lvneijingtext);
@@ -294,10 +325,10 @@ public class BeforeOperationMessageFragment extends BaseFragment {
             case2.setUcgRemarks(beizhutext);
             case2.setAfAblationTreatment(shifouzuoguofangchanxiaorongzhiliao);
             case2.setBeforeAnticoagulant(shuqiankangningyaowu);
-            case2.setPreopreativeExamination(shuqianqitajianchazhongyaoyangxingmiaoshu);
             case2.setAntiArrhythmiaDrugs(shuqiankangxinlvshichangyaowu);
             case2.setInvaliDantiArrhythmiaDrugs(shuqianwuxiaodekangxinlvshichangyaowu);
             case2.setMergerArrhythmia(shuqianhebingxinlvshichang);
+            case2.setLaThrombusDetection(shuqianlaxueshuanjiance);
             case2DataChangedListener.OnCase2DataChanged(case2);
         }
     }
@@ -310,12 +341,12 @@ public class BeforeOperationMessageFragment extends BaseFragment {
             shuQiangUcg.setText("");
             ecgShuZhiZhuZhiLeiXing.setText("");
             dianZhouPianYi.setText("");
-            shuQianQiTaJianChaZhongYaoYangXingMiaoShu.setText("");
             shuQianKangXinLvShiChangYaoWu.setText("");
             shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("");
             shuQianHeBingXinLvShiChang.setText("");
             shiFouZuoGuoFangChanXiaoRongZhiLiao.setText("");
             shuQianKangNingYaoWu.setText("");
+            shuQianLaXueShuanJianCe.setText("");
         }
 
     }

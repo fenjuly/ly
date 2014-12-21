@@ -47,22 +47,10 @@
             app:floatingLabel="highlight"
             />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/shuqianqitajianchazhongyaoyangxingmiaoshu"
-            android:layout_below="@+id/dianzhoupianyi"
-            android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:hint="术前其他检索重要性阳性描述"
-            android:gravity="top"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            app:floatingLabel="highlight"
-            />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/shuqiankangxinlvshichangyaowu"
-            android:layout_below="@+id/shuqianqitajianchazhongyaoyangxingmiaoshu"
+            android:layout_below="@+id/dianzhoupianyi"
             android:layout_width="match_parent"
             android:layout_height="120dp"
             android:hint="术前抗心律失常药物"
@@ -125,9 +113,22 @@
             app:floatingLabel="highlight"
             />
 
+        <EditText
+            android:id="@+id/shuqianlaxueshuanjiance"
+            android:layout_below="@+id/shuqiankangningyaowu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="术前LA血栓检测"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:focusable="false"
+            />
+
         <com.dd.CircularProgressButton
             android:id="@+id/confirm"
-            android:layout_below="@+id/shuqiankangningyaowu"
+            android:layout_below="@+id/shuqianlaxueshuanjiance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"

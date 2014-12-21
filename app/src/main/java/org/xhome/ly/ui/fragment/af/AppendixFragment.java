@@ -164,7 +164,7 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
                 Map<String, String> headers = new HashMap<String, String>();
                 headers.put("Authentication", SharePerferenceUtils.getInformation(SharePerferenceUtils.AUTHENTICATION));
                 confirm.setProgress(50);
-                executeRequest(new GsonRequest(Request.Method.POST, Api.CASE1+ "?doctorId="+ SharePerferenceUtils.getInformation(SharePerferenceUtils.DOCTOR_ID)+"&patientId=" + SharePerferenceUtils.getInformation(SharePerferenceUtils.PATIENT_ID),
+                executeRequest(new GsonRequest(Request.Method.POST, Api.CASE2+ "?doctorId="+ SharePerferenceUtils.getInformation(SharePerferenceUtils.DOCTOR_ID)+"&patientId=" + SharePerferenceUtils.getInformation(SharePerferenceUtils.PATIENT_ID),
                         jsonObject.toString(), responseListener(), errorListener(),
                         Response.class, headers));
             }

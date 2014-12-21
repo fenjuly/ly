@@ -69,10 +69,14 @@ public class PatientInformationActivity extends BaseActivity {
     String month;
     String day;
     int age;
+
+    //case position
+    private int position;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_information);
+        position = getIntent().getIntExtra("caseNumber", 0);
         xingMing = (MaterialEditText) findViewById(R.id.name);
         shenFenZheng = (MaterialEditText) findViewById(R.id.id_card);
         xingBie = (MaterialEditText) findViewById(R.id.sex);
@@ -120,6 +124,7 @@ public class PatientInformationActivity extends BaseActivity {
                                         SharePerferenceUtils.addOther(SharePerferenceUtils.PATIENT_ID, String.valueOf(patientId));
                                         ToastUtils.showLong("此病人已存在，跳转到病史页面");
                                         Intent intent = new Intent(PatientInformationActivity.this, MedicalHistoryInformationActivity.class);
+                                        intent.putExtra("caseNumber", position);
                                         startActivity(intent);
                                         finish();
                                     } else {
@@ -231,6 +236,7 @@ public class PatientInformationActivity extends BaseActivity {
                     SharePerferenceUtils.addOther(SharePerferenceUtils.PATIENT_ID, String.valueOf(patientId));
                     confirm.setProgress(100);
                     Intent intent = new Intent(PatientInformationActivity.this, MedicalHistoryInformationActivity.class);
+                    intent.putExtra("caseNumber", position);
                     startActivity(intent);
                     finish();
 

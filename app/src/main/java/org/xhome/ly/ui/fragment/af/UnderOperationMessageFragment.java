@@ -90,7 +90,7 @@ public class UnderOperationMessageFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(
-                R.layout.shuzhongxinxi, container, false);
+                R.layout.afshuzhongxinxi, container, false);
         init();
         shuZhongDianFuLv = (MaterialEditText) rootView.findViewById(R.id.shuzhongdianfulv);
         xiaoRongQianXinLv = (EditText) rootView.findViewById(R.id.xiaorongqianxinlv);

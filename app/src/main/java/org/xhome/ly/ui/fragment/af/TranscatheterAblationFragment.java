@@ -279,7 +279,7 @@ public class TranscatheterAblationFragment extends BaseFragment {
                 ensitetext = "";
                 cartotext = "";
                 qitatext = "";
-                View v = LayoutInflater.from(getActivity()).inflate(R.layout.xiaorongshushi, null);
+                View v = LayoutInflater.from(getActivity()).inflate(R.layout.afbiaocefangfa, null);
                 final MaterialDialog alert = new MaterialDialog(getActivity())
                         .setTitle("标测方法")
                         .setContentView(v);
@@ -318,7 +318,7 @@ public class TranscatheterAblationFragment extends BaseFragment {
                     public void onClick(View view) {
                         biaocefangfatext = "";
                         qitatext = qita.getText().toString();
-                        biaocefangfatext = cartotext + " " + ensitetext;
+                        biaocefangfatext = cartotext + " " + ensitetext + " " +qitatext;
                         biaoCeFangFa.setText("标测方法:" + biaocefangfatext);
                         alert.dismiss();
                     }
@@ -331,7 +331,7 @@ public class TranscatheterAblationFragment extends BaseFragment {
             public void onClick(View view) {
                 jidongbiaocetext = "";
                 jizhibiaocetext = "";
-                View v = LayoutInflater.from(getActivity()).inflate(R.layout.afxinqiangneizaoying, null);
+                View v = LayoutInflater.from(getActivity()).inflate(R.layout.afbiaocefangshi, null);
                 final MaterialDialog alert = new MaterialDialog(getActivity())
                         .setTitle("标测方式")
                         .setContentView(v);
