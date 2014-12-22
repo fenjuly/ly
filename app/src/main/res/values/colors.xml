@@ -21,5 +21,8 @@
     <color name="doctor_center_selected">#dae7e2</color>
     <color name="doctor_center_normal">#f3f9f7</color>
 
+    <color name="sousuobingli_button_background_selected">#ffe0e0e0</color>
+    <color name="sousuobingli_button_background_normal">#90B8C4</color>
+
 
 </resources>

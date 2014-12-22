@@ -39,6 +39,7 @@ public class RegistActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.regist);
+        setTitle("注册");
         userId = (MaterialEditText) findViewById(R.id.id);
         certificationNumber = (MaterialEditText) findViewById(R.id.certification);
         password = (MaterialEditText) findViewById(R.id.password);

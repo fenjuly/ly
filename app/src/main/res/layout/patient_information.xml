@@ -9,6 +9,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="15dp"
+    android:background="#ffffff"
     >
 
     <com.rengwuxian.materialedittext.MaterialEditText
@@ -142,6 +143,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        app:cpb_selectorIdle="@drawable/sousuobingli_button_background"
+        app:cpb_cornerRadius="12dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:textColor="@android:color/white"

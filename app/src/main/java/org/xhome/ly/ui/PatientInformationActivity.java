@@ -2,6 +2,7 @@ package org.xhome.ly.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -76,6 +77,8 @@ public class PatientInformationActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_information);
+        setTitleColor(getResources().getColor(R.color.white));
+        setTitle("病人信息");
         position = getIntent().getIntExtra("caseNumber", 0);
         xingMing = (MaterialEditText) findViewById(R.id.name);
         shenFenZheng = (MaterialEditText) findViewById(R.id.id_card);

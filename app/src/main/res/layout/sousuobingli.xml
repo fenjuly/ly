@@ -3,7 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#66CDAA"
+    android:padding="40dp"
+    >
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sousuobingli_background"
+    android:padding="12dp"
+    >
 
     <EditText
         android:layout_marginTop="20dp"
@@ -14,8 +25,6 @@
         android:focusable="false"
         android:layout_above="@id/confirm"
         android:layout_marginBottom="30dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         />
 
     <EditText
@@ -26,8 +35,6 @@
         android:focusable="false"
         android:layout_above="@id/confirm"
         android:layout_marginBottom="30dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         />
 
     <EditText
@@ -38,23 +45,21 @@
         android:focusable="false"
         android:layout_above="@id/confirm"
         android:layout_marginBottom="30dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         />
 
 
     <com.dd.CircularProgressButton
         android:id="@+id/confirm"
-        android:layout_centerVertical="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:cpb_selectorIdle="@drawable/sousuobingli_button_background"
+        app:cpb_cornerRadius="12dp"
         app:cpb_textComplete="完成"
         app:cpb_textError="出错"
         app:cpb_textIdle="确定" />
 
 
+</LinearLayout>
 </LinearLayout>

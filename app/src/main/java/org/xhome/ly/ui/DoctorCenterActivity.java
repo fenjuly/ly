@@ -1,7 +1,9 @@
 package org.xhome.ly.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,14 +39,14 @@ public class DoctorCenterActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
         setTitle("妙手医生");
+        setTitleColor(Color.WHITE);
         bingLiArea = findViewById(R.id.bingli_area);
         xinZeng = findViewById(R.id.xinzeng);
         number = (TextView) findViewById(R.id.number);
         chaZhao = findViewById(R.id.chazhao);
-
         Map<String, String> headers = new HashMap<String, String>();
         headers.put("Authentication", SharePerferenceUtils.getInformation(SharePerferenceUtils.AUTHENTICATION));
-        executeRequest(new GsonRequest(Request.Method.GET, Api.CASE1_COUNT + "?doctorId=" + SharePerferenceUtils.getInformation(SharePerferenceUtils.DOCTOR_ID),
+        executeRequest(new GsonRequest(Request.Method.GET, Api.CASE_COUNT + "?doctorId=" + SharePerferenceUtils.getInformation(SharePerferenceUtils.DOCTOR_ID),
                 responseListener(), errorListener(),
                 Response.class, headers));
 

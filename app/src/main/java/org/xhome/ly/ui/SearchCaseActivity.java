@@ -1,6 +1,7 @@
 package org.xhome.ly.ui;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -41,6 +42,8 @@ public class SearchCaseActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sousuobingli);
+        setTitle("搜索病例");
+        setTitleColor(Color.WHITE);
         leiXing = (EditText) findViewById(R.id.leixing);
         xingBie = (EditText) findViewById(R.id.xingbie);
         riQi = (EditText) findViewById(R.id.riqi);

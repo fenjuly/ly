@@ -7,28 +7,26 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#D2F3E8"
+        >
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="输入姓名，身份证或手机"
-            android:gravity="top"
+            android:gravity="top|left"
             android:layout_weight="1"
-            app:floatingLabel="highlight"
+            android:singleLine="true"
             />
 
-        <com.dd.CircularProgressButton
+        <ImageView
             android:id="@+id/confirm"
-            android:layout_width="match_parent"
-            android:layout_height="46dp"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            app:cpb_textComplete="完成"
-            android:layout_weight="5"
-            app:cpb_textError="出错"
-            app:cpb_textIdle="搜索" />
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ios_search_green"
+            />
 
         </LinearLayout>
 

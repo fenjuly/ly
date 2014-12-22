@@ -110,6 +110,8 @@
         android:layout_marginTop="18dp"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:cpb_selectorIdle="@drawable/sousuobingli_button_background"
+        app:cpb_cornerRadius="12dp"
         app:cpb_textComplete="完成"
         app:cpb_textError="出错"
         app:cpb_textIdle="提交" />
@@ -125,6 +127,8 @@
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:visibility="gone"
+        app:cpb_selectorIdle="@drawable/sousuobingli_button_background"
+        app:cpb_cornerRadius="12dp"
         app:cpb_textComplete="完成"
         app:cpb_textError="出错"
         app:cpb_textIdle="上传图片" />

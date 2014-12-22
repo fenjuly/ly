@@ -35,6 +35,7 @@ public class LoginActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        setTitle("登陆");
         userId = (MaterialEditText)findViewById(R.id.id);
         password = (MaterialEditText)findViewById(R.id.password);
         confirm = (CircularProgressButton)findViewById(R.id.confirm);

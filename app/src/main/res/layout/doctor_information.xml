@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#66CDAA"
+    android:paddingLeft="40dp"
+    android:paddingRight="40dp"
+    >
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@drawable/sousuobingli_background"
+    android:layout_marginBottom="15dp"
+    android:layout_marginTop="40dp"
+    >
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/id"
@@ -10,8 +23,6 @@
         android:layout_height="wrap_content"
         android:hint="医生 ID:          122343241"
         android:layout_marginTop="12dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         android:enabled="false"
         />
 
@@ -22,8 +33,6 @@
         android:layout_height="wrap_content"
         android:hint="医生姓名"
         android:layout_marginTop="12dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         app:floatingLabel="highlight"
         />
     <EditText
@@ -33,8 +42,6 @@
         android:layout_height="wrap_content"
         android:hint="科室"
         android:layout_marginTop="12dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         android:focusable="false"
         />
     <EditText
@@ -44,8 +51,6 @@
         android:layout_height="wrap_content"
         android:hint="职称"
         android:layout_marginTop="12dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         android:focusable="false"
         />
     <com.rengwuxian.materialedittext.MaterialEditText
@@ -58,8 +63,6 @@
         app:errorColor="#ddaa00"
         app:maxCharacters="11"
         android:layout_marginTop="12dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         app:floatingLabel="highlight"
         />
     <EditText
@@ -69,8 +72,6 @@
         android:layout_height="wrap_content"
         android:hint="所属医院"
         android:layout_marginTop="12dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         android:focusable="false"
         />
 
@@ -80,11 +81,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:cpb_selectorIdle="@drawable/sousuobingli_button_background"
+        app:cpb_cornerRadius="12dp"
         app:cpb_textComplete="完成"
         app:cpb_textError="出错"
         app:cpb_textIdle="确认" />
+</RelativeLayout>
 </RelativeLayout>

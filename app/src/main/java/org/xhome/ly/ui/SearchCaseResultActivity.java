@@ -43,6 +43,7 @@ public class SearchCaseResultActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.search_case_result);
+        setTitle("搜索结果");
         Intent intent = getIntent();
         leixing = intent.getStringExtra("type");
         xingbie = intent.getStringExtra("patientSex");

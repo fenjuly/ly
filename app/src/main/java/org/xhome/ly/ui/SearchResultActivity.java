@@ -3,11 +3,11 @@ package org.xhome.ly.ui;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.android.volley.Request;
-import com.dd.CircularProgressButton;
-import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
 import org.xhome.ly.api.Api;
@@ -28,8 +28,8 @@ import java.util.Map;
  */
 public class SearchResultActivity extends BaseActivity {
 
-    MaterialEditText souSuo;
-    CircularProgressButton confirm;
+    EditText souSuo;
+    ImageView confirm;
     ListView listView;
 
     String searchKeyWord;
@@ -45,8 +45,8 @@ public class SearchResultActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.searchresult);
-        souSuo = (MaterialEditText) findViewById(R.id.search);
-        confirm = (CircularProgressButton) findViewById(R.id.confirm);
+        souSuo = (EditText) findViewById(R.id.search);
+        confirm = (ImageView) findViewById(R.id.confirm);
         listView = (ListView) findViewById(R.id.listview);
 
         confirm.setOnClickListener(new View.OnClickListener() {
