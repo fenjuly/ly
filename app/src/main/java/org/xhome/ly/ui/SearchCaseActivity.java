@@ -112,6 +112,7 @@ public class SearchCaseActivity extends BaseActivity {
                                 xingbie = "女";
                                 break;
                             default:
+                                xingBie.setText("");
                                 xingbie = "";
                                 break;
                         }

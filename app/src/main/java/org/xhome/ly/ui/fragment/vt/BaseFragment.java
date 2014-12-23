@@ -11,7 +11,7 @@ import com.android.volley.VolleyError;
 import com.google.gson.Gson;
 
 import org.xhome.ly.bean.Case1;
-import org.xhome.ly.dao.Case1DataHelper;
+
 import org.xhome.ly.network.RequestManager;
 import org.xhome.ly.util.ToastUtils;
 
@@ -20,7 +20,6 @@ import org.xhome.ly.util.ToastUtils;
  */
 public abstract class BaseFragment extends Fragment {
 
-    protected Case1DataHelper case1DataHelper;
     protected Case1DataChangedListener case1DataChangedListener;
 
     protected NextStepListner nextStepListner;
