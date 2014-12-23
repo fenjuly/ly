@@ -16,7 +16,7 @@ import com.google.gson.Gson;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
-import org.xhome.ly.bean.Case1;
+import org.xhome.ly.bean.Case3;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -29,8 +29,7 @@ public class AblationResultFragment extends BaseFragment {
 
     MaterialEditText baDianBuWei;
     EditText nengYuanXiaoRong;
-    MaterialEditText qingShuRuXiaoRongNengYuan;
-    EditText panDuanXiaoRongYouXiaoZhiBiao;
+    MaterialEditText biaoCeFangFa;
     EditText xiaoRongZhongDian;
     EditText fangDianShiJian;
     EditText xXianBaoGuangShiJian;
@@ -40,8 +39,7 @@ public class AblationResultFragment extends BaseFragment {
 
     String badianbuwei;
     String nengyuanxiaorong;
-    String qingshuruxiaorongnengyuan;
-    String panduanxiaorongyouxiaozhibiao;
+    String biaocefangfa;
     String xiaorongzhongdian;
     String fangdianshijian;
     String xxianbaoguanshijia;
@@ -53,33 +51,32 @@ public class AblationResultFragment extends BaseFragment {
     String lengdongtext = "";
     String qitatext = "";
 
-    String panduanxiaorongyouxiaozhibiaotext;
-    String xindongguosuzhongzhitext;
-    String xindongguosupinlvjiakuaitext;
-    String xindongguosupinlvbianmantext;
 
     String xiaorongzhongdiantext;
-    String pdianweijiangdihuoxiaoshitext;
-    String shuzhangqidianweixiaoshitext;
-    String suiliedianweiwanquanxiaoshitext;
-    String lsqdiancijishisubunengbeiyoufatext;
-    String diancijishisubunengyoufatext;
+    String wanchengxiaorongjingxiantext;
+    String feijingmaidianweixiaoshitext;
+    String feijingmaizuoxinfangshuangxiangchuandaozuzhitext;
+    String diancijifangchanbunengyoufatext;
+    String isodiancijifangchanbunengyoufatext;
+    String dianyabiaocetext;
+    String cafeswanquanxiaoshitext;
+    String gaopincijimizoushenjingfanshexiaoshitext;
     String shuruqitatext;
 
     String fangdianshijiantext;
     String youxiaobadiantext;
     String zongfangdianshijiantext;
-    public static AblationResultFragment newInstance(Case1 case1) {
+    public static AblationResultFragment newInstance(Case3 case3) {
         if (fragment == null) {
             fragment = new AblationResultFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
         }
 
         return fragment;
@@ -89,12 +86,11 @@ public class AblationResultFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(
-                R.layout.xiaorongjieguo, container, false);
+                R.layout.lmxiaorongjieguo, container, false);
         init();
         baDianBuWei = (MaterialEditText) rootView.findViewById(R.id.badianbuwei);
         nengYuanXiaoRong = (EditText) rootView.findViewById(R.id.nengyuanxiaorong);
-        qingShuRuXiaoRongNengYuan = (MaterialEditText) rootView.findViewById(R.id.qingshuruxiaorongnengyuan);
-        panDuanXiaoRongYouXiaoZhiBiao = (EditText) rootView.findViewById(R.id.panduanxiaorongyouxiaozhibiao);
+        biaoCeFangFa = (MaterialEditText) rootView.findViewById(R.id.biaocefangfa);
         xiaoRongZhongDian = (EditText) rootView.findViewById(R.id.xiaorongzhongdian);
         fangDianShiJian = (EditText) rootView.findViewById(R.id.fangdianshijian);
         xXianBaoGuangShiJian = (EditText) rootView.findViewById(R.id.xxianbaoguanshijia);
@@ -154,142 +150,120 @@ public class AblationResultFragment extends BaseFragment {
              }
         });
 
-        panDuanXiaoRongYouXiaoZhiBiao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                xindongguosuzhongzhitext = "";
-                xindongguosupinlvjiakuaitext = "";
-                xindongguosupinlvbianmantext = "";
-                View v = LayoutInflater.from(getActivity()).inflate(R.layout.panduanxiaorongyouxiaozhibiao, null);
-                final MaterialDialog alert = new MaterialDialog(getActivity())
-                        .setTitle("判断消融有效指标")
-                        .setContentView(v);
-                alert.show();
-                final CheckBox xindongguosuzhongzhi = (CheckBox) v.findViewById(R.id.xindongguosuzhongzhi);
-                CheckBox xindongguosupinlvjiakuai = (CheckBox) v.findViewById(R.id.xindongguosupinlvjiakuai);
-                CheckBox xindongguosupinlvbianman = (CheckBox) v.findViewById(R.id.xindongguosupinlvbianman);
-                CircularProgressButton confirm = (CircularProgressButton) v.findViewById(R.id.confirm);
 
-                xindongguosuzhongzhi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            xindongguosuzhongzhitext = "心动过速终止";
-                        } else {
-                            xindongguosuzhongzhitext = "";
-                        }
-                    }
-                });
-
-                xindongguosupinlvjiakuai.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            xindongguosupinlvjiakuaitext = "心动过速频率加快";
-                        } else {
-                            xindongguosupinlvjiakuaitext = "";
-                        }
-                    }
-                });
-
-                xindongguosupinlvbianman.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            xindongguosupinlvbianmantext = "心动过速频率变慢";
-                        } else {
-                            xindongguosupinlvbianmantext = "";
-                        }
-                    }
-                });
-
-                confirm.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        panduanxiaorongyouxiaozhibiaotext = "";
-                        panduanxiaorongyouxiaozhibiaotext = xindongguosuzhongzhitext + " "
-                                + xindongguosupinlvjiakuaitext + " "
-                                + xindongguosupinlvbianmantext;
-                        panDuanXiaoRongYouXiaoZhiBiao.setText("判断消融有效指标:" + panduanxiaorongyouxiaozhibiaotext);
-                        alert.dismiss();
-                    }
-                });
-            }
-        });
 
         xiaoRongZhongDian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pdianweijiangdihuoxiaoshitext = "";
-                shuzhangqidianweixiaoshitext = "";
-                suiliedianweiwanquanxiaoshitext = "";
-                lsqdiancijishisubunengbeiyoufatext = "";
-                diancijishisubunengyoufatext = "";
+                 wanchengxiaorongjingxiantext = "";
+                 feijingmaidianweixiaoshitext = "";
+                 feijingmaizuoxinfangshuangxiangchuandaozuzhitext = "";
+                 diancijifangchanbunengyoufatext = "";
+                 isodiancijifangchanbunengyoufatext = "";
+                 dianyabiaocetext = "";
+                 cafeswanquanxiaoshitext = "";
+                 gaopincijimizoushenjingfanshexiaoshitext = "";
                 shuruqitatext = "";
-                View v = LayoutInflater.from(getActivity()).inflate(R.layout.xiaorongzhongdian, null);
+                View v = LayoutInflater.from(getActivity()).inflate(R.layout.lmxiaorongzhongdian, null);
                 final MaterialDialog alert = new MaterialDialog(getActivity())
                         .setTitle("消融终点")
                         .setContentView(v);
                 alert.show();
-                CheckBox pdianweijiangdihuoxiaoshi = (CheckBox) v.findViewById(R.id.pdianweijiangdihuoxiaoshi);
-                CheckBox shuzhangqidianweixiaoshi = (CheckBox) v.findViewById(R.id.shuzhangqidianweixiaoshi);
-                CheckBox suiliedianweiwanquanxiaoshi = (CheckBox) v.findViewById(R.id.suiliedianweiwanquanxiaoshi);
-                CheckBox lsqdiancijishisubunengbeiyoufa = (CheckBox) v.findViewById(R.id.lsqdiancijishisubunengbeiyoufa);
-                CheckBox diancijishisubunengyoufa = (CheckBox) v.findViewById(R.id.diancijishisubunengyoufa);
+                CheckBox wanchengxiaorongjingxian = (CheckBox) v.findViewById(R.id.wanchengxiaorongjingxian);
+                CheckBox feijingmaidianweixiaoshi = (CheckBox) v.findViewById(R.id.feijingmaidianweixiaoshi);
+                CheckBox feijingmaizuoxinfangshuangxiangchuandaozuzhi = (CheckBox) v.findViewById(R.id.feijingmaizuoxinfangshuangxiangchuandaozuzhi);
+                CheckBox diancijifangchanbunengyoufa = (CheckBox) v.findViewById(R.id.diancijifangchanbunengyoufa);
+                CheckBox isodiancijifangchanbunengyoufa = (CheckBox) v.findViewById(R.id.isodiancijifangchanbunengyoufa);
+                CheckBox dianyabiaoce = (CheckBox) v.findViewById(R.id.dianyabiaoce);
+                CheckBox cafeswanquanxiaoshi = (CheckBox) v.findViewById(R.id.cafeswanquanxiaoshi);
+                CheckBox gaopincijimizoushenjingfanshexiaoshi = (CheckBox) v.findViewById(R.id.gaopincijimizoushenjingfanshexiaoshi);
                 final MaterialEditText shuruqita = (MaterialEditText) v.findViewById(R.id.shuruqita);
                 CircularProgressButton confirm = (CircularProgressButton) v.findViewById(R.id.confirm);
 
-                pdianweijiangdihuoxiaoshi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                wanchengxiaorongjingxian.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         if (b) {
-                            pdianweijiangdihuoxiaoshitext = "P电位降低或消失";
+                            wanchengxiaorongjingxiantext = "完成消融径线";
                         } else {
-                            pdianweijiangdihuoxiaoshitext = "";
+                            wanchengxiaorongjingxiantext = "";
                         }
                     }
                 });
 
-                shuzhangqidianweixiaoshi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                feijingmaidianweixiaoshi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         if (b) {
-                            shuzhangqidianweixiaoshitext = "舒张期电位消失";
+                            feijingmaidianweixiaoshitext = "肺静脉电位消失";
                         } else {
-                            shuzhangqidianweixiaoshitext = "";
+                            feijingmaidianweixiaoshitext = "";
                         }
                     }
                 });
 
-                suiliedianweiwanquanxiaoshi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                feijingmaizuoxinfangshuangxiangchuandaozuzhi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         if (b) {
-                            suiliedianweiwanquanxiaoshitext = "碎裂电位完全消失";
+                            feijingmaizuoxinfangshuangxiangchuandaozuzhitext = "肺静脉—左心房双向传导阻滞";
                         } else {
-                            suiliedianweiwanquanxiaoshitext = "";
+                            feijingmaizuoxinfangshuangxiangchuandaozuzhitext = "";
                         }
                     }
                 });
 
-                lsqdiancijishisubunengbeiyoufa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                diancijifangchanbunengyoufa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         if (b) {
-                            lsqdiancijishisubunengbeiyoufatext = "LSQ电刺激室速不能被诱发";
+                            diancijifangchanbunengyoufatext = "电刺激房颤不能诱发";
                         } else {
-                            lsqdiancijishisubunengbeiyoufatext = "";
+                            diancijifangchanbunengyoufatext = "";
                         }
                     }
                 });
 
-                diancijishisubunengyoufa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                isodiancijifangchanbunengyoufa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         if (b) {
-                            diancijishisubunengyoufatext = "电刺激室速不能诱发";
+                            isodiancijifangchanbunengyoufatext = "ISO+电刺激房颤不能诱";
                         } else {
-                            diancijishisubunengyoufatext = "";
+                            isodiancijifangchanbunengyoufatext = "";
+                        }
+                    }
+                });
+
+                dianyabiaoce.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b) {
+                            dianyabiaocetext = "电压标测，消融线以内的电压＜0.1mv:激动标测，消融径线任何部位两侧的局部激动时间";
+                        } else {
+                            dianyabiaocetext = "";
+                        }
+                    }
+                });
+
+                cafeswanquanxiaoshi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b) {
+                            cafeswanquanxiaoshitext = "CAFEs完全消失";
+                        } else {
+                            cafeswanquanxiaoshitext = "";
+                        }
+                    }
+                });
+
+                gaopincijimizoushenjingfanshexiaoshi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b) {
+                            gaopincijimizoushenjingfanshexiaoshitext = "高频刺激迷走神经反射消失";
+                        } else {
+                            gaopincijimizoushenjingfanshexiaoshitext = "";
                         }
                     }
                 });
@@ -299,9 +273,10 @@ public class AblationResultFragment extends BaseFragment {
                     public void onClick(View view) {
                         xiaorongzhongdiantext = "";
                         shuruqitatext = shuruqita.getText().toString();
-                        xiaorongzhongdiantext = pdianweijiangdihuoxiaoshitext + " " + shuzhangqidianweixiaoshitext + " "
-                                + suiliedianweiwanquanxiaoshitext + " " + lsqdiancijishisubunengbeiyoufatext + " "
-                                + diancijishisubunengyoufatext + " " + shuruqitatext;
+                        xiaorongzhongdiantext = wanchengxiaorongjingxiantext + " " + feijingmaidianweixiaoshitext + " "
+                                + feijingmaizuoxinfangshuangxiangchuandaozuzhitext + " " + diancijifangchanbunengyoufatext + " "
+                                + isodiancijifangchanbunengyoufatext + " " + dianyabiaocetext + " "
+                                + cafeswanquanxiaoshitext + " " + gaopincijimizoushenjingfanshexiaoshitext + " " + shuruqitatext;
                         xiaoRongZhongDian.setText("消融终点:" + xiaorongzhongdiantext);
                         alert.dismiss();
                     }
@@ -398,27 +373,25 @@ public class AblationResultFragment extends BaseFragment {
         return rootView;
     }
 
-    public void saveCase1() {
-        if(case1 != null) {
+    @Override
+    public void saveCase3() {
+        if(case3 != null) {
             badianbuwei = baDianBuWei.getText().toString();
             nengyuanxiaorong = nengYuanXiaoRong.getText().toString();
-            qingshuruxiaorongnengyuan = qingShuRuXiaoRongNengYuan.getText().toString();
-            panduanxiaorongyouxiaozhibiao = panDuanXiaoRongYouXiaoZhiBiao.getText().toString();
+            biaocefangfa = biaoCeFangFa.getText().toString();
             xiaorongzhongdian = xiaoRongZhongDian.getText().toString();
             fangdianshijian = fangDianShiJian.getText().toString();
             xxianbaoguanshijia = xXianBaoGuangShiJian.getText().toString();
 //            xiaorongcishu = xiaoRongCiShu.getText().toString();
-            case1.setTargetPosition(badianbuwei);
-            case1.setAblationEnergy(nengyuanxiaorong);
-            case1.setAblationJudgement(panduanxiaorongyouxiaozhibiao);
-            case1.setAblationEndPoint(xiaorongzhongdian);
-            case1.setEffectiveTargetSite(youxiaobadiantext);
-            case1.setDischargeTime(zongfangdianshijiantext);
-            case1.setXrayExposureTime(xxianbaoguanshijia);
+            case3.setTargetPosition(badianbuwei);
+            case3.setAblationEnergy(nengyuanxiaorong);
+            case3.setAblationEndPoint(xiaorongzhongdian);
+            case3.setDischargeTime(zongfangdianshijiantext);
+            case3.setXrayExposureTime(xxianbaoguanshijia);
             if(xiaorongcishu != null && !xiaorongcishu.equals("")) {
-                case1.setAblationTimes(Integer.valueOf(xiaorongcishu));
+                case3.setAblationTimes(Integer.valueOf(xiaorongcishu));
             }
-            case1DataChangedListener.OnCase1DataChanged(case1);
+            case3DataChangedListener.OnCase3DataChanged(case3);
         }
     }
 
@@ -429,8 +402,7 @@ public class AblationResultFragment extends BaseFragment {
             isInActivity = true;
             baDianBuWei.setText("");
             nengYuanXiaoRong.setText("");
-            qingShuRuXiaoRongNengYuan.setText("");
-            panDuanXiaoRongYouXiaoZhiBiao.setText("");
+            biaoCeFangFa.setText("");
             xiaoRongZhongDian.setText("");
             fangDianShiJian.setText("");
             xXianBaoGuangShiJian.setText("");
