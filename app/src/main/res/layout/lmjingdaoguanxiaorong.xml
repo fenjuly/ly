@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:paddingBottom="15dp"
+        android:paddingTop="15dp"
+        >
+
+        <EditText
+            android:id="@+id/xiaorongshushi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="12dp"
+            android:hint="消融术式"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:focusable="false"
+            />
+
+
+        <EditText
+            android:id="@+id/xiaorongjingxian"
+            android:layout_below="@+id/xiaorongshushi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="120dp"
+            android:hint="消融径线"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:focusable="false"
+            />
+
+
+        <EditText
+            android:id="@+id/bafeijingmai"
+            android:layout_below="@+id/xiaorongjingxian"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="120dp"
+            android:hint="靶肺静脉"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:focusable="false"
+            />
+
+        <EditText
+            android:id="@+id/shenjingjiecongxiaorong"
+            android:layout_below="@+id/bafeijingmai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="神经节丛消融"
+            android:gravity="top"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:focusable="false"
+            />
+
+        <com.dd.CircularProgressButton
+            android:id="@+id/confirm"
+            android:layout_below="@+id/shenjingjiecongxiaorong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:cpb_selectorIdle="@drawable/sousuobingli_button_background"
+            app:cpb_cornerRadius="12dp"
+            app:cpb_textComplete="完成"
+            app:cpb_textError="出错"
+            app:cpb_textIdle="下一步" />
+
+    </RelativeLayout>
+</ScrollView>
