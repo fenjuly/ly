@@ -281,7 +281,7 @@ public class BeforeOperationMessageFragment extends BaseFragment {
                 listView.setDividerHeight(0);
                 listView.setAdapter(arrayAdapter);
                 final MaterialDialog alert = new MaterialDialog(getActivity())
-                        .setTitle("选择类型")
+                        .setTitle("术前LA血栓")
                         .setContentView(listView);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override

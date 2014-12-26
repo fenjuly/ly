@@ -3,7 +3,7 @@ package org.xhome.ly.bean;
 /**
  * Created by liurongchan on 14/12/22.
  */
-public class Case3Up {
+public class Case3Up extends Case{
     private Integer id;
 
     private String name;

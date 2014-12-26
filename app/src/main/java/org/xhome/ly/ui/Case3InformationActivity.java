@@ -12,27 +12,25 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-
-import com.google.gson.Gson;
+import com.kbeanie.imagechooser.api.ChooserType;
 
 import org.xhome.ly.R;
-import org.xhome.ly.bean.Case1Up;
-import org.xhome.ly.ui.fragment.vt.ShowBaseFragment;
-import org.xhome.ly.ui.fragment.vt.ShowAblationResultFragment;
-import org.xhome.ly.ui.fragment.vt.ShowAppendixFragment;
-import org.xhome.ly.ui.fragment.vt.ShowBeforeOperationMessageFragment;
-import org.xhome.ly.ui.fragment.vt.ShowDiagnosticMessageFragment;
-import org.xhome.ly.ui.fragment.vt.ShowTranscatheterAblationFragment;
-import org.xhome.ly.ui.fragment.vt.ShowUnderOperationMessageFragment;
+import org.xhome.ly.bean.Case3;
+import org.xhome.ly.ui.fragment.lm.AblationResultFragment;
+import org.xhome.ly.ui.fragment.lm.AppendixFragment;
+import org.xhome.ly.ui.fragment.lm.BaseFragment;
+import org.xhome.ly.ui.fragment.lm.BeforeOperationMessageFragment;
+import org.xhome.ly.ui.fragment.lm.DiagnosticMessageFragment;
+import org.xhome.ly.ui.fragment.lm.TranscatheterAblationFragment;
+import org.xhome.ly.ui.fragment.lm.UnderOperationMessageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Created by liurongchan on 14/12/15.
+ * Created by liurongchan on 14/12/24.
  */
-public class ShowCase1InformationActivity extends BaseActivity implements ShowBaseFragment.NextStepListner{
+public class Case3InformationActivity extends BaseActivity implements BaseFragment.Case3DataChangedListener, BaseFragment.NextStepListner {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -43,18 +41,20 @@ public class ShowCase1InformationActivity extends BaseActivity implements ShowBa
             "消融结果", "术中信息", "附录"
     };
 
-    private List<ShowBaseFragment> fragments = new ArrayList<ShowBaseFragment>();
-
     FragmentManager fragmentManager;
 
-    public Case1Up case1;
+    public Case3 case3 = new Case3();
+
+    private List<BaseFragment> fragments = new ArrayList<BaseFragment>();
+
+    private BaseFragment currentFragment;
+    private AppendixFragment appendixFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_case1_information);
-        Intent intent = getIntent();
-        case1 = new Gson().fromJson(intent.getStringExtra("case1"), Case1Up.class);
+        case3.setName("房颤");
         fragmentManager = getSupportFragmentManager();
         mDrawerAapter = new ArrayAdapter<String>(this,
                 R.layout.drawer_item
@@ -81,41 +81,42 @@ public class ShowCase1InformationActivity extends BaseActivity implements ShowBa
         mDrawerList.setAdapter(mDrawerAapter);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setTitle("诊断信息");
-        setFragment(ShowDiagnosticMessageFragment.newInstance(case1));
+        setFragment(DiagnosticMessageFragment.newInstance(case3));
 
-        fragments.add(ShowDiagnosticMessageFragment.newInstance(case1));
-        fragments.add(ShowBeforeOperationMessageFragment.newInstance(case1));
-        fragments.add(ShowTranscatheterAblationFragment.newInstance(case1));
-        fragments.add(ShowAblationResultFragment.newInstance(case1));
-        fragments.add(ShowUnderOperationMessageFragment.newInstance(case1));
-        fragments.add(ShowAppendixFragment.newInstance(case1));
+        fragments.add(DiagnosticMessageFragment.newInstance(case3));
+        fragments.add(BeforeOperationMessageFragment.newInstance(case3));
+        fragments.add(TranscatheterAblationFragment.newInstance(case3));
+        fragments.add(AblationResultFragment.newInstance(case3));
+        fragments.add(UnderOperationMessageFragment.newInstance(case3));
+        fragments.add(AppendixFragment.newInstance(case3));
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                currentFragment.saveCase3();
                 switch (position) {
                     case 0 :
                         setTitle("诊断信息");
-                        setFragment(ShowDiagnosticMessageFragment.newInstance(case1));
+                        setFragment(DiagnosticMessageFragment.newInstance(case3));
                         break;
                     case 1:
                         setTitle("术前信息");
-                        setFragment(ShowBeforeOperationMessageFragment.newInstance(case1));
+                        setFragment(BeforeOperationMessageFragment.newInstance(case3));
                         break;
                     case 2:
                         setTitle("经导管消融");
-                        setFragment(ShowTranscatheterAblationFragment.newInstance(case1));
+                        setFragment(TranscatheterAblationFragment.newInstance(case3));
                         break;
                     case 3:
                         setTitle("消融结果");
-                        setFragment(ShowAblationResultFragment.newInstance(case1));
+                        setFragment(AblationResultFragment.newInstance(case3));
                         break;
                     case 4:
                         setTitle("术中信息");
-                        setFragment(ShowUnderOperationMessageFragment.newInstance(case1));
+                        setFragment(UnderOperationMessageFragment.newInstance(case3));
                         break;
                     case 5:
                         setTitle("附录");
-                        setFragment(ShowAppendixFragment.newInstance(case1));
+                        setFragment(AppendixFragment.newInstance(case3));
                         break;
                 }
             }
@@ -123,7 +124,11 @@ public class ShowCase1InformationActivity extends BaseActivity implements ShowBa
     }
 
 
-    private void setFragment(ShowBaseFragment fragment) {
+    private void setFragment(BaseFragment fragment) {
+        currentFragment = fragment;
+        if (currentFragment instanceof AppendixFragment) {
+            appendixFragment = (AppendixFragment)currentFragment;
+        }
         fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
         mDrawerLayout.closeDrawers();
     }
@@ -151,48 +156,63 @@ public class ShowCase1InformationActivity extends BaseActivity implements ShowBa
     }
 
     @Override
+    public void OnCase3DataChanged(Case3 case3) {
+        this.case3 = case3;
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
-        for (ShowBaseFragment fragment : fragments) {
+        for (BaseFragment fragment : fragments) {
             fragment.isInActivity = false;
         }
         fragments = null;
     }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        case1 = new Gson().fromJson(getIntent().getStringExtra("case1"), Case1Up.class);
-    }
+
 
     @Override
     public void OnNextStepClicked(int position) {
+        currentFragment.saveCase3();
         switch (position) {
             case 0 :
                 setTitle("诊断信息");
-                setFragment(ShowDiagnosticMessageFragment.newInstance(case1));
+                setFragment(DiagnosticMessageFragment.newInstance(case3));
                 break;
             case 1:
                 setTitle("术前信息");
-                setFragment(ShowBeforeOperationMessageFragment.newInstance(case1));
+                setFragment(BeforeOperationMessageFragment.newInstance(case3));
                 break;
             case 2:
                 setTitle("经导管消融");
-                setFragment(ShowTranscatheterAblationFragment.newInstance(case1));
+                setFragment(TranscatheterAblationFragment.newInstance(case3));
                 break;
             case 3:
                 setTitle("消融结果");
-                setFragment(ShowAblationResultFragment.newInstance(case1));
+                setFragment(AblationResultFragment.newInstance(case3));
                 break;
             case 4:
                 setTitle("术中信息");
-                setFragment(ShowUnderOperationMessageFragment.newInstance(case1));
+                setFragment(UnderOperationMessageFragment.newInstance(case3));
                 break;
             case 5:
                 setTitle("附录");
-                setFragment(ShowAppendixFragment.newInstance(case1));
+                setFragment(AppendixFragment.newInstance(case3));
                 break;
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == RESULT_OK
+                && (requestCode == ChooserType.REQUEST_PICK_PICTURE
+                || requestCode == ChooserType.REQUEST_CAPTURE_PICTURE)) {
+            if (appendixFragment.imageChooserManager == null) {
+                appendixFragment.reinitializeImageChooser();
+            }
+            appendixFragment.imageChooserManager.submit(requestCode, data);
+        } else {
+            appendixFragment.progressDialog.dismiss();
+        }
+    }
 }

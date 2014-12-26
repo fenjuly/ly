@@ -12,27 +12,25 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-
 import com.google.gson.Gson;
 
 import org.xhome.ly.R;
-import org.xhome.ly.bean.Case1Up;
-import org.xhome.ly.ui.fragment.vt.ShowBaseFragment;
-import org.xhome.ly.ui.fragment.vt.ShowAblationResultFragment;
-import org.xhome.ly.ui.fragment.vt.ShowAppendixFragment;
-import org.xhome.ly.ui.fragment.vt.ShowBeforeOperationMessageFragment;
-import org.xhome.ly.ui.fragment.vt.ShowDiagnosticMessageFragment;
-import org.xhome.ly.ui.fragment.vt.ShowTranscatheterAblationFragment;
-import org.xhome.ly.ui.fragment.vt.ShowUnderOperationMessageFragment;
+import org.xhome.ly.bean.Case3Up;
+import org.xhome.ly.ui.fragment.lm.ShowAblationResultFragment;
+import org.xhome.ly.ui.fragment.lm.ShowAppendixFragment;
+import org.xhome.ly.ui.fragment.lm.ShowBaseFragment;
+import org.xhome.ly.ui.fragment.lm.ShowBeforeOperationMessageFragment;
+import org.xhome.ly.ui.fragment.lm.ShowDiagnosticMessageFragment;
+import org.xhome.ly.ui.fragment.lm.ShowTranscatheterAblationFragment;
+import org.xhome.ly.ui.fragment.lm.ShowUnderOperationMessageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Created by liurongchan on 14/12/15.
+ * Created by liurongchan on 14/12/24.
  */
-public class ShowCase1InformationActivity extends BaseActivity implements ShowBaseFragment.NextStepListner{
+public class ShowCase3InformationActivity extends BaseActivity implements ShowBaseFragment.NextStepListner{
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -43,18 +41,18 @@ public class ShowCase1InformationActivity extends BaseActivity implements ShowBa
             "消融结果", "术中信息", "附录"
     };
 
-    private List<ShowBaseFragment> fragments = new ArrayList<ShowBaseFragment>();
-
     FragmentManager fragmentManager;
 
-    public Case1Up case1;
+    private List<ShowBaseFragment> fragments = new ArrayList<ShowBaseFragment>();
+
+    public Case3Up case3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_case1_information);
         Intent intent = getIntent();
-        case1 = new Gson().fromJson(intent.getStringExtra("case1"), Case1Up.class);
+        case3 = new Gson().fromJson(intent.getStringExtra("case3"), Case3Up.class);
         fragmentManager = getSupportFragmentManager();
         mDrawerAapter = new ArrayAdapter<String>(this,
                 R.layout.drawer_item
@@ -81,41 +79,41 @@ public class ShowCase1InformationActivity extends BaseActivity implements ShowBa
         mDrawerList.setAdapter(mDrawerAapter);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setTitle("诊断信息");
-        setFragment(ShowDiagnosticMessageFragment.newInstance(case1));
+        setFragment(ShowDiagnosticMessageFragment.newInstance(case3));
 
-        fragments.add(ShowDiagnosticMessageFragment.newInstance(case1));
-        fragments.add(ShowBeforeOperationMessageFragment.newInstance(case1));
-        fragments.add(ShowTranscatheterAblationFragment.newInstance(case1));
-        fragments.add(ShowAblationResultFragment.newInstance(case1));
-        fragments.add(ShowUnderOperationMessageFragment.newInstance(case1));
-        fragments.add(ShowAppendixFragment.newInstance(case1));
+        fragments.add(ShowDiagnosticMessageFragment.newInstance(case3));
+        fragments.add(ShowBeforeOperationMessageFragment.newInstance(case3));
+        fragments.add(ShowTranscatheterAblationFragment.newInstance(case3));
+        fragments.add(ShowAblationResultFragment.newInstance(case3));
+        fragments.add(ShowUnderOperationMessageFragment.newInstance(case3));
+        fragments.add(ShowAppendixFragment.newInstance(case3));
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 switch (position) {
                     case 0 :
                         setTitle("诊断信息");
-                        setFragment(ShowDiagnosticMessageFragment.newInstance(case1));
+                        setFragment(ShowDiagnosticMessageFragment.newInstance(case3));
                         break;
                     case 1:
                         setTitle("术前信息");
-                        setFragment(ShowBeforeOperationMessageFragment.newInstance(case1));
+                        setFragment(ShowBeforeOperationMessageFragment.newInstance(case3));
                         break;
                     case 2:
                         setTitle("经导管消融");
-                        setFragment(ShowTranscatheterAblationFragment.newInstance(case1));
+                        setFragment(ShowTranscatheterAblationFragment.newInstance(case3));
                         break;
                     case 3:
                         setTitle("消融结果");
-                        setFragment(ShowAblationResultFragment.newInstance(case1));
+                        setFragment(ShowAblationResultFragment.newInstance(case3));
                         break;
                     case 4:
                         setTitle("术中信息");
-                        setFragment(ShowUnderOperationMessageFragment.newInstance(case1));
+                        setFragment(ShowUnderOperationMessageFragment.newInstance(case3));
                         break;
                     case 5:
                         setTitle("附录");
-                        setFragment(ShowAppendixFragment.newInstance(case1));
+                        setFragment(ShowAppendixFragment.newInstance(case3));
                         break;
                 }
             }
@@ -150,6 +148,13 @@ public class ShowCase1InformationActivity extends BaseActivity implements ShowBa
         return true;
     }
 
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        case3 = new Gson().fromJson(getIntent().getStringExtra("case3"), Case3Up.class);
+    }
+
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -160,37 +165,31 @@ public class ShowCase1InformationActivity extends BaseActivity implements ShowBa
     }
 
     @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        case1 = new Gson().fromJson(getIntent().getStringExtra("case1"), Case1Up.class);
-    }
-
-    @Override
     public void OnNextStepClicked(int position) {
         switch (position) {
             case 0 :
                 setTitle("诊断信息");
-                setFragment(ShowDiagnosticMessageFragment.newInstance(case1));
+                setFragment(ShowDiagnosticMessageFragment.newInstance(case3));
                 break;
             case 1:
                 setTitle("术前信息");
-                setFragment(ShowBeforeOperationMessageFragment.newInstance(case1));
+                setFragment(ShowBeforeOperationMessageFragment.newInstance(case3));
                 break;
             case 2:
                 setTitle("经导管消融");
-                setFragment(ShowTranscatheterAblationFragment.newInstance(case1));
+                setFragment(ShowTranscatheterAblationFragment.newInstance(case3));
                 break;
             case 3:
                 setTitle("消融结果");
-                setFragment(ShowAblationResultFragment.newInstance(case1));
+                setFragment(ShowAblationResultFragment.newInstance(case3));
                 break;
             case 4:
                 setTitle("术中信息");
-                setFragment(ShowUnderOperationMessageFragment.newInstance(case1));
+                setFragment(ShowUnderOperationMessageFragment.newInstance(case3));
                 break;
             case 5:
                 setTitle("附录");
-                setFragment(ShowAppendixFragment.newInstance(case1));
+                setFragment(ShowAppendixFragment.newInstance(case3));
                 break;
         }
     }

@@ -10,6 +10,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.bean.Case3Up;
 
 /**
  * Created by liurongchan on 14/12/15.
@@ -20,17 +21,17 @@ public class ShowAppendixFragment extends ShowBaseFragment {
 
     MaterialEditText beiZhu;
 
-    public static ShowAppendixFragment newInstance(Case1Up case1) {
+    public static ShowAppendixFragment newInstance(Case3Up case3) {
         if (fragment == null) {
             fragment = new ShowAppendixFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
         }
 
         return fragment;
@@ -43,8 +44,8 @@ public class ShowAppendixFragment extends ShowBaseFragment {
                 R.layout.fulu, container, false);
         init();
         beiZhu = (MaterialEditText) rootView.findViewById(R.id.beizhu);
-        if (case1.getGlobalRemarks() != null) {
-            beiZhu.setText(case1.getGlobalRemarks());
+        if (case3.getGlobalRemarks() != null) {
+            beiZhu.setText(case3.getGlobalRemarks());
         }
         return rootView;
     }
@@ -54,7 +55,10 @@ public class ShowAppendixFragment extends ShowBaseFragment {
         super.onViewStateRestored(savedInstanceState);
         if (!isInActivity) {
             isInActivity = true;
-
+            beiZhu.setText("");
+            if (case3.getGlobalRemarks() != null) {
+                beiZhu.setText(case3.getGlobalRemarks());
+            }
         }
     }
 

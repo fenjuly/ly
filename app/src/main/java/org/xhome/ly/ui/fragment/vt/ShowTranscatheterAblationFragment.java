@@ -124,6 +124,34 @@ public class ShowTranscatheterAblationFragment extends ShowBaseFragment {
             xiaoRongShuShi.setText("");
             qingShuRuXiaoRongShuShi.setText("");
             xiaoRongJingXian.setText("");
+
+            if (case1.getImagingInsideHeart() != null) {
+                xingQiangNeiZaoYing.setText(case1.getImagingInsideHeart());
+            }
+            if (case1.getInducedWay() != null) {
+                youFaFangShi.setText(case1.getInducedWay() + "\n\n");
+            }
+            if (case1.getTachycardiaRegulation() != null) {
+                xinDongGuoSuFaZuoShiFouGuiZhe.setText(case1.getTachycardiaRegulation());
+            }
+            if (case1.getCcl() != null) {
+                zhouChang.setText(case1.getCcl());
+            }
+            if (case1.getInspectionMethod() != null) {
+                biaoCeFangFa.setText(case1.getInspectionMethod());
+            }
+            if (case1.getDiastolicPotential() != null) {
+                shuZhangQiDianWei.setText(case1.getDiastolicPotential());
+            }
+            if (case1.getpPotentialExamination() != null) {
+                pDianWeiBiaoCe.setText(case1.getpPotentialExamination());
+            }
+            if (case1.getAblationProcedure() != null) {
+                xiaoRongShuShi.setText(case1.getAblationProcedure());
+            }
+            if (case1.getAblationLines() != null) {
+                xiaoRongJingXian.setText(case1.getAblationLines());
+            }
         }
 
     }

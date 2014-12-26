@@ -34,6 +34,7 @@ import org.json.JSONObject;
 import org.xhome.ly.R;
 import org.xhome.ly.api.Api;
 import org.xhome.ly.bean.Case1;
+import org.xhome.ly.bean.Case3;
 import org.xhome.ly.bean.Response;
 import org.xhome.ly.network.GsonRequest;
 import org.xhome.ly.network.UploadPicture;
@@ -72,17 +73,17 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
     CircularProgressButton upload;
     MaterialEditText beiZhu;
 
-    public static AppendixFragment newInstance(Case1 case1) {
+    public static AppendixFragment newInstance(Case3 case3) {
         if (fragment == null) {
             fragment = new AppendixFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
         }
 
         return fragment;
@@ -146,13 +147,13 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveCase1();
+                saveCase3();
 
                 JSONObject jsonObject = null;
                 try {
-                     jsonObject = new JSONObject(new Gson().toJson(case1));
-                    if (case1.getOperationData() != null) {
-                        long millis = case1.getOperationData().getTime();
+                     jsonObject = new JSONObject(new Gson().toJson(case3));
+                    if (case3.getOperationData() != null) {
+                        long millis = case3.getOperationData().getTime();
                         jsonObject.remove("operationData");
                         jsonObject.put("operationData", String.valueOf(millis));
                     }
@@ -164,7 +165,7 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
                 Map<String, String> headers = new HashMap<String, String>();
                 headers.put("Authentication", SharePerferenceUtils.getInformation(SharePerferenceUtils.AUTHENTICATION));
                 confirm.setProgress(50);
-                executeRequest(new GsonRequest(Request.Method.POST, Api.CASE1+ "?doctorId="+ SharePerferenceUtils.getInformation(SharePerferenceUtils.DOCTOR_ID)+"&patientId=" + SharePerferenceUtils.getInformation(SharePerferenceUtils.PATIENT_ID),
+                executeRequest(new GsonRequest(Request.Method.POST, Api.CASE3+ "?doctorId="+ SharePerferenceUtils.getInformation(SharePerferenceUtils.DOCTOR_ID)+"&patientId=" + SharePerferenceUtils.getInformation(SharePerferenceUtils.PATIENT_ID),
                         jsonObject.toString(), responseListener(), errorListener(),
                         Response.class, headers));
             }
@@ -173,8 +174,8 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveCase1();
-                if (case1.getKeyword2() == null || case1.getKeyword2().equals("")) {
+                saveCase3();
+                if (case3.getKeyword2() == null || case3.getKeyword2().equals("")) {
                     ToastUtils.showLong("没有图片需要上传");
                     getActivity().finish();
                 } else {
@@ -281,8 +282,8 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
                 filePath = savedInstanceState.getString("media_path");
             }
         }
-       if (case1.getKeyword1() != null && !case1.getKeyword1().equals("")) {
-           String[] strs = case1.getKeyword1().split(";");
+       if (case3.getKeyword1() != null && !case3.getKeyword1().equals("")) {
+           String[] strs = case3.getKeyword1().split(";");
            for (String url : strs) {
                ImageView imageView = new ImageView(linearLayout.getContext());
                imageView.setImageURI(Uri.parse(url));
@@ -324,30 +325,30 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
     }
 
     @Override
-    public void saveCase1() {
-        if (case1 != null) {
+    public void saveCase3() {
+        if (case3 != null) {
 
-            String keyword1 = case1.getKeyword1();
+            String keyword1 = case3.getKeyword1();
             if (!picUrl.equals("")) {
                 if (keyword1  == null || keyword1.equals("")) {
-                    case1.setKeyword1(picUrl);
+                    case3.setKeyword1(picUrl);
                 } else {
-                    case1.setKeyword1(keyword1 + ";" + picUrl);
+                    case3.setKeyword1(keyword1 + ";" + picUrl);
                 }
             }
 
-            String keyword2 = case1.getKeyword2();
+            String keyword2 = case3.getKeyword2();
             if (!originalPicUrl.equals("")) {
                 if (keyword2  == null || keyword2.equals("") ) {
-                    case1.setKeyword2(originalPicUrl);
+                    case3.setKeyword2(originalPicUrl);
                 } else {
-                    case1.setKeyword2(keyword2 + ";" + originalPicUrl);
+                    case3.setKeyword2(keyword2 + ";" + originalPicUrl);
                 }
             }
             originalPicUrl = "";
             picUrl = "";
-            case1.setGlobalRemarks(beiZhu.getText().toString());
-            case1DataChangedListener.OnCase1DataChanged(case1);
+            case3.setGlobalRemarks(beiZhu.getText().toString());
+            case3DataChangedListener.OnCase3DataChanged(case3);
         }
     }
 
@@ -356,7 +357,7 @@ public class AppendixFragment extends BaseFragment implements ImageChooserListen
         @Override
         protected Integer[] doInBackground(Integer... objects) {
             int[] statuses = new int[]{1, 1, 1, 1, 1, 1};
-            String keyword2 = case1.getKeyword2();
+            String keyword2 = case3.getKeyword2();
             if (keyword2 != null && !keyword2.equals("")) {
                 String[] strs = keyword2.split(";");
                 final int length = strs.length;

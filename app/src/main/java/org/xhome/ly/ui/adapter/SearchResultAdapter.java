@@ -12,9 +12,13 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import org.xhome.ly.R;
+import org.xhome.ly.bean.Case;
 import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.bean.Case2Up;
 import org.xhome.ly.bean.PatientUp;
 import org.xhome.ly.ui.ShowCase1InformationActivity;
+import org.xhome.ly.ui.ShowCase2InformationActivity;
+import org.xhome.ly.ui.ShowCase3InformationActivity;
 
 import java.text.DateFormat;
 import java.util.List;
@@ -25,21 +29,21 @@ import java.util.List;
 public class SearchResultAdapter extends BaseAdapter {
 
     private Context context;
-    private List<Case1Up> case1ups;
+    private List<Case> cases;
 
-    public SearchResultAdapter(Context context, List<Case1Up> case1ups) {
+    public SearchResultAdapter(Context context, List<Case> cases) {
         this.context = context;
-        this.case1ups = case1ups;
+        this.cases = cases;
     }
 
     @Override
     public int getCount() {
-        return case1ups.size();
+        return cases.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return case1ups.get(position);
+        return cases.get(position);
     }
 
     @Override
@@ -47,16 +51,16 @@ public class SearchResultAdapter extends BaseAdapter {
         return position;
     }
 
-    public void refresh(List<Case1Up> cs) {
-        case1ups = cs;
+    public void refresh(List<Case> cs) {
+        cases = cs;
         notifyDataSetChanged();
     }
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
         ViewHolder holder;
-        final Case1Up case1up = case1ups.get(position);
-        PatientUp patientup = case1up.getPatient();
+        final Case c = cases.get(position);
+        PatientUp patientup = c.getPatient();
         if (view == null) {
             view = LayoutInflater.from(context).inflate(R.layout.search_result_item, null, false);
         }
@@ -68,15 +72,27 @@ public class SearchResultAdapter extends BaseAdapter {
             view.setTag(holder);
         }
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
-        holder.date.setText(dateFormat.format(case1up.getOperationData()));
+        holder.date.setText(dateFormat.format(c.getOperationData()));
         holder.name.setText(patientup.getName());
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ShowCase1InformationActivity.class);
-                intent.removeExtra("case1");
-                intent.putExtra("case1", new Gson().toJson(case1up));
-                context.startActivity(intent);
+                if (c instanceof Case1Up) {
+                    Intent intent = new Intent(context, ShowCase1InformationActivity.class);
+                    intent.removeExtra("case1");
+                    intent.putExtra("case1", new Gson().toJson(c));
+                    context.startActivity(intent);
+                } else if (c instanceof Case2Up) {
+                    Intent intent = new Intent(context, ShowCase2InformationActivity.class);
+                    intent.removeExtra("case2");
+                    intent.putExtra("case2", new Gson().toJson(c));
+                    context.startActivity(intent);
+                } else {
+                    Intent intent = new Intent(context, ShowCase3InformationActivity.class);
+                    intent.removeExtra("case3");
+                    intent.putExtra("case3", new Gson().toJson(c));
+                    context.startActivity(intent);
+                }
             }
         });
         return view;

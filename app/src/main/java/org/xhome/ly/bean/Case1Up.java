@@ -5,7 +5,7 @@ package org.xhome.ly.bean;
 /**
  * Created by liurongchan on 14/12/15.
  */
-public class Case1Up {
+public class Case1Up extends Case{
 
 
     private Integer id;

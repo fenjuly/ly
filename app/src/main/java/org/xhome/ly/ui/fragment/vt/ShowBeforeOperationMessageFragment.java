@@ -63,12 +63,17 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
         shuQianHeBingXinLvShiChang = (MaterialEditText) rootView.findViewById(R.id.shuqianhebingxinlvshichang);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
-        shuQiangUcg.setText("LA内径:" + case1.getLaBore() + "\n\n"
-                + "RA内径:" + case1.getRaBore() + "\n\n"
-                + "LV内径:" + case1.getLvBore() + "\n\n"
-                + "RV内径:" + case1.getRvBore() + "\n\n"
-                + "LVEF内径:" + case1.getLvefBore() + "\n\n"
-                + "备注:" + case1.getUcgRemarks());
+        if (case1.getLaBore() != null || case1.getRaBore() != null
+                || case1.getLvBore() != null || case1.getRvBore() != null
+                || case1.getLvefBore() != null || case1.getUcgRemarks() != null) {
+
+            shuQiangUcg.setText("LA内径:" + case1.getLaBore() + "\n\n"
+                    + "RA内径:" + case1.getRaBore() + "\n\n"
+                    + "LV内径:" + case1.getLvBore() + "\n\n"
+                    + "RV内径:" + case1.getRvBore() + "\n\n"
+                    + "LVEF内径:" + case1.getLvefBore() + "\n\n"
+                    + "备注:" + case1.getUcgRemarks());
+        }
         if (case1.getEcgType() != null) {
             ecgShuZhiZhuZhiLeiXing.setText(case1.getEcgType());
         }
@@ -112,6 +117,36 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
             shuQianKangXinLvShiChangYaoWu.setText("");
             shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("");
             shuQianHeBingXinLvShiChang.setText("");
+
+            if (case1.getLaBore() != null || case1.getRaBore() != null
+                    || case1.getLvBore() != null || case1.getRvBore() != null
+                    || case1.getLvefBore() != null || case1.getUcgRemarks() != null) {
+
+                shuQiangUcg.setText("LA内径:" + case1.getLaBore() + "\n\n"
+                        + "RA内径:" + case1.getRaBore() + "\n\n"
+                        + "LV内径:" + case1.getLvBore() + "\n\n"
+                        + "RV内径:" + case1.getRvBore() + "\n\n"
+                        + "LVEF内径:" + case1.getLvefBore() + "\n\n"
+                        + "备注:" + case1.getUcgRemarks());
+            }
+            if (case1.getEcgType() != null) {
+                ecgShuZhiZhuZhiLeiXing.setText(case1.getEcgType());
+            }
+            if (case1.getElectricalOffset() != null) {
+                dianZhouPianYi.setText(case1.getElectricalOffset());
+            }
+            if (case1.getPreopreativeExamination() != null) {
+                shuQianQiTaJianChaZhongYaoYangXingMiaoShu.setText(case1.getPreopreativeExamination());
+            }
+            if (case1.getAntiArrhythmiaDrugs() != null) {
+                shuQianKangXinLvShiChangYaoWu.setText(case1.getAntiArrhythmiaDrugs());
+            }
+            if (case1.getInvaliDantiArrhythmiaDrugs() != null) {
+                shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText(case1.getInvaliDantiArrhythmiaDrugs());
+            }
+            if (case1.getMergerArrhythmia() != null) {
+                shuQianHeBingXinLvShiChang.setText(case1.getMergerArrhythmia());
+            }
         }
 
     }

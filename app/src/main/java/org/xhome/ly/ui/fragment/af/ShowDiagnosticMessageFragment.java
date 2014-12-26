@@ -139,6 +139,43 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
             shuHouZhenDuan.setText("");
             jiZhi.setText("");
             buWei.setText("");
+
+            DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+            if (case2.getOperationData() != 0) {
+                shouShuRiQi.setText(dateFormat.format(new Date(case2.getOperationData())));
+            }
+            if (case2.getOperationNumber() != null) {
+                shouShuBianHao.setText(case2.getOperationNumber());
+            }
+            if (case2.getOperatorName() != null) {
+                shuZhe.setText(case2.getOperatorName());
+            }
+            if (case2.getRrType() != null && !case2.getRrType().equals("")) {
+                fangSuLeiXing.setText("类型:" + case2.getRrType() + "\n\n"
+                        + "频度:" + case2.getRrFrequency() + "\n\n"
+                        + "每次发作持续时间:" + case2.getRrEveryAttackTime() + "\n\n"
+                        + "最近发作持续时间:" + case2.getRrLastAttackTime() + "\n\n"
+                        + "曾用转复方法:" + case2.getCardioversionMethod() + "\n\n"
+                        + "转律用药:" + case2.getCardioversionMedication());
+            }
+            if (case2.getRrCourseDisease() != null) {
+                fangSuBingCheng.setText(case2.getRrCourseDisease());
+            }
+            if (case2.getArrhythmiaDiagnose() != null) {
+                linChuangXinLvShiChangZhenDuan.setText(case2.getArrhythmiaDiagnose());
+            }
+            if (case2.getElectrophysiologyDiagnose() != null) {
+                dianShengLiJianChaZhenDuan.setText(case2.getElectrophysiologyDiagnose());
+            }
+            if (case2.getPostoperationDiagnose() != null) {
+                shuHouZhenDuan.setText(case2.getPostoperationDiagnose());
+            }
+            if (case2.getMechanism() != null) {
+                jiZhi.setText(case2.getMechanism());
+            }
+            if (case2.getPart() != null) {
+                buWei.setText(case2.getPart());
+            }
         }
 
     }

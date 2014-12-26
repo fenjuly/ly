@@ -73,6 +73,94 @@
                 />
         </LinearLayout>
 
+        <LinearLayout
+            android:paddingTop="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="LAA一二尖瓣"
+                android:textSize="14sp"
+                />
+            <CheckBox
+                android:layout_gravity="center_vertical"
+                android:id="@+id/laayierjianban"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingTop="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="左房间隔线"
+                android:textSize="14sp"
+                />
+            <CheckBox
+                android:layout_gravity="center_vertical"
+                android:id="@+id/zuofangjiangexian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingTop="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="左房底部"
+                android:textSize="14sp"
+                />
+            <CheckBox
+                android:layout_gravity="center_vertical"
+                android:id="@+id/zuofangdibu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:paddingTop="8dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="左右肺静脉消融环间"
+                android:textSize="14sp"
+                />
+            <CheckBox
+                android:layout_gravity="center_vertical"
+                android:id="@+id/zuoyoufeijingmaixiaoronghuanjian"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                />
+        </LinearLayout>
+
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/shuruqita"
             android:layout_width="match_parent"

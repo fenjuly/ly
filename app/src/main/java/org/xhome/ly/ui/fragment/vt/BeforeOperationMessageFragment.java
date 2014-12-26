@@ -74,7 +74,6 @@ public class BeforeOperationMessageFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        case1DataHelper = new Case1DataHelper(App.getContext());
         View rootView = inflater.inflate(
                 R.layout.shuqianxinxi, container, false);
         init();

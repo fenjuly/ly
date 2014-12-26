@@ -24,6 +24,9 @@ import org.xhome.ly.ui.fragment.af.ShowDiagnosticMessageFragment;
 import org.xhome.ly.ui.fragment.af.ShowTranscatheterAblationFragment;
 import org.xhome.ly.ui.fragment.af.ShowUnderOperationMessageFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by liurongchan on 14/12/21.
@@ -40,6 +43,8 @@ public class ShowCase2InformationActivity extends BaseActivity implements ShowBa
     };
 
     FragmentManager fragmentManager;
+
+    private List<ShowBaseFragment> fragments = new ArrayList<ShowBaseFragment>();
 
     public Case2Up case2;
 
@@ -77,6 +82,12 @@ public class ShowCase2InformationActivity extends BaseActivity implements ShowBa
         setTitle("诊断信息");
         setFragment(ShowDiagnosticMessageFragment.newInstance(case2));
 
+        fragments.add(ShowDiagnosticMessageFragment.newInstance(case2));
+        fragments.add(ShowBeforeOperationMessageFragment.newInstance(case2));
+        fragments.add(ShowTranscatheterAblationFragment.newInstance(case2));
+        fragments.add(ShowAblationResultFragment.newInstance(case2));
+        fragments.add(ShowUnderOperationMessageFragment.newInstance(case2));
+        fragments.add(ShowAppendixFragment.newInstance(case2));
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -143,6 +154,15 @@ public class ShowCase2InformationActivity extends BaseActivity implements ShowBa
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         case2 = new Gson().fromJson(getIntent().getStringExtra("case2"), Case2Up.class);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        for (ShowBaseFragment fragment : fragments) {
+            fragment.isInActivity = false;
+        }
+        fragments = null;
     }
 
     @Override

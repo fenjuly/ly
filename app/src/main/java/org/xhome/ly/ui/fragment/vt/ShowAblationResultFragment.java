@@ -111,6 +111,29 @@ public class ShowAblationResultFragment extends ShowBaseFragment {
             fangDianShiJian.setText("");
             xXianBaoGuangShiJian.setText("");
             xiaoRongCiShu.setText("");
+
+            if (case1.getTargetPosition() != null) {
+                baDianBuWei.setText(case1.getTargetPosition());
+            }
+            if (case1.getAblationEnergy() != null) {
+                nengYuanXiaoRong.setText(case1.getAblationEnergy());
+            }
+            if (case1.getAblationJudgement() != null) {
+                panDuanXiaoRongYouXiaoZhiBiao.setText(case1.getAblationJudgement());
+            }
+            if (case1.getAblationEndPoint() != null) {
+                xiaoRongZhongDian.setText(case1.getAblationEndPoint());
+            }
+            if (case1.getEffectiveTargetSite() != null || case1.getDischargeTime() != null) {
+                fangDianShiJian.setText("有效靶点:" + case1.getEffectiveTargetSite() + "\n\n"
+                        + "总放电时间:" + case1.getDischargeTime());
+            }
+            if (case1.getXrayExposureTime() != null) {
+                xXianBaoGuangShiJian.setText(case1.getXrayExposureTime());
+            }
+            if (case1.getAblationTimes() != null) {
+                xiaoRongCiShu.setText(String.valueOf(case1.getAblationTimes()) + "次");
+            }
         }
 
     }

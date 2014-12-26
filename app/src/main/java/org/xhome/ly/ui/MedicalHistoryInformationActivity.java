@@ -287,10 +287,13 @@ public class MedicalHistoryInformationActivity extends BaseActivity {
                         finish();
                         break;
                     case 1:
+                        Intent intent2 = new Intent(MedicalHistoryInformationActivity.this, Case3InformationActivity.class);
+                        startActivity(intent2);
+                        finish();
                         break;
                     case 2:
-                        Intent intent2 = new Intent(MedicalHistoryInformationActivity.this, Case2InformationActivity.class);
-                        startActivity(intent2);
+                        Intent intent3 = new Intent(MedicalHistoryInformationActivity.this, Case2InformationActivity.class);
+                        startActivity(intent3);
                         finish();
                         break;
                     default:

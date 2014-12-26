@@ -5,17 +5,17 @@ import java.util.List;
 /**
  * Created by liurongchan on 14/12/15.
  */
-public class SpecialResponse {
+public class Special1Response {
 
     protected int status;
     protected List<Case1Up> body;
 
-    public SpecialResponse(){}
+    public Special1Response(){}
 
-    public SpecialResponse(int status) {
+    public Special1Response(int status) {
         this.status = status;
     }
-    public SpecialResponse(int status, List<Case1Up> body) {
+    public Special1Response(int status, List<Case1Up> body) {
         this(status);
         this.body = body;
     }

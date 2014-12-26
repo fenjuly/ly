@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by liurongchan on 14/12/21.
  */
-public class Case2Up  {
+public class Case2Up extends Case{
 
     private Integer id;
 

@@ -61,6 +61,7 @@ public class ShowTranscatheterAblationFragment extends ShowBaseFragment {
         xinDongGuoSuFaZuoShiFouGuiZhe = (MaterialEditText) rootView.findViewById(R.id.xindongguosufazuoshifouguize);
         zhouChang = (EditText) rootView.findViewById(R.id.zhouchang);
         biaoCeFangFa = (EditText) rootView.findViewById(R.id.biaocefangfa);
+        biaoCeFangShi = (EditText) rootView.findViewById(R.id.biaocefangshi);
         xiaoRongShuShi = (EditText) rootView.findViewById(R.id.xiaorongshushi);
         xiaoRongJingXian = (EditText) rootView.findViewById(R.id.xiaorongjingxian);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
@@ -86,6 +87,9 @@ public class ShowTranscatheterAblationFragment extends ShowBaseFragment {
         if (case2.getAblationLines() != null) {
             xiaoRongJingXian.setText(case2.getAblationLines());
         }
+        if (case2.getMappingMode() != null) {
+            biaoCeFangShi.setText(case2.getMappingMode());
+        }
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +111,34 @@ public class ShowTranscatheterAblationFragment extends ShowBaseFragment {
             xinDongGuoSuFaZuoShiFouGuiZhe.setText("");
             zhouChang.setText("");
             biaoCeFangFa.setText("");
+            biaoCeFangShi.setText("");
             xiaoRongShuShi.setText("");
             xiaoRongJingXian.setText("");
+
+            if (case2.getImagingInsideHeart() != null) {
+                xingQiangNeiZaoYing.setText(case2.getImagingInsideHeart());
+            }
+            if (case2.getInducedWay() != null) {
+                youFaFangShi.setText(case2.getInducedWay() + "\n\n");
+            }
+            if (case2.getTachycardiaRegulation() != null) {
+                xinDongGuoSuFaZuoShiFouGuiZhe.setText(case2.getTachycardiaRegulation());
+            }
+            if (case2.getCcl() != null) {
+                zhouChang.setText(case2.getCcl());
+            }
+            if (case2.getInspectionMethod() != null) {
+                biaoCeFangFa.setText(case2.getInspectionMethod());
+            }
+            if (case2.getAblationProcedure() != null) {
+                xiaoRongShuShi.setText(case2.getAblationProcedure());
+            }
+            if (case2.getAblationLines() != null) {
+                xiaoRongJingXian.setText(case2.getAblationLines());
+            }
+            if (case2.getMappingMode() != null) {
+                biaoCeFangShi.setText(case2.getMappingMode());
+            }
         }
 
     }

@@ -30,6 +30,8 @@
         android:layout_marginTop="12dp"
         android:textColor="@android:color/white"
         android:textSize="18sp"
+        app:cpb_selectorIdle="@drawable/sousuobingli_button_background"
+        app:cpb_cornerRadius="12dp"
         app:cpb_textComplete="完成"
         app:cpb_textError="出错"
         app:cpb_textIdle="保存" />

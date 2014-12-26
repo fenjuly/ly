@@ -139,6 +139,43 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
             shuHouZhenDuan.setText("");
             jiZhi.setText("");
             buWei.setText("");
+
+            DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+            if (case1.getOperationData() != 0) {
+                shouShuRiQi.setText(dateFormat.format(new Date(case1.getOperationData())));
+            }
+            if (case1.getOperationNumber() != null) {
+                shouShuBianHao.setText(case1.getOperationNumber());
+            }
+            if (case1.getOperatorName() != null) {
+                shuZhe.setText(case1.getOperatorName());
+            }
+            if (case1.getVtType() != null && !case1.getVtType().equals("")) {
+                shiSuLeiXing.setText("类型:" + case1.getVtType() + "\n\n"
+                        + "频度:" + case1.getVtFrequency() + "\n\n"
+                        + "每次发作持续时间:" + case1.getVtEveryAttackTime() + "\n\n"
+                        + "最近发作持续时间:" + case1.getVtLastAttackTime() + "\n\n"
+                        + "曾用转复方法:" + case1.getCardioversionMethod() + "\n\n"
+                        + "转律用药:" + case1.getCardioversionMedication());
+            }
+            if (case1.getVtCourseDisease() != null) {
+                shiSuBingCheng.setText(case1.getVtCourseDisease());
+            }
+            if (case1.getArrhythmiaDiagnose() != null) {
+                linChuangXinLvShiChangZhenDuan.setText(case1.getArrhythmiaDiagnose());
+            }
+            if (case1.getElectrophysiologyDiagnose() != null) {
+                dianShengLiJianChaZhenDuan.setText(case1.getElectrophysiologyDiagnose());
+            }
+            if (case1.getPostoperationDiagnose() != null) {
+                shuHouZhenDuan.setText(case1.getPostoperationDiagnose());
+            }
+            if (case1.getMechanism() != null) {
+                jiZhi.setText(case1.getMechanism());
+            }
+            if (case1.getPart() != null) {
+                buWei.setText(case1.getPart());
+            }
         }
 
     }

@@ -5,7 +5,10 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.dd.CircularProgressButton;
 import com.doomonafireball.betterpickers.numberpicker.NumberPickerBuilder;
@@ -26,12 +29,15 @@ import me.drakeet.materialdialog.MaterialDialog;
  */
 public class BeforeOperationMessageFragment extends BaseFragment {
 
+    private static final String[] la_types = {"未检测", "有血栓", "无血栓"};
+
     private static BeforeOperationMessageFragment fragment;
 
     EditText shuQiangUcg;
     MaterialEditText shuQianKangXinLvShiChangYaoWu;
     MaterialEditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
     MaterialEditText shuQianHeBingXinLvShiChang;
+    EditText shuQianLaXueShuanJianCe;
     MaterialEditText jianCeFangFa;
     CircularProgressButton confirm;
 
@@ -39,6 +45,7 @@ public class BeforeOperationMessageFragment extends BaseFragment {
     String shuqiankangxinlvshichangyaowu;
     String shuqianwuxiaodekangxinlvshichangyaowu;
     String shuqianhebingxinlvshichang;
+    String shuqianlaxueshuanjiance;
     String jiancefangfa;
 
 
@@ -79,6 +86,7 @@ public class BeforeOperationMessageFragment extends BaseFragment {
         shuQianKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqiankangxinlvshichangyaowu);
         shuQianWuXiaoDeKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
         shuQianHeBingXinLvShiChang = (MaterialEditText) rootView.findViewById(R.id.shuqianhebingxinlvshichang);
+        shuQianLaXueShuanJianCe = (EditText) rootView.findViewById(R.id.shuqianlaxueshuanjiance);
         jianCeFangFa = (MaterialEditText) rootView.findViewById(R.id.jiancefangfa);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
@@ -211,6 +219,36 @@ public class BeforeOperationMessageFragment extends BaseFragment {
             }
         });
 
+        shuQianLaXueShuanJianCe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        getActivity(),
+                        android.R.layout.simple_list_item_1
+                );
+                for(String la_type : la_types) {
+                    arrayAdapter.add(la_type);
+                }
+                ListView listView = new ListView(getActivity());
+                float scale = getResources().getDisplayMetrics().density;
+                int dpAsPixels = (int) (8 * scale + 0.5f);
+                listView.setPadding(0, dpAsPixels, 0, dpAsPixels);
+                listView.setDividerHeight(0);
+                listView.setAdapter(arrayAdapter);
+                final MaterialDialog alert = new MaterialDialog(getActivity())
+                        .setTitle("术前LA血栓")
+                        .setContentView(listView);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        shuQianLaXueShuanJianCe.setText(la_types[position]);
+                        alert.dismiss();
+                    }
+                });
+                alert.show();
+            }
+        });
+
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -228,6 +266,7 @@ public class BeforeOperationMessageFragment extends BaseFragment {
             shuqiankangxinlvshichangyaowu = shuQianKangXinLvShiChangYaoWu.getText().toString();
             shuqianwuxiaodekangxinlvshichangyaowu = shuQianWuXiaoDeKangXinLvShiChangYaoWu.getText().toString();
             shuqianhebingxinlvshichang = shuQianHeBingXinLvShiChang.getText().toString();
+            shuqianlaxueshuanjiance = shuQianLaXueShuanJianCe.getText().toString();
             jiancefangfa = jianCeFangFa.getText().toString();
             case3.setLaBore(laneijingtext);
             case3.setLvBore(lvneijingtext);
@@ -238,6 +277,7 @@ public class BeforeOperationMessageFragment extends BaseFragment {
             case3.setAntiArrhythmiaDrugs(shuqiankangxinlvshichangyaowu);
             case3.setInvaliDantiArrhythmiaDrugs(shuqianwuxiaodekangxinlvshichangyaowu);
             case3.setMergerArrhythmia(shuqianhebingxinlvshichang);
+            case3.setLaThrombusDetection(shuqianlaxueshuanjiance);
             case3.setTestMethod(jiancefangfa);
             case3DataChangedListener.OnCase3DataChanged(case3);
         }

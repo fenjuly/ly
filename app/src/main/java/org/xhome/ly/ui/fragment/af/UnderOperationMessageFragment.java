@@ -514,6 +514,7 @@ public class UnderOperationMessageFragment extends BaseFragment {
         if(case2 != null) {
             shuzhongdianfulv = shuZhongDianFuLv.getText().toString();
             bingfazheng = bingFaZheng.getText().toString();
+            case2.setIntraoperativeCableRate(shuzhongdianfulv);
             case2.setBeforeHeartRate(xiaorongqianxinlvtext);
             case2.setBeforeRr(xiaorongqian_fangsutext);
             case2.setBeforeRe(xiaorongqian_fangzaotext);

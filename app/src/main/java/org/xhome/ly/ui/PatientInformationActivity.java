@@ -39,7 +39,7 @@ import me.drakeet.materialdialog.MaterialDialog;
  */
 public class PatientInformationActivity extends BaseActivity {
 
-    private static final String[] xueli = {"高中", "本科", "研究生", "博士", "博士后", "教授"};
+    private static final String[] xueli = {"小学", "初中", "高中", "大专", "硕士", "博士及以上"};
 
     MaterialEditText xingMing;
     MaterialEditText shenFenZheng;

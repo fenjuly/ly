@@ -68,12 +68,17 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
         shuQianLaXueShuanJianCe = (EditText) rootView.findViewById(R.id.shuqianlaxueshuanjiance);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
-        shuQiangUcg.setText("LA内径:" + case2.getLaBore() + "\n\n"
-                + "RA内径:" + case2.getRaBore() + "\n\n"
-                + "LV内径:" + case2.getLvBore() + "\n\n"
-                + "RV内径:" + case2.getRvBore() + "\n\n"
-                + "LVEF内径:" + case2.getLvefBore() + "\n\n"
-                + "备注:" + case2.getUcgRemarks());
+        if (case2.getLaBore() != null || case2.getRaBore() != null
+                || case2.getLvBore() != null || case2.getRvBore() != null
+                || case2.getLvefBore() != null || case2.getUcgRemarks() != null) {
+
+            shuQiangUcg.setText("LA内径:" + case2.getLaBore() + "\n\n"
+                    + "RA内径:" + case2.getRaBore() + "\n\n"
+                    + "LV内径:" + case2.getLvBore() + "\n\n"
+                    + "RV内径:" + case2.getRvBore() + "\n\n"
+                    + "LVEF内径:" + case2.getLvefBore() + "\n\n"
+                    + "备注:" + case2.getUcgRemarks());
+        }
 
         if (case2.getAntiArrhythmiaDrugs() != null) {
             shuQianKangXinLvShiChangYaoWu.setText(case2.getAntiArrhythmiaDrugs());
@@ -115,6 +120,40 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
             shuQianKangXinLvShiChangYaoWu.setText("");
             shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("");
             shuQianHeBingXinLvShiChang.setText("");
+            shiFouZuoGuoFangChanXiaoRongZhiLiao.setText("");
+            shuQianKangNingYaoWu.setText("");
+            shuQianLaXueShuanJianCe.setText("");
+
+            if (case2.getLaBore() != null || case2.getRaBore() != null
+                    || case2.getLvBore() != null || case2.getRvBore() != null
+                    || case2.getLvefBore() != null || case2.getUcgRemarks() != null) {
+
+                shuQiangUcg.setText("LA内径:" + case2.getLaBore() + "\n\n"
+                        + "RA内径:" + case2.getRaBore() + "\n\n"
+                        + "LV内径:" + case2.getLvBore() + "\n\n"
+                        + "RV内径:" + case2.getRvBore() + "\n\n"
+                        + "LVEF内径:" + case2.getLvefBore() + "\n\n"
+                        + "备注:" + case2.getUcgRemarks());
+            }
+
+            if (case2.getAntiArrhythmiaDrugs() != null) {
+                shuQianKangXinLvShiChangYaoWu.setText(case2.getAntiArrhythmiaDrugs());
+            }
+            if (case2.getInvaliDantiArrhythmiaDrugs() != null) {
+                shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText(case2.getInvaliDantiArrhythmiaDrugs());
+            }
+            if (case2.getMergerArrhythmia() != null) {
+                shuQianHeBingXinLvShiChang.setText(case2.getMergerArrhythmia());
+            }
+            if (case2.getRrAblationTreatment() != null) {
+                shiFouZuoGuoFangChanXiaoRongZhiLiao.setText(case2.getRrAblationTreatment());
+            }
+            if (case2.getBeforeAnticoagulant() != null) {
+                shuQianKangNingYaoWu.setText(case2.getBeforeAnticoagulant());
+            }
+            if (case2.getLaThrombusDetection() != null) {
+                shuQianLaXueShuanJianCe.setText(case2.getLaThrombusDetection());
+            }
         }
 
     }

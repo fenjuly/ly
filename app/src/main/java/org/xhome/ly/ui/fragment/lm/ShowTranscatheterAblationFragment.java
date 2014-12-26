@@ -13,6 +13,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.bean.Case3Up;
 
 
 /**
@@ -24,30 +25,24 @@ public class ShowTranscatheterAblationFragment extends ShowBaseFragment {
 
     private static final String[] methods = {"标测方法一", "标测方法二", "标测方法三"};
 
-    EditText xingQiangNeiZaoYing;
-    EditText youFaFangShi;
-    MaterialEditText xinDongGuoSuFaZuoShiFouGuiZhe;
-    EditText zhouChang;
-    EditText biaoCeFangFa;
-    MaterialEditText shuZhangQiDianWei;
-    MaterialEditText pDianWeiBiaoCe;
     EditText xiaoRongShuShi;
-    MaterialEditText qingShuRuXiaoRongShuShi;
     EditText xiaoRongJingXian;
+    EditText baFeiJingMai;
+    EditText shenJingJieCongXiaoRong;
     CircularProgressButton confirm;
 
 
-    public static ShowTranscatheterAblationFragment newInstance(Case1Up case1) {
+    public static ShowTranscatheterAblationFragment newInstance(Case3Up case3) {
         if (fragment == null) {
             fragment = new ShowTranscatheterAblationFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
         }
 
         return fragment;
@@ -57,46 +52,26 @@ public class ShowTranscatheterAblationFragment extends ShowBaseFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(
-                R.layout.jingdaoguanxiaorong, container, false);
+                R.layout.lmjingdaoguanxiaorong, container, false);
         init();
-        xingQiangNeiZaoYing = (EditText) rootView.findViewById(R.id.xinqiangneizaoying);
-        youFaFangShi = (EditText) rootView.findViewById(R.id.youfafangshi);
-        xinDongGuoSuFaZuoShiFouGuiZhe = (MaterialEditText) rootView.findViewById(R.id.xindongguosufazuoshifouguize);
-        zhouChang = (EditText) rootView.findViewById(R.id.zhouchang);
-        biaoCeFangFa = (EditText) rootView.findViewById(R.id.biaocefangfa);
-        shuZhangQiDianWei = (MaterialEditText) rootView.findViewById(R.id.shuzhangqidianwei);
-        pDianWeiBiaoCe = (MaterialEditText) rootView.findViewById(R.id.pdianweibiaoce);
         xiaoRongShuShi = (EditText) rootView.findViewById(R.id.xiaorongshushi);
-        qingShuRuXiaoRongShuShi = (MaterialEditText) rootView.findViewById(R.id.qingshuruxiaorongshushi);
         xiaoRongJingXian = (EditText) rootView.findViewById(R.id.xiaorongjingxian);
+        baFeiJingMai = (EditText) rootView.findViewById(R.id.bafeijingmai);
+        shenJingJieCongXiaoRong = (EditText) rootView.findViewById(R.id.shenjingjiecongxiaorong);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
-        if (case1.getImagingInsideHeart() != null) {
-            xingQiangNeiZaoYing.setText(case1.getImagingInsideHeart());
+        if (case3.getLungVein() != null) {
+            baFeiJingMai.setText(case3.getLungVein());
         }
-        if (case1.getInducedWay() != null) {
-            youFaFangShi.setText(case1.getInducedWay() + "\n\n");
+        if (case3.getGpAblation() != null) {
+            shenJingJieCongXiaoRong.setText(case3.getGpAblation() + "\n\n");
         }
-        if (case1.getTachycardiaRegulation() != null) {
-            xinDongGuoSuFaZuoShiFouGuiZhe.setText(case1.getTachycardiaRegulation());
+
+        if (case3.getAblationProcedure() != null) {
+            xiaoRongShuShi.setText(case3.getAblationProcedure());
         }
-        if (case1.getCcl() != null) {
-            zhouChang.setText(case1.getCcl());
-        }
-        if (case1.getInspectionMethod() != null) {
-            biaoCeFangFa.setText(case1.getInspectionMethod());
-        }
-        if (case1.getDiastolicPotential() != null) {
-            shuZhangQiDianWei.setText(case1.getDiastolicPotential());
-        }
-        if (case1.getpPotentialExamination() != null) {
-            pDianWeiBiaoCe.setText(case1.getpPotentialExamination());
-        }
-        if (case1.getAblationProcedure() != null) {
-            xiaoRongShuShi.setText(case1.getAblationProcedure());
-        }
-        if (case1.getAblationLines() != null) {
-            xiaoRongJingXian.setText(case1.getAblationLines());
+        if (case3.getAblationLines() != null) {
+            xiaoRongJingXian.setText(case3.getAblationLines());
         }
 
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -114,16 +89,24 @@ public class ShowTranscatheterAblationFragment extends ShowBaseFragment {
         super.onViewStateRestored(savedInstanceState);
         if (!isInActivity) {
             isInActivity = true;
-            xingQiangNeiZaoYing.setText("");
-            youFaFangShi.setText("");
-            xinDongGuoSuFaZuoShiFouGuiZhe.setText("");
-            zhouChang.setText("");
-            biaoCeFangFa.setText("");
-            shuZhangQiDianWei.setText("");
-            pDianWeiBiaoCe.setText("");
             xiaoRongShuShi.setText("");
-            qingShuRuXiaoRongShuShi.setText("");
             xiaoRongJingXian.setText("");
+            baFeiJingMai.setText("");
+            shenJingJieCongXiaoRong.setText("");
+
+            if (case3.getLungVein() != null) {
+                baFeiJingMai.setText(case3.getLungVein());
+            }
+            if (case3.getGpAblation() != null) {
+                shenJingJieCongXiaoRong.setText(case3.getGpAblation() + "\n\n");
+            }
+
+            if (case3.getAblationProcedure() != null) {
+                xiaoRongShuShi.setText(case3.getAblationProcedure());
+            }
+            if (case3.getAblationLines() != null) {
+                xiaoRongJingXian.setText(case3.getAblationLines());
+            }
         }
 
     }

@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
-import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.bean.Case3Up;
 
 
 /**
@@ -22,24 +22,26 @@ public class ShowUnderOperationMessageFragment extends ShowBaseFragment {
 
     private static ShowUnderOperationMessageFragment fragment;
 
-    MaterialEditText shuZhongDianFuLv;
+    EditText miZouFanShe;
+    MaterialEditText shuZhongChuXianMiZouFanSheQuYu;
+    EditText shuZhongDianFuLv;
     EditText xiaoRongQianXinLv;
     EditText shuZhongXinLv;
     EditText bingFaZheng;
     CircularProgressButton confirm;
 
 
-    public static ShowUnderOperationMessageFragment newInstance(Case1Up case1) {
+    public static ShowUnderOperationMessageFragment newInstance(Case3Up case3) {
         if (fragment == null) {
             fragment = new ShowUnderOperationMessageFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
         }
 
         return fragment;
@@ -49,36 +51,42 @@ public class ShowUnderOperationMessageFragment extends ShowBaseFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(
-                R.layout.shuzhongxinxi, container, false);
+                R.layout.lmshuzhongxinxi, container, false);
         init();
-        shuZhongDianFuLv = (MaterialEditText) rootView.findViewById(R.id.shuzhongdianfulv);
+        miZouFanShe = (EditText) rootView.findViewById(R.id.mizoufanshe);
+        shuZhongChuXianMiZouFanSheQuYu = (MaterialEditText) rootView.findViewById(R.id.shuzhongchuxianmizoufanshequyu);
+        shuZhongDianFuLv = (EditText) rootView.findViewById(R.id.shuzhongdianfulv);
         xiaoRongQianXinLv = (EditText) rootView.findViewById(R.id.xiaorongqianxinlv);
         shuZhongXinLv = (EditText) rootView.findViewById(R.id.shuzhongxinlv);
         bingFaZheng = (EditText) rootView.findViewById(R.id.bingfazheng);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
-        if (case1.getIntraoperativeCableRate() != null) {
-            shuZhongDianFuLv.setText(case1.getIntraoperativeCableRate());
+        if (case3.getIntraoperativeCableRate() != null) {
+            shuZhongDianFuLv.setText(case3.getIntraoperativeCableRate());
         }
 
-        if (case1.getBeforeHeartRate() != null || case1.getBeforeVt() != null
-                || case1.getBeforeRont() != null || case1.getBeforeRemarks() != null) {
-            xiaoRongQianXinLv.setText(case1.getBeforeHeartRate() + "\n\n"
-                    + "室速:" + case1.getBeforeVt() + "\n\n"
-                    + "室早:" + case1.getBeforeRont() + "\n\n"
-                    + "备注:" + case1.getBeforeRemarks()) ;
+        if (case3.getBeforeHeartRate() != null || case3.getBeforeRr() != null
+                || case3.getBeforeRe() != null || case3.getBeforeAf() != null
+                || case3.getBeforeRemarks() != null) {
+            xiaoRongQianXinLv.setText("窦性心律:" +case3.getBeforeHeartRate() + "\n\n"
+                    + "房速:" + case3.getBeforeRr() + "\n\n"
+                    + "房早:" + case3.getBeforeRe() + "\n\n"
+                    + "房颤:" + case3.getBeforeAf() + "\n\n"
+                    + "备注:" + case3.getBeforeRemarks()) ;
         }
 
-        if (case1.getInHeartRate() != null || case1.getInVt() != null
-                || case1.getInRont() != null || case1.getInRemarks() != null) {
-            shuZhongXinLv.setText(case1.getInHeartRate() + "\n\n"
-                    + "室速:" + case1.getInVt() + "\n\n"
-                    + "室早:" + case1.getInRont() + "\n\n"
-                    + "备注:" + case1.getInRemarks()) ;
+        if (case3.getInHeartRate() != null || case3.getInRr() != null
+                || case3.getInRe() != null || case3.getInAf() != null
+                || case3.getInRemarks() != null) {
+            shuZhongXinLv.setText("窦性心律:" + case3.getInHeartRate() + "\n\n"
+                    + "房速:" + case3.getInRr() + "\n\n"
+                    + "房早:" + case3.getInRe() + "\n\n"
+                    + "房颤:" + case3.getInAf() + "\n\n"
+                    + "备注:" + case3.getInRemarks()) ;
         }
 
-        if ((case1.getComplication() != null)) {
-            bingFaZheng.setText(case1.getComplication());
+        if ((case3.getComplication() != null)) {
+            bingFaZheng.setText(case3.getComplication());
         }
 
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -96,10 +104,40 @@ public class ShowUnderOperationMessageFragment extends ShowBaseFragment {
         super.onViewStateRestored(savedInstanceState);
         if (!isInActivity) {
             isInActivity = true;
+            miZouFanShe.setText("");
+            shuZhongChuXianMiZouFanSheQuYu.setText("");
             shuZhongDianFuLv.setText("");
             xiaoRongQianXinLv.setText("");
             shuZhongXinLv.setText("");
             bingFaZheng.setText("");
+
+            if (case3.getIntraoperativeCableRate() != null) {
+                shuZhongDianFuLv.setText(case3.getIntraoperativeCableRate());
+            }
+
+            if (case3.getBeforeHeartRate() != null || case3.getBeforeRr() != null
+                    || case3.getBeforeRe() != null || case3.getBeforeAf() != null
+                    || case3.getBeforeRemarks() != null) {
+                xiaoRongQianXinLv.setText("窦性心律:" +case3.getBeforeHeartRate() + "\n\n"
+                        + "房速:" + case3.getBeforeRr() + "\n\n"
+                        + "房早:" + case3.getBeforeRe() + "\n\n"
+                        + "房颤:" + case3.getBeforeAf() + "\n\n"
+                        + "备注:" + case3.getBeforeRemarks()) ;
+            }
+
+            if (case3.getInHeartRate() != null || case3.getInRr() != null
+                    || case3.getInRe() != null || case3.getInAf() != null
+                    || case3.getInRemarks() != null) {
+                shuZhongXinLv.setText("窦性心律:" + case3.getInHeartRate() + "\n\n"
+                        + "房速:" + case3.getInRr() + "\n\n"
+                        + "房早:" + case3.getInRe() + "\n\n"
+                        + "房颤:" + case3.getInAf() + "\n\n"
+                        + "备注:" + case3.getInRemarks()) ;
+            }
+
+            if ((case3.getComplication() != null)) {
+                bingFaZheng.setText(case3.getComplication());
+            }
         }
 
     }

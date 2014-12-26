@@ -20,6 +20,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1;
+import org.xhome.ly.bean.Case3;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -31,6 +32,8 @@ public class TranscatheterAblationFragment extends BaseFragment {
     private static TranscatheterAblationFragment fragment;
 
     private static final String[] methods = {"标测方法一", "标测方法二", "标测方法三"};
+
+    private static final String[] shenjing_types = {"有", "无", "高频刺激寻找"};
 
     EditText xiaoRongShuShi;
     EditText xiaoRongJingXian;
@@ -88,17 +91,17 @@ public class TranscatheterAblationFragment extends BaseFragment {
 
 
 
-    public static TranscatheterAblationFragment newInstance(Case1 case1) {
+    public static TranscatheterAblationFragment newInstance(Case3 case3) {
         if (fragment == null) {
             fragment = new TranscatheterAblationFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
         }
 
         return fragment;
@@ -380,7 +383,7 @@ public class TranscatheterAblationFragment extends BaseFragment {
                                 + rpvstext + " " + lspvtext + " "
                                 + lipvtext + " " + lpvstext + " " + svctext + " "
                                 + ivctext + " " + csotext + " "
-                                + pvgonggantext + " " + qitashushitext;
+                                + pvgonggantext + " " + qitatext;
                         baFeiJingMai.setText("靶肺静脉:" + bafeijingmaitext);
                         alert.dismiss();
                     }
@@ -397,8 +400,9 @@ public class TranscatheterAblationFragment extends BaseFragment {
                 youfangxiabutext = "";
                 laayierjianbantext = "";
                 zuofangjiangexiantext = "";
+                zuoyoufeijingmaixiaoronghuanjiantext = "";
                 zuofangdibutext = "";
-                View v = LayoutInflater.from(getActivity()).inflate(R.layout.xiaorongjingxian, null);
+                View v = LayoutInflater.from(getActivity()).inflate(R.layout.lmxiaorongjingxian, null);
                 final MaterialDialog alert = new MaterialDialog(getActivity())
                         .setTitle("消融径线")
                         .setContentView(v);
@@ -500,13 +504,44 @@ public class TranscatheterAblationFragment extends BaseFragment {
                                 + zuofangjiangexiantext + " " + zuofangdibutext + " "
                                 + zuoyoufeijingmaixiaoronghuanjiantext + " "
                                 + shuruqitatext;
-                        xiaoRongJingXian.setText("消融术式:" + xiaorongjingxiantext);
+                        xiaoRongJingXian.setText("消融径线:" + xiaorongjingxiantext);
                         alert.dismiss();
                     }
                 });
 
             }
         });
+
+        shenJingJieCongXiaoRong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        getActivity(),
+                        android.R.layout.simple_list_item_1
+                );
+                for(String la_type : shenjing_types) {
+                    arrayAdapter.add(la_type);
+                }
+                ListView listView = new ListView(getActivity());
+                float scale = getResources().getDisplayMetrics().density;
+                int dpAsPixels = (int) (8 * scale + 0.5f);
+                listView.setPadding(0, dpAsPixels, 0, dpAsPixels);
+                listView.setDividerHeight(0);
+                listView.setAdapter(arrayAdapter);
+                final MaterialDialog alert = new MaterialDialog(getActivity())
+                        .setTitle("神经节丛消融")
+                        .setContentView(listView);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        shenJingJieCongXiaoRong.setText(shenjing_types[position]);
+                        alert.dismiss();
+                    }
+                });
+                alert.show();
+            }
+        });
+
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

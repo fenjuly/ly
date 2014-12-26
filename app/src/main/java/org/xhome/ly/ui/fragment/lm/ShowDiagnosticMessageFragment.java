@@ -13,6 +13,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.bean.Case3Up;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -35,23 +36,21 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
     MaterialEditText linChuangXinLvShiChangZhenDuan;
     MaterialEditText dianShengLiJianChaZhenDuan;
     MaterialEditText shuHouZhenDuan;
-    MaterialEditText jiZhi;
-    MaterialEditText buWei;
 
     CircularProgressButton confirm;
 
 
-    public static ShowDiagnosticMessageFragment newInstance(Case1Up case1) {
+    public static ShowDiagnosticMessageFragment newInstance(Case3Up case3) {
         if (fragment == null) {
             fragment = new ShowDiagnosticMessageFragment();
         }
         Bundle bundle = fragment.getArguments();
         if (bundle == null) {
             bundle = new Bundle();
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
             fragment.setArguments(bundle);
         } else {
-            bundle.putString("case1", new Gson().toJson(case1));
+            bundle.putString("case3", new Gson().toJson(case3));
         }
 
         return fragment;
@@ -62,7 +61,7 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(
-                R.layout.zhenduanxinxi, container, false);
+                R.layout.lmzhenduanxinxi, container, false);
         init();
         shouShuRiQi = (EditText) rootView.findViewById(R.id.shoushuriqi);
         shouShuBianHao = (MaterialEditText) rootView.findViewById(R.id.shoushubianhao);
@@ -72,45 +71,38 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
         linChuangXinLvShiChangZhenDuan = (MaterialEditText) rootView.findViewById(R.id.linchuangxinlvshichangzhenduan);
         dianShengLiJianChaZhenDuan = (MaterialEditText) rootView.findViewById(R.id.dianshenglijianchazhenduan);
         shuHouZhenDuan = (MaterialEditText) rootView.findViewById(R.id.shuhouzhenduan);
-        jiZhi = (MaterialEditText) rootView.findViewById(R.id.jizhi);
-        buWei = (MaterialEditText) rootView.findViewById(R.id.buwei);
+
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
-        if (case1.getOperationData() != 0) {
-            shouShuRiQi.setText(dateFormat.format(new Date(case1.getOperationData())));
+        if (case3.getOperationData() != 0) {
+            shouShuRiQi.setText(dateFormat.format(new Date(case3.getOperationData())));
         }
-        if (case1.getOperationNumber() != null) {
-            shouShuBianHao.setText(case1.getOperationNumber());
+        if (case3.getOperationNumber() != null) {
+            shouShuBianHao.setText(case3.getOperationNumber());
         }
-        if (case1.getOperatorName() != null) {
-            shuZhe.setText(case1.getOperatorName());
+        if (case3.getOperatorName() != null) {
+            shuZhe.setText(case3.getOperatorName());
         }
-        if (case1.getVtType() != null && !case1.getVtType().equals("")) {
-            shiSuLeiXing.setText("类型:" + case1.getVtType() + "\n\n"
-                    + "频度:" + case1.getVtFrequency() + "\n\n"
-                    + "每次发作持续时间:" + case1.getVtEveryAttackTime() + "\n\n"
-                    + "最近发作持续时间:" + case1.getVtLastAttackTime() + "\n\n"
-                    + "曾用转复方法:" + case1.getCardioversionMethod() + "\n\n"
-                    + "转律用药:" + case1.getCardioversionMedication());
+        if (case3.getAfType() != null && !case3.getAfType().equals("")) {
+            shiSuLeiXing.setText("类型:" + case3.getAfType() + "\n\n"
+                    + "频度:" + case3.getAfFrequency() + "\n\n"
+                    + "每次发作持续时间:" + case3.getAfEveryAttackTime() + "\n\n"
+                    + "最近发作持续时间:" + case3.getAfLastAttackTime() + "\n\n"
+                    + "曾用转复方法:" + case3.getCardioversionMethod() + "\n\n"
+                    + "转律用药:" + case3.getCardioversionMedication());
         }
-        if (case1.getVtCourseDisease() != null) {
-            shiSuBingCheng.setText(case1.getVtCourseDisease());
+        if (case3.getAfCourseDisease() != null) {
+            shiSuBingCheng.setText(case3.getAfCourseDisease());
         }
-        if (case1.getArrhythmiaDiagnose() != null) {
-            linChuangXinLvShiChangZhenDuan.setText(case1.getArrhythmiaDiagnose());
+        if (case3.getArrhythmiaDiagnose() != null) {
+            linChuangXinLvShiChangZhenDuan.setText(case3.getArrhythmiaDiagnose());
         }
-        if (case1.getElectrophysiologyDiagnose() != null) {
-            dianShengLiJianChaZhenDuan.setText(case1.getElectrophysiologyDiagnose());
+        if (case3.getElectrophysiologyDiagnose() != null) {
+            dianShengLiJianChaZhenDuan.setText(case3.getElectrophysiologyDiagnose());
         }
-        if (case1.getPostoperationDiagnose() != null) {
-            shuHouZhenDuan.setText(case1.getPostoperationDiagnose());
-        }
-        if (case1.getMechanism() != null) {
-            jiZhi.setText(case1.getMechanism());
-        }
-        if (case1.getPart() != null) {
-            buWei.setText(case1.getPart());
+        if (case3.getPostoperationDiagnose() != null) {
+            shuHouZhenDuan.setText(case3.getPostoperationDiagnose());
         }
 
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -136,8 +128,38 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
             linChuangXinLvShiChangZhenDuan.setText("");
             dianShengLiJianChaZhenDuan.setText("");
             shuHouZhenDuan.setText("");
-            jiZhi.setText("");
-            buWei.setText("");
+
+            DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+            if (case3.getOperationData() != 0) {
+                shouShuRiQi.setText(dateFormat.format(new Date(case3.getOperationData())));
+            }
+            if (case3.getOperationNumber() != null) {
+                shouShuBianHao.setText(case3.getOperationNumber());
+            }
+            if (case3.getOperatorName() != null) {
+                shuZhe.setText(case3.getOperatorName());
+            }
+            if (case3.getAfType() != null && !case3.getAfType().equals("")) {
+                shiSuLeiXing.setText("类型:" + case3.getAfType() + "\n\n"
+                        + "频度:" + case3.getAfFrequency() + "\n\n"
+                        + "每次发作持续时间:" + case3.getAfEveryAttackTime() + "\n\n"
+                        + "最近发作持续时间:" + case3.getAfLastAttackTime() + "\n\n"
+                        + "曾用转复方法:" + case3.getCardioversionMethod() + "\n\n"
+                        + "转律用药:" + case3.getCardioversionMedication());
+            }
+            if (case3.getAfCourseDisease() != null) {
+                shiSuBingCheng.setText(case3.getAfCourseDisease());
+            }
+            if (case3.getArrhythmiaDiagnose() != null) {
+                linChuangXinLvShiChangZhenDuan.setText(case3.getArrhythmiaDiagnose());
+            }
+            if (case3.getElectrophysiologyDiagnose() != null) {
+                dianShengLiJianChaZhenDuan.setText(case3.getElectrophysiologyDiagnose());
+            }
+            if (case3.getPostoperationDiagnose() != null) {
+                shuHouZhenDuan.setText(case3.getPostoperationDiagnose());
+            }
+
         }
 
     }

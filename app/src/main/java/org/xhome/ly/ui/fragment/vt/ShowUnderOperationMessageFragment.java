@@ -100,6 +100,30 @@ public class ShowUnderOperationMessageFragment extends ShowBaseFragment {
             xiaoRongQianXinLv.setText("");
             shuZhongXinLv.setText("");
             bingFaZheng.setText("");
+
+            if (case1.getIntraoperativeCableRate() != null) {
+                shuZhongDianFuLv.setText(case1.getIntraoperativeCableRate());
+            }
+
+            if (case1.getBeforeHeartRate() != null || case1.getBeforeVt() != null
+                    || case1.getBeforeRont() != null || case1.getBeforeRemarks() != null) {
+                xiaoRongQianXinLv.setText(case1.getBeforeHeartRate() + "\n\n"
+                        + "室速:" + case1.getBeforeVt() + "\n\n"
+                        + "室早:" + case1.getBeforeRont() + "\n\n"
+                        + "备注:" + case1.getBeforeRemarks()) ;
+            }
+
+            if (case1.getInHeartRate() != null || case1.getInVt() != null
+                    || case1.getInRont() != null || case1.getInRemarks() != null) {
+                shuZhongXinLv.setText(case1.getInHeartRate() + "\n\n"
+                        + "室速:" + case1.getInVt() + "\n\n"
+                        + "室早:" + case1.getInRont() + "\n\n"
+                        + "备注:" + case1.getInRemarks()) ;
+            }
+
+            if ((case1.getComplication() != null)) {
+                bingFaZheng.setText(case1.getComplication());
+            }
         }
 
     }

@@ -54,7 +54,10 @@ public class ShowAppendixFragment extends ShowBaseFragment {
         super.onViewStateRestored(savedInstanceState);
         if (!isInActivity) {
             isInActivity = true;
-
+            beiZhu.setText("");
+            if (case2.getGlobalRemarks() != null) {
+                beiZhu.setText(case2.getGlobalRemarks());
+            }
         }
     }
 
