@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case3Up;
+import org.xhome.ly.ui.fragment.FollowUpFragment;
 import org.xhome.ly.ui.fragment.lm.ShowAblationResultFragment;
 import org.xhome.ly.ui.fragment.lm.ShowAppendixFragment;
 import org.xhome.ly.ui.fragment.lm.ShowBaseFragment;
@@ -38,7 +39,7 @@ public class ShowCase3InformationActivity extends BaseActivity implements ShowBa
     private ArrayAdapter<String> mDrawerAapter;
     private static final String[] ITEMS = {
             "诊断信息", "术前信息", "经导管消融",
-            "消融结果", "术中信息", "附录"
+            "消融结果", "术中信息", "附录", "新增随访"
     };
 
     FragmentManager fragmentManager;
@@ -114,6 +115,11 @@ public class ShowCase3InformationActivity extends BaseActivity implements ShowBa
                     case 5:
                         setTitle("附录");
                         setFragment(ShowAppendixFragment.newInstance(case3));
+                        break;
+                    case 6:
+                        setTitle("新增随访");
+                        fragmentManager.beginTransaction().replace(R.id.content_frame, FollowUpFragment.newInstance()).commit();
+                        mDrawerLayout.closeDrawers();
                         break;
                 }
             }

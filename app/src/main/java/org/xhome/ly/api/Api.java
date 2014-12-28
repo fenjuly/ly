@@ -4,7 +4,7 @@ package org.xhome.ly.api;
  * Created by liurongchan on 14/12/2.
  */
 public class Api {
-    public static final String HOST = "http://182.92.242.163:8080/yl";
+    public static final String HOST = "http://192.168.0.110:8081/yl";
 
     /**
      * 医生
@@ -63,5 +63,11 @@ public class Api {
     public static final String MEDICAL_HISTORY = HOST + "/api/patient/%1$s/medicalhistory";
 
     //
+
+
+    /**
+     * 随访
+     */
+    public static final String FOLLOWUP = HOST + "/api/followup";
 
 }

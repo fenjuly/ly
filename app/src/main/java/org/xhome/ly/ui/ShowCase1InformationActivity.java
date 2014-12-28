@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1Up;
+import org.xhome.ly.ui.fragment.FollowUpFragment;
 import org.xhome.ly.ui.fragment.vt.ShowBaseFragment;
 import org.xhome.ly.ui.fragment.vt.ShowAblationResultFragment;
 import org.xhome.ly.ui.fragment.vt.ShowAppendixFragment;
@@ -24,6 +25,7 @@ import org.xhome.ly.ui.fragment.vt.ShowBeforeOperationMessageFragment;
 import org.xhome.ly.ui.fragment.vt.ShowDiagnosticMessageFragment;
 import org.xhome.ly.ui.fragment.vt.ShowTranscatheterAblationFragment;
 import org.xhome.ly.ui.fragment.vt.ShowUnderOperationMessageFragment;
+import org.xhome.ly.util.SharePerferenceUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +42,7 @@ public class ShowCase1InformationActivity extends BaseActivity implements ShowBa
     private ArrayAdapter<String> mDrawerAapter;
     private static final String[] ITEMS = {
             "诊断信息", "术前信息", "经导管消融",
-            "消融结果", "术中信息", "附录"
+            "消融结果", "术中信息", "附录", "新增随访"
     };
 
     private List<ShowBaseFragment> fragments = new ArrayList<ShowBaseFragment>();
@@ -55,6 +57,7 @@ public class ShowCase1InformationActivity extends BaseActivity implements ShowBa
         setContentView(R.layout.activity_case1_information);
         Intent intent = getIntent();
         case1 = new Gson().fromJson(intent.getStringExtra("case1"), Case1Up.class);
+        SharePerferenceUtils.addOther("interrogationRecordId", String.valueOf(case1.getInterrogationRecordId()));
         fragmentManager = getSupportFragmentManager();
         mDrawerAapter = new ArrayAdapter<String>(this,
                 R.layout.drawer_item
@@ -116,6 +119,11 @@ public class ShowCase1InformationActivity extends BaseActivity implements ShowBa
                     case 5:
                         setTitle("附录");
                         setFragment(ShowAppendixFragment.newInstance(case1));
+                        break;
+                    case 6:
+                        setTitle("新增随访");
+                        fragmentManager.beginTransaction().replace(R.id.content_frame, FollowUpFragment.newInstance()).commit();
+                        mDrawerLayout.closeDrawers();
                         break;
                 }
             }
