@@ -21,7 +21,7 @@
             android:focusable="false"
             />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
+        <EditText
             android:id="@+id/shuqiankangxinlvshichangyaowu"
             android:layout_below="@+id/shuqianucg"
             android:layout_width="match_parent"
@@ -31,9 +31,9 @@
             android:layout_marginTop="12dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            app:floatingLabel="highlight"
+            android:focusable="false"
             />
-        <com.rengwuxian.materialedittext.MaterialEditText
+        <EditText
             android:id="@+id/shuqianwuxiaodekangxinlvshichangyaowu"
             android:layout_below="@+id/shuqiankangxinlvshichangyaowu"
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            app:floatingLabel="highlight"
+            android:focusable="false"
             />
 
         <com.rengwuxian.materialedittext.MaterialEditText

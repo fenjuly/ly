@@ -11,7 +11,7 @@
         android:layout_above="@+id/version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="心血管家"
+        android:text="妙手医生"
         android:textColor="#ffffff"
         android:textSize="40sp"
         android:gravity="center_horizontal"
