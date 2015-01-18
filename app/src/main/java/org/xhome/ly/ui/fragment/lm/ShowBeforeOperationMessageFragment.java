@@ -24,8 +24,8 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
     private static ShowBeforeOperationMessageFragment fragment;
 
     EditText shuQiangUcg;
-    MaterialEditText shuQianKangXinLvShiChangYaoWu;
-    MaterialEditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
+    EditText shuQianKangXinLvShiChangYaoWu;
+    EditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
     MaterialEditText shuQianHeBingXinLvShiChang;
     EditText shuQianLaXueShuanJianCe;
     MaterialEditText jianCeFangFa;
@@ -55,8 +55,8 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
                 R.layout.lmshuqianxinxi, container, false);
         init();
         shuQiangUcg = (EditText) rootView.findViewById(R.id.shuqianucg);
-        shuQianKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqiankangxinlvshichangyaowu);
-        shuQianWuXiaoDeKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
+        shuQianKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqiankangxinlvshichangyaowu);
+        shuQianWuXiaoDeKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
         shuQianHeBingXinLvShiChang = (MaterialEditText) rootView.findViewById(R.id.shuqianhebingxinlvshichang);
         shuQianLaXueShuanJianCe = (EditText) rootView.findViewById(R.id.shuqianlaxueshuanjiance);
         jianCeFangFa = (MaterialEditText) rootView.findViewById(R.id.jiancefangfa);

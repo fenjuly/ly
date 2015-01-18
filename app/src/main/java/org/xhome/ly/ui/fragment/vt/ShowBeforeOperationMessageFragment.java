@@ -26,8 +26,8 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
     MaterialEditText ecgShuZhiZhuZhiLeiXing;
     MaterialEditText dianZhouPianYi;
     MaterialEditText shuQianQiTaJianChaZhongYaoYangXingMiaoShu;
-    MaterialEditText shuQianKangXinLvShiChangYaoWu;
-    MaterialEditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
+    EditText shuQianKangXinLvShiChangYaoWu;
+    EditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
     MaterialEditText shuQianHeBingXinLvShiChang;
     CircularProgressButton confirm;
 
@@ -58,8 +58,8 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
         ecgShuZhiZhuZhiLeiXing = (MaterialEditText) rootView.findViewById(R.id.ecgshuzhizuzhileixing);
         dianZhouPianYi = (MaterialEditText) rootView.findViewById(R.id.dianzhoupianyi);
         shuQianQiTaJianChaZhongYaoYangXingMiaoShu = (MaterialEditText) rootView.findViewById(R.id.shuqianqitajianchazhongyaoyangxingmiaoshu);
-        shuQianKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqiankangxinlvshichangyaowu);
-        shuQianWuXiaoDeKangXinLvShiChangYaoWu = (MaterialEditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
+        shuQianKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqiankangxinlvshichangyaowu);
+        shuQianWuXiaoDeKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
         shuQianHeBingXinLvShiChang = (MaterialEditText) rootView.findViewById(R.id.shuqianhebingxinlvshichang);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
