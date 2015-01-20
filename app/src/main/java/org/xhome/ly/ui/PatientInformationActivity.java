@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -181,49 +182,55 @@ public class PatientInformationActivity extends BaseActivity {
                    xingMing.setError("姓名不能为空");
                 } else if (dianHua.getText().toString().length() != 11) {
                    dianHua.setError("电话号码不对");
+                } else if (age < 0 ) {
+                   nianLing.setError("年龄错误");
+                } else if (Integer.valueOf(month) > 12 || Integer.valueOf(month) < 0 || Integer.valueOf(day) > 31 || Integer.valueOf(day) < 0) {
+                    chuShengNianYue.setError("出生日期错误");
                 } else {
-                    xingming = xingMing.getText().toString();
-                    shenfenzheng = shenFenZheng.getText().toString();
-                    xingbie = xingBie.getText().toString();
-                    nianling = nianLing.getText().toString();
-                    dianhua = dianHua.getText().toString();
-                    jiatingzhuzhi = jiaTingZhuZhi.getText().toString();
-                    wenhuachengdu = wenHuaChengDu.getText().toString();
-                    zhiye = zhiYe.getText().toString();
-                    binglibianhao = bingLiBianHao.getText().toString();
-                    Patient patient = new Patient();
-                    patient.setName(xingming);
-                    patient.setIdCard(shenfenzheng);
-                    patient.setSex(xingbie);
-                    patient.setAge(age);
-                    if (!nianling.equals("")) {
-                        Date date = new Date(Integer.valueOf(year) - 1900, Integer.valueOf(month), Integer.valueOf(day));
-                        patient.setBirthday(date);
-                    }
-                    patient.setPhoneNumber(dianhua);
-                    patient.setAdress(jiatingzhuzhi);
-                    patient.setEducationLevel(wenhuachengdu);
-                    patient.setProfession(zhiye);
-
-                    JSONObject jsonObject = null;
-                    try {
-                        jsonObject = new JSONObject(new Gson().toJson(patient));
-                        if (patient.getBirthday() != null) {
-                            long millis = patient.getBirthday().getTime();
-                            jsonObject.remove("birthday");
-                            jsonObject.put("birthday", String.valueOf(millis));
+                        xingming = xingMing.getText().toString();
+                        shenfenzheng = shenFenZheng.getText().toString();
+                        xingbie = xingBie.getText().toString();
+                        nianling = nianLing.getText().toString();
+                        dianhua = dianHua.getText().toString();
+                        jiatingzhuzhi = jiaTingZhuZhi.getText().toString();
+                        wenhuachengdu = wenHuaChengDu.getText().toString();
+                        zhiye = zhiYe.getText().toString();
+                        binglibianhao = bingLiBianHao.getText().toString();
+                        Patient patient = new Patient();
+                        patient.setName(xingming);
+                        patient.setIdCard(shenfenzheng);
+                        patient.setSex(xingbie);
+                        patient.setAge(age);
+                        if (!nianling.equals("")) {
+                            Date date = new Date(Integer.valueOf(year) - 1900, Integer.valueOf(month) - 1, Integer.valueOf(day));
+                            Log.e("date", date.toString());
+                            patient.setBirthday(date);
                         }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+                        patient.setPhoneNumber(dianhua);
+                        patient.setAdress(jiatingzhuzhi);
+                        patient.setEducationLevel(wenhuachengdu);
+                        patient.setProfession(zhiye);
 
-                    Map<String, String> headers = new HashMap<String, String>();
-                    headers.put("Authentication", SharePerferenceUtils.getInformation(SharePerferenceUtils.AUTHENTICATION));
-                    confirm.setProgress(50);
-                    executeRequest(new GsonRequest(Request.Method.POST, Api.PATIENT,
-                            jsonObject.toString(), responseListener(), errorListener(),
-                            Response.class, headers));
-                }
+                        JSONObject jsonObject = null;
+                        try {
+                            jsonObject = new JSONObject(new Gson().toJson(patient));
+                            if (patient.getBirthday() != null) {
+//                                long millis = patient.getBirthday().getTime();
+                                jsonObject.remove("birthday");
+//                                jsonObject.put("birthday", String.valueOf(millis) + "l");
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    Log.e("jsonObject", jsonObject.toString());
+                        Map<String, String> headers = new HashMap<String, String>();
+                        headers.put("Authentication", SharePerferenceUtils.getInformation(SharePerferenceUtils.AUTHENTICATION));
+                        confirm.setProgress(50);
+                        long millis = patient.getBirthday().getTime();
+                        executeRequest(new GsonRequest(Request.Method.POST, Api.PATIENT + "?birthday=" + millis,
+                                jsonObject.toString(), responseListener(), errorListener(),
+                                Response.class, headers));
+                    }
             }
         });
     }
