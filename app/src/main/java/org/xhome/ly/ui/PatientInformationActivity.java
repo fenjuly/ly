@@ -28,6 +28,7 @@ import org.xhome.ly.network.GsonRequest;
 import org.xhome.ly.util.SharePerferenceUtils;
 import org.xhome.ly.util.ToastUtils;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -187,6 +188,7 @@ public class PatientInformationActivity extends BaseActivity {
                 } else if (Integer.valueOf(month) > 12 || Integer.valueOf(month) < 0 || Integer.valueOf(day) > 31 || Integer.valueOf(day) < 0) {
                     chuShengNianYue.setError("出生日期错误");
                 } else {
+                       long millis = 0l;
                         xingming = xingMing.getText().toString();
                         shenfenzheng = shenFenZheng.getText().toString();
                         xingbie = xingBie.getText().toString();
@@ -202,8 +204,12 @@ public class PatientInformationActivity extends BaseActivity {
                         patient.setSex(xingbie);
                         patient.setAge(age);
                         if (!nianling.equals("")) {
-                            Date date = new Date(Integer.valueOf(year) - 1900, Integer.valueOf(month) - 1, Integer.valueOf(day));
+                            Calendar calbk = Calendar.getInstance();
+                            calbk.set(Integer.valueOf(year), Integer.valueOf(month) - 1, Integer.valueOf(day) - 1, 24, 0, 0);
+                            Date date = calbk.getTime();
+                            millis = calbk.getTimeInMillis()/1000;
                             Log.e("date", date.toString());
+                            Log.e("timestamp", String.valueOf(millis));
                             patient.setBirthday(date);
                         }
                         patient.setPhoneNumber(dianhua);
@@ -217,7 +223,7 @@ public class PatientInformationActivity extends BaseActivity {
                             if (patient.getBirthday() != null) {
 //                                long millis = patient.getBirthday().getTime();
                                 jsonObject.remove("birthday");
-//                                jsonObject.put("birthday", String.valueOf(millis) + "l");
+//                                jsonObject.put("birthday", String.valueOf(millis));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -226,7 +232,6 @@ public class PatientInformationActivity extends BaseActivity {
                         Map<String, String> headers = new HashMap<String, String>();
                         headers.put("Authentication", SharePerferenceUtils.getInformation(SharePerferenceUtils.AUTHENTICATION));
                         confirm.setProgress(50);
-                        long millis = patient.getBirthday().getTime();
                         executeRequest(new GsonRequest(Request.Method.POST, Api.PATIENT + "?birthday=" + millis,
                                 jsonObject.toString(), responseListener(), errorListener(),
                                 Response.class, headers));
