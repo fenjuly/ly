@@ -38,7 +38,7 @@ public class DoctorCenterActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_page);
-        setTitle("妙手医生");
+        setTitle("电生理上报系统");
         setTitleColor(Color.WHITE);
         bingLiArea = findViewById(R.id.bingli_area);
         xinZeng = findViewById(R.id.xinzeng);
