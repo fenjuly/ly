@@ -11,9 +11,9 @@
         android:id="@+id/symbol"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="心血管家"
+        android:text="电生理上报系统"
         android:textColor="@color/white"
-        android:textSize="60dp"
+        android:textSize="40dp"
         android:gravity="center"
         android:layout_marginTop="30dp"
         />
