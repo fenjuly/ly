@@ -203,8 +203,8 @@ public class DiagnosticMessageFragment extends BaseFragment {
                         });
                     }
                 });
-                final MaterialEditText cengyongzhuanfufangfa = (MaterialEditText) v.findViewById(R.id.cengyongzhuanfufangfa);
-                final MaterialEditText zhuanlvyongyao = (MaterialEditText) v.findViewById(R.id.zhuanlvyongyao);
+//                final MaterialEditText cengyongzhuanfufangfa = (MaterialEditText) v.findViewById(R.id.cengyongzhuanfufangfa);
+//                final MaterialEditText zhuanlvyongyao = (MaterialEditText) v.findViewById(R.id.zhuanlvyongyao);
 
 
                 CircularProgressButton sure = (CircularProgressButton) v.findViewById(R.id.confirm);
@@ -212,14 +212,14 @@ public class DiagnosticMessageFragment extends BaseFragment {
 
                     @Override
                     public void onClick(View view) {
-                        cengyongzhuanfufangfatext = cengyongzhuanfufangfa.getText().toString();
-                        zhuanlvyongyaotext = zhuanlvyongyao.getText().toString();
+//                        cengyongzhuanfufangfatext = cengyongzhuanfufangfa.getText().toString();
+//                        zhuanlvyongyaotext = zhuanlvyongyao.getText().toString();
                         fangSuLeiXing.setText("类型:" + spinnertext + "\n\n"
                         + "频度:" + pindutext + "\n\n"
                         + "每次发作持续时间:" + meicifazuochixushijiantext + "\n\n"
                         + "最近发作持续时间:" + zuijinfazuochixushijiantext + "\n\n"
-                        + "曾用转复方法:" + cengyongzhuanfufangfatext + "\n\n"
-                        + "转律用药:" + zhuanlvyongyaotext
+//                        + "曾用转复方法:" + cengyongzhuanfufangfatext + "\n\n"
+//                        + "转律用药:" + zhuanlvyongyaotext
                         );
                         alert.dismiss();
                     }

@@ -1,5 +1,7 @@
 package org.xhome.ly.bean;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -21,6 +23,10 @@ public class MedicalHistory {
     private String keyword2;
 
     private String keyword3;
+
+    private String oprateTimeStr;
+
+    private String diseaseName;
 
     public Integer getId() {
         return id;
@@ -84,5 +90,26 @@ public class MedicalHistory {
 
     public void setKeyword3(String keyword3) {
         this.keyword3 = keyword3 == null ? null : keyword3.trim();
+    }
+
+
+
+    public void setOprateTimeStr(String followUpTimeStr) {
+        this.oprateTimeStr = oprateTimeStr;
+    }
+
+    public String getOprateTimeStr() {
+        if (oprateTime == null)
+            return "";
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd ");
+        return format.format(oprateTime);
+    }
+
+    public String getDiseaseName() {
+        return diseaseName;
+    }
+
+    public void setDiseaseName(String diseaseName) {
+        this.diseaseName = diseaseName == null ? null : diseaseName.trim();
     }
 }

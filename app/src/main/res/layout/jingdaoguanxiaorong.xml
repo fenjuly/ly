@@ -33,7 +33,7 @@
             android:focusable="false"
             />
 
-        <com.rengwuxian.materialedittext.MaterialEditText
+        <EditText
             android:id="@+id/xindongguosufazuoshifouguize"
             android:layout_below="@+id/youfafangshi"
             android:layout_width="match_parent"
@@ -43,7 +43,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            app:floatingLabel="highlight"
+            android:focusable="false"
             />
 
         <EditText

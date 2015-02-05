@@ -5,9 +5,12 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.dd.CircularProgressButton;
 import com.doomonafireball.betterpickers.numberpicker.NumberPickerBuilder;
@@ -15,10 +18,9 @@ import com.doomonafireball.betterpickers.numberpicker.NumberPickerDialogFragment
 import com.google.gson.Gson;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
-import org.xhome.ly.App;
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1;
-import org.xhome.ly.dao.Case1DataHelper;
+
 import me.drakeet.materialdialog.MaterialDialog;
 
 /**
@@ -28,12 +30,14 @@ public class BeforeOperationMessageFragment extends BaseFragment {
 
     private static BeforeOperationMessageFragment fragment;
 
+    private static final String[] ecg_types = {"右束⽀支阻滞", "左后分⽀支阻滞", "⼼左前分⽀支阻滞"};
+
     EditText shuQiangUcg;
-    MaterialEditText ecgShuZhiZhuZhiLeiXing;
+    EditText ecgShuZhiZhuZhiLeiXing;
     MaterialEditText dianZhouPianYi;
     MaterialEditText shuQianQiTaJianChaZhongYaoYangXingMiaoShu;
     EditText shuQianKangXinLvShiChangYaoWu;
-    EditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
+//    EditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
     MaterialEditText shuQianHeBingXinLvShiChang;
     CircularProgressButton confirm;
 
@@ -53,6 +57,8 @@ public class BeforeOperationMessageFragment extends BaseFragment {
     String lvneijingtext = "";
     String rvneijingtext = "";
     String lvefneijingtext = "";
+    String ivsneijingtext = "";
+    String lvpwneijingtext = "";
     String beizhutext = "";
 
     //shuqiankangxinlvshichangyaowu
@@ -111,11 +117,11 @@ public class BeforeOperationMessageFragment extends BaseFragment {
                 R.layout.shuqianxinxi, container, false);
         init();
         shuQiangUcg = (EditText) rootView.findViewById(R.id.shuqianucg);
-        ecgShuZhiZhuZhiLeiXing = (MaterialEditText) rootView.findViewById(R.id.ecgshuzhizuzhileixing);
+        ecgShuZhiZhuZhiLeiXing = (EditText) rootView.findViewById(R.id.ecgshuzhizuzhileixing);
         dianZhouPianYi = (MaterialEditText) rootView.findViewById(R.id.dianzhoupianyi);
         shuQianQiTaJianChaZhongYaoYangXingMiaoShu = (MaterialEditText) rootView.findViewById(R.id.shuqianqitajianchazhongyaoyangxingmiaoshu);
         shuQianKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqiankangxinlvshichangyaowu);
-        shuQianWuXiaoDeKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
+//        shuQianWuXiaoDeKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
         shuQianHeBingXinLvShiChang = (MaterialEditText) rootView.findViewById(R.id.shuqianhebingxinlvshichang);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
@@ -134,6 +140,9 @@ public class BeforeOperationMessageFragment extends BaseFragment {
                 final EditText lvneijing = (EditText) v.findViewById(R.id.lvneijing);
                 final EditText rvneijing = (EditText) v.findViewById(R.id.rvneijing);
                 final EditText lvefneijing = (EditText) v.findViewById(R.id.lvefneijing);
+                final EditText ivsneijing = (EditText) v.findViewById(R.id.ivsneijing);
+                final EditText lvpwneijing = (EditText) v.findViewById(R.id.lvpwneijing);
+
                 final MaterialEditText beizhu = (MaterialEditText) v.findViewById(R.id.beizhu);
                 CircularProgressButton confirm = (CircularProgressButton) v.findViewById(R.id.confirm);
 
@@ -210,6 +219,42 @@ public class BeforeOperationMessageFragment extends BaseFragment {
                     }
                 });
 
+                ivsneijing.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        NumberPickerBuilder numberPickerBuilder = new NumberPickerBuilder()
+                                .setFragmentManager(getFragmentManager())
+                                .setStyleResId(R.style.BetterPickersDialogFragment_Light);
+                        numberPickerBuilder.show();
+                        numberPickerBuilder.addNumberPickerDialogHandler(new NumberPickerDialogFragment.NumberPickerDialogHandler() {
+                            @Override
+                            public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative, double fullNumber) {
+                                String temp = fullNumber + "mm";
+                                ivsneijing.setText(temp);
+                                ivsneijingtext = temp;
+                            }
+                        });
+                    }
+                });
+
+                lvpwneijing.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        NumberPickerBuilder numberPickerBuilder = new NumberPickerBuilder()
+                                .setFragmentManager(getFragmentManager())
+                                .setStyleResId(R.style.BetterPickersDialogFragment_Light);
+                        numberPickerBuilder.show();
+                        numberPickerBuilder.addNumberPickerDialogHandler(new NumberPickerDialogFragment.NumberPickerDialogHandler() {
+                            @Override
+                            public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative, double fullNumber) {
+                                String temp = fullNumber + "mm";
+                                lvpwneijing.setText(temp);
+                                lvpwneijingtext = temp;
+                            }
+                        });
+                    }
+                });
+
                 lvefneijing.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -239,12 +284,45 @@ public class BeforeOperationMessageFragment extends BaseFragment {
                         + "LV内径:" + lvneijingtext + "\n\n"
                         + "RV内径:" + rvneijingtext + "\n\n"
                         + "LVEF内径:" + lvefneijingtext + "\n\n"
+                        + "IVS内径:" + ivsneijingtext + "\n\n"
+                        + "LVPW内径:" + lvpwneijingtext + "\n\n"
                         + "备注:" + beizhutext
                         );
                         alert.dismiss();
                     }
 
                 });
+            }
+        });
+
+
+        ecgShuZhiZhuZhiLeiXing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        getActivity(),
+                        android.R.layout.simple_list_item_1
+                );
+                for (int i = 0; i < ecg_types.length; i++) {
+                    arrayAdapter.add(ecg_types[i]);
+                }
+                ListView listView = new ListView(getActivity());
+                float scale = getResources().getDisplayMetrics().density;
+                int dpAsPixels = (int) (8 * scale + 0.5f);
+                listView.setPadding(0, dpAsPixels, 0, dpAsPixels);
+                listView.setDividerHeight(0);
+                listView.setAdapter(arrayAdapter);
+                final MaterialDialog alert = new MaterialDialog(getActivity())
+                        .setTitle("ECG束⽀支阻滞类型")
+                        .setContentView(listView);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        ecgShuZhiZhuZhiLeiXing.setText(ecg_types[position]);
+                        alert.dismiss();
+                    }
+                });
+                alert.show();
             }
         });
 
@@ -431,188 +509,188 @@ public class BeforeOperationMessageFragment extends BaseFragment {
             }
         });
 
-        shuQianWuXiaoDeKangXinLvShiChangYaoWu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                wuxiao_kuinidingtext = "";
-                wuxiao_pulukayinantext = "";
-                wuxiao_bingpiantext = "";
-                wuxiao_liduokayintext = "";
-                wuxiao_meixilvtext = "";
-                wuxiao_bentuoyingtext = "";
-                wuxiao_puluopatongtext = "";
-                wuxiao_fukanitext = "";
-                wuxiao_punailuoertext = "";
-                wuxiao_weilapamitext = "";
-                wuxiao_andiantongtext = "";
-                wuxiao_xiangantext = "";
-                wuxiao_shuruqitatext = "";
-                View v = LayoutInflater.from(getActivity()).inflate(R.layout.shuqianwuxiaodekangxinlvshichangyaowu, null);
-                final MaterialDialog alert = new MaterialDialog(getActivity())
-                        .setTitle("术前无效的抗心律失常药物")
-                        .setContentView(v);
-                alert.show();
-                CheckBox wuxiao_kuiniding = (CheckBox) v.findViewById(R.id.kuiniding);
-                CheckBox wuxiao_pulukayinan = (CheckBox) v.findViewById(R.id.pulukayinan);
-                CheckBox wuxiao_bingpian = (CheckBox) v.findViewById(R.id.bingpian);
-                CheckBox wuxiao_liduokayin = (CheckBox) v.findViewById(R.id.liduokayin);
-                CheckBox wuxiao_meixilv = (CheckBox) v.findViewById(R.id.meixilv);
-                CheckBox wuxiao_bentuoying = (CheckBox) v.findViewById(R.id.bentuoying);
-                CheckBox wuxiao_puluopatong = (CheckBox) v.findViewById(R.id.puluopatong);
-                CheckBox wuxiao_fukani = (CheckBox) v.findViewById(R.id.fukani);
-                CheckBox wuxiao_punailuoer = (CheckBox) v.findViewById(R.id.punailuoer);
-                CheckBox wuxiao_weilapami = (CheckBox) v.findViewById(R.id.weilapami);
-                CheckBox wuxiao_andiantong = (CheckBox) v.findViewById(R.id.andiantong);
-                CheckBox wuxiao_xiangan = (CheckBox) v.findViewById(R.id.xiangan);
-
-                final MaterialEditText wuxiao_shuruqita = (MaterialEditText) v.findViewById(R.id.shuruqita);
-                CircularProgressButton confirm = (CircularProgressButton) v.findViewById(R.id.confirm);
-
-                wuxiao_kuiniding.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_kuinidingtext = "奎尼丁";
-                        } else {
-                            wuxiao_kuinidingtext = "";
-                        }
-                    }
-                });
-
-                wuxiao_pulukayinan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_pulukayinantext = "普鲁卡因胺";
-                        } else {
-                            wuxiao_pulukayinantext = "";
-                        }
-                    }
-                });
-
-                wuxiao_bingpian.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_bingpiantext = "丙吡胺";
-                        } else {
-                            wuxiao_bingpiantext = "";
-                        }
-                    }
-                });
-
-                wuxiao_liduokayin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_liduokayintext = "利多卡因";
-                        } else {
-                            wuxiao_liduokayintext = "";
-                        }
-                    }
-                });
-
-                wuxiao_meixilv.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_meixilvtext = "美西律";
-                        } else {
-                            wuxiao_meixilvtext = "";
-                        }
-                    }
-                });
-                wuxiao_bentuoying.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_bentuoyingtext = "苯妥英";
-                        } else {
-                            wuxiao_bentuoyingtext = "";
-                        }
-                    }
-                });
-                wuxiao_puluopatong.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_puluopatongtext = "普罗帕酮";
-                        } else {
-                            wuxiao_puluopatongtext = "";
-                        }
-                    }
-                });
-                wuxiao_fukani.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_fukanitext = "氟卡尼";
-                        } else {
-                            wuxiao_fukanitext = "";
-                        }
-                    }
-                });
-                wuxiao_punailuoer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_punailuoertext = "普萘洛尔";
-                        } else {
-                            wuxiao_punailuoertext = "";
-                        }
-                    }
-                });
-                wuxiao_weilapami.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_weilapamitext = "维拉帕米";
-                        } else {
-                            wuxiao_weilapamitext = "";
-                        }
-                    }
-                });
-                wuxiao_andiantong.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_andiantongtext = "胺碘酮";
-                        } else {
-                            wuxiao_andiantongtext = "";
-                        }
-                    }
-                });
-                wuxiao_xiangan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        if (b) {
-                            wuxiao_xiangantext = "腺苷";
-                        } else {
-                            wuxiao_xiangantext = "";
-                        }
-                    }
-                });
-
-
-                confirm.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        wuxiao_shuqiankangxinlvshichangyaowutext = "";
-                        wuxiao_shuruqitatext = wuxiao_shuruqita.getText().toString();
-                        wuxiao_shuqiankangxinlvshichangyaowutext = wuxiao_kuinidingtext + " " + wuxiao_pulukayinantext + " "
-                                + wuxiao_bingpiantext + " " + wuxiao_liduokayintext + " "
-                                + wuxiao_meixilvtext + " " + wuxiao_bentuoyingtext + " "
-                                + wuxiao_puluopatongtext + " " + wuxiao_fukanitext + " "
-                                + wuxiao_punailuoertext + " " + wuxiao_weilapamitext + " "
-                                + wuxiao_andiantongtext + " " + wuxiao_xiangantext + " "
-                                + wuxiao_shuruqitatext;
-                        shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("术前无效的抗心律失常药物:" + wuxiao_shuqiankangxinlvshichangyaowutext);
-                        alert.dismiss();
-                    }
-                });
-
-            }
-        });
+//        shuQianWuXiaoDeKangXinLvShiChangYaoWu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                wuxiao_kuinidingtext = "";
+//                wuxiao_pulukayinantext = "";
+//                wuxiao_bingpiantext = "";
+//                wuxiao_liduokayintext = "";
+//                wuxiao_meixilvtext = "";
+//                wuxiao_bentuoyingtext = "";
+//                wuxiao_puluopatongtext = "";
+//                wuxiao_fukanitext = "";
+//                wuxiao_punailuoertext = "";
+//                wuxiao_weilapamitext = "";
+//                wuxiao_andiantongtext = "";
+//                wuxiao_xiangantext = "";
+//                wuxiao_shuruqitatext = "";
+//                View v = LayoutInflater.from(getActivity()).inflate(R.layout.shuqianwuxiaodekangxinlvshichangyaowu, null);
+//                final MaterialDialog alert = new MaterialDialog(getActivity())
+//                        .setTitle("术前无效的抗心律失常药物")
+//                        .setContentView(v);
+//                alert.show();
+//                CheckBox wuxiao_kuiniding = (CheckBox) v.findViewById(R.id.kuiniding);
+//                CheckBox wuxiao_pulukayinan = (CheckBox) v.findViewById(R.id.pulukayinan);
+//                CheckBox wuxiao_bingpian = (CheckBox) v.findViewById(R.id.bingpian);
+//                CheckBox wuxiao_liduokayin = (CheckBox) v.findViewById(R.id.liduokayin);
+//                CheckBox wuxiao_meixilv = (CheckBox) v.findViewById(R.id.meixilv);
+//                CheckBox wuxiao_bentuoying = (CheckBox) v.findViewById(R.id.bentuoying);
+//                CheckBox wuxiao_puluopatong = (CheckBox) v.findViewById(R.id.puluopatong);
+//                CheckBox wuxiao_fukani = (CheckBox) v.findViewById(R.id.fukani);
+//                CheckBox wuxiao_punailuoer = (CheckBox) v.findViewById(R.id.punailuoer);
+//                CheckBox wuxiao_weilapami = (CheckBox) v.findViewById(R.id.weilapami);
+//                CheckBox wuxiao_andiantong = (CheckBox) v.findViewById(R.id.andiantong);
+//                CheckBox wuxiao_xiangan = (CheckBox) v.findViewById(R.id.xiangan);
+//
+//                final MaterialEditText wuxiao_shuruqita = (MaterialEditText) v.findViewById(R.id.shuruqita);
+//                CircularProgressButton confirm = (CircularProgressButton) v.findViewById(R.id.confirm);
+//
+//                wuxiao_kuiniding.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_kuinidingtext = "奎尼丁";
+//                        } else {
+//                            wuxiao_kuinidingtext = "";
+//                        }
+//                    }
+//                });
+//
+//                wuxiao_pulukayinan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_pulukayinantext = "普鲁卡因胺";
+//                        } else {
+//                            wuxiao_pulukayinantext = "";
+//                        }
+//                    }
+//                });
+//
+//                wuxiao_bingpian.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_bingpiantext = "丙吡胺";
+//                        } else {
+//                            wuxiao_bingpiantext = "";
+//                        }
+//                    }
+//                });
+//
+//                wuxiao_liduokayin.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_liduokayintext = "利多卡因";
+//                        } else {
+//                            wuxiao_liduokayintext = "";
+//                        }
+//                    }
+//                });
+//
+//                wuxiao_meixilv.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_meixilvtext = "美西律";
+//                        } else {
+//                            wuxiao_meixilvtext = "";
+//                        }
+//                    }
+//                });
+//                wuxiao_bentuoying.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_bentuoyingtext = "苯妥英";
+//                        } else {
+//                            wuxiao_bentuoyingtext = "";
+//                        }
+//                    }
+//                });
+//                wuxiao_puluopatong.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_puluopatongtext = "普罗帕酮";
+//                        } else {
+//                            wuxiao_puluopatongtext = "";
+//                        }
+//                    }
+//                });
+//                wuxiao_fukani.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_fukanitext = "氟卡尼";
+//                        } else {
+//                            wuxiao_fukanitext = "";
+//                        }
+//                    }
+//                });
+//                wuxiao_punailuoer.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_punailuoertext = "普萘洛尔";
+//                        } else {
+//                            wuxiao_punailuoertext = "";
+//                        }
+//                    }
+//                });
+//                wuxiao_weilapami.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_weilapamitext = "维拉帕米";
+//                        } else {
+//                            wuxiao_weilapamitext = "";
+//                        }
+//                    }
+//                });
+//                wuxiao_andiantong.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_andiantongtext = "胺碘酮";
+//                        } else {
+//                            wuxiao_andiantongtext = "";
+//                        }
+//                    }
+//                });
+//                wuxiao_xiangan.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//                    @Override
+//                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                        if (b) {
+//                            wuxiao_xiangantext = "腺苷";
+//                        } else {
+//                            wuxiao_xiangantext = "";
+//                        }
+//                    }
+//                });
+//
+//
+//                confirm.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        wuxiao_shuqiankangxinlvshichangyaowutext = "";
+//                        wuxiao_shuruqitatext = wuxiao_shuruqita.getText().toString();
+//                        wuxiao_shuqiankangxinlvshichangyaowutext = wuxiao_kuinidingtext + " " + wuxiao_pulukayinantext + " "
+//                                + wuxiao_bingpiantext + " " + wuxiao_liduokayintext + " "
+//                                + wuxiao_meixilvtext + " " + wuxiao_bentuoyingtext + " "
+//                                + wuxiao_puluopatongtext + " " + wuxiao_fukanitext + " "
+//                                + wuxiao_punailuoertext + " " + wuxiao_weilapamitext + " "
+//                                + wuxiao_andiantongtext + " " + wuxiao_xiangantext + " "
+//                                + wuxiao_shuruqitatext;
+//                        shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("术前无效的抗心律失常药物:" + wuxiao_shuqiankangxinlvshichangyaowutext);
+//                        alert.dismiss();
+//                    }
+//                });
+//
+//            }
+//        });
 
 
         confirm.setOnClickListener(new View.OnClickListener() {
@@ -632,11 +710,13 @@ public class BeforeOperationMessageFragment extends BaseFragment {
             dianzhoupianyi = dianZhouPianYi.getText().toString();
             shuqianqitajianchazhongyaoyangxingmiaoshu = shuQianQiTaJianChaZhongYaoYangXingMiaoShu.getText().toString();
             shuqiankangxinlvshichangyaowu = shuQianKangXinLvShiChangYaoWu.getText().toString();
-            shuqianwuxiaodekangxinlvshichangyaowu = shuQianWuXiaoDeKangXinLvShiChangYaoWu.getText().toString();
+//            shuqianwuxiaodekangxinlvshichangyaowu = shuQianWuXiaoDeKangXinLvShiChangYaoWu.getText().toString();
             shuqianhebingxinlvshichang = shuQianHeBingXinLvShiChang.getText().toString();
             case1.setLaBore(laneijingtext);
             case1.setLvBore(lvneijingtext);
             case1.setLvefBore(lvefneijingtext);
+            case1.setLvsBore(ivsneijingtext);
+            case1.setLvpwBore(lvpwneijingtext);
             case1.setRaBore(raneijingtext);
             case1.setRvBore(rvneijingtext);
             case1.setUcgRemarks(beizhutext);
@@ -660,7 +740,7 @@ public class BeforeOperationMessageFragment extends BaseFragment {
             dianZhouPianYi.setText("");
             shuQianQiTaJianChaZhongYaoYangXingMiaoShu.setText("");
             shuQianKangXinLvShiChangYaoWu.setText("");
-            shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("");
+//            shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("");
             shuQianHeBingXinLvShiChang.setText("");
         }
 

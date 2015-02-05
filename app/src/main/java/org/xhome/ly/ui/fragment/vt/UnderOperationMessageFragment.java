@@ -1,13 +1,17 @@
 package org.xhome.ly.ui.fragment.vt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.dd.CircularProgressButton;
 import com.doomonafireball.betterpickers.numberpicker.NumberPickerBuilder;
@@ -17,6 +21,7 @@ import com.rengwuxian.materialedittext.MaterialEditText;
 
 import org.xhome.ly.R;
 import org.xhome.ly.bean.Case1;
+import org.xhome.ly.ui.PatientInformationActivity;
 
 import me.drakeet.materialdialog.MaterialDialog;
 
@@ -27,9 +32,9 @@ public class UnderOperationMessageFragment extends BaseFragment {
 
     private static UnderOperationMessageFragment fragment;
 
-    MaterialEditText shuZhongDianFuLv;
+    EditText shuZhongDianFuLv;
     EditText xiaoRongQianXinLv;
-    EditText shuZhongXinLv;
+    EditText xiaoRongHouXinLv;
     EditText bingFaZheng;
     CircularProgressButton confirm;
 
@@ -91,11 +96,44 @@ public class UnderOperationMessageFragment extends BaseFragment {
         View rootView = inflater.inflate(
                 R.layout.shuzhongxinxi, container, false);
         init();
-        shuZhongDianFuLv = (MaterialEditText) rootView.findViewById(R.id.shuzhongdianfulv);
+        shuZhongDianFuLv = (EditText) rootView.findViewById(R.id.shuzhongdianfulv);
         xiaoRongQianXinLv = (EditText) rootView.findViewById(R.id.xiaorongqianxinlv);
-        shuZhongXinLv = (EditText) rootView.findViewById(R.id.shuzhongxinlv);
+        xiaoRongHouXinLv = (EditText) rootView.findViewById(R.id.xiaoronghouxinlv);
         bingFaZheng = (EditText) rootView.findViewById(R.id.bingfazheng);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
+
+        shuZhongDianFuLv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        getActivity(),
+                        android.R.layout.simple_list_item_1
+                );
+                arrayAdapter.add("是");
+                arrayAdapter.add("否");
+                ListView listView = new ListView(getActivity());
+                float scale = getResources().getDisplayMetrics().density;
+                int dpAsPixels = (int) (8 * scale + 0.5f);
+                listView.setPadding(0, dpAsPixels, 0, dpAsPixels);
+                listView.setDividerHeight(0);
+                listView.setAdapter(arrayAdapter);
+                final MaterialDialog alert = new MaterialDialog(getActivity())
+                        .setTitle("术中电复率")
+                        .setContentView(listView);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        if (position == 0) {
+                            shuZhongDianFuLv.setText("是");
+                        } else {
+                            shuZhongDianFuLv.setText("否");
+                        }
+                        alert.dismiss();
+                    }
+                });
+                alert.show();
+            }
+        });
 
         xiaoRongQianXinLv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,7 +147,7 @@ public class UnderOperationMessageFragment extends BaseFragment {
                         .setTitle("消融前心律")
                         .setContentView(v);
                 alert.show();
-                final EditText duxingxinlv = (EditText) v.findViewById(R.id.xiaorongqianxinlv);
+                final EditText duxingxinlv = (EditText) v.findViewById(R.id.duxingxinlv);
                 final EditText shisu = (EditText) v.findViewById(R.id.shisu);
                 final EditText shizao = (EditText) v.findViewById(R.id.shizao);
                 final MaterialEditText beizhu = (MaterialEditText) v.findViewById(R.id.beizhu);
@@ -184,7 +222,7 @@ public class UnderOperationMessageFragment extends BaseFragment {
             }
         });
 
-        shuZhongXinLv.setOnClickListener(new View.OnClickListener() {
+        xiaoRongHouXinLv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 shuzhong_duxingxinlvtext = "";
@@ -193,7 +231,7 @@ public class UnderOperationMessageFragment extends BaseFragment {
                 shuzhong_beizhutext = "";
                 View v = LayoutInflater.from(getActivity()).inflate(R.layout.shuzhongxinlv, null);
                 final MaterialDialog alert = new MaterialDialog(getActivity())
-                        .setTitle("术中心律")
+                        .setTitle("消融后心率")
                         .setContentView(v);
                 alert.show();
 
@@ -262,7 +300,7 @@ public class UnderOperationMessageFragment extends BaseFragment {
                         shuzhongxinlvtext = "窦性心律:" + shuzhong_duxingxinlvtext + "\n\n"
                                 + "室速:" + shuzhong_shisutext + "\n\n"
                                 + "室早:" + shuzhong_shizaotext;
-                        shuZhongXinLv.setText(shuzhongxinlvtext + "\n\n"
+                        xiaoRongHouXinLv.setText(shuzhongxinlvtext + "\n\n"
                                         + "备注:" + shuzhong_beizhutext
                         );
                         alert.dismiss();
@@ -534,7 +572,7 @@ public class UnderOperationMessageFragment extends BaseFragment {
             isInActivity = true;
             shuZhongDianFuLv.setText("");
             xiaoRongQianXinLv.setText("");
-            shuZhongXinLv.setText("");
+            xiaoRongHouXinLv.setText("");
             bingFaZheng.setText("");
         }
 

@@ -22,7 +22,7 @@ public class ShowUnderOperationMessageFragment extends ShowBaseFragment {
 
     private static ShowUnderOperationMessageFragment fragment;
 
-    MaterialEditText shuZhongDianFuLv;
+    EditText shuZhongDianFuLv;
     EditText xiaoRongQianXinLv;
     EditText shuZhongXinLv;
     EditText bingFaZheng;
@@ -51,7 +51,7 @@ public class ShowUnderOperationMessageFragment extends ShowBaseFragment {
         View rootView = inflater.inflate(
                 R.layout.shuzhongxinxi, container, false);
         init();
-        shuZhongDianFuLv = (MaterialEditText) rootView.findViewById(R.id.shuzhongdianfulv);
+        shuZhongDianFuLv = (EditText) rootView.findViewById(R.id.shuzhongdianfulv);
         xiaoRongQianXinLv = (EditText) rootView.findViewById(R.id.xiaorongqianxinlv);
         shuZhongXinLv = (EditText) rootView.findViewById(R.id.shuzhongxinlv);
         bingFaZheng = (EditText) rootView.findViewById(R.id.bingfazheng);

@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <LinearLayout
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,12 +16,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="高血压"
+                android:text="右室"
                 android:textSize="14sp"
                 />
             <CheckBox
                 android:layout_gravity="center_vertical"
-                android:id="@+id/gaoxueya"
+                android:id="@+id/youshi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
@@ -39,12 +38,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="糖尿病"
+                android:text="左室"
                 android:textSize="14sp"
                 />
             <CheckBox
                 android:layout_gravity="center_vertical"
-                android:id="@+id/tangniaobing"
+                android:id="@+id/zuoshi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
@@ -61,12 +60,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="冠心病"
+                android:text="流出道"
                 android:textSize="14sp"
                 />
             <CheckBox
                 android:layout_gravity="center_vertical"
-                android:id="@+id/guanxinbing"
+                android:id="@+id/liuchudao"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
@@ -82,12 +81,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="先心病"
+                android:text="心尖部"
                 android:textSize="14sp"
                 />
             <CheckBox
                 android:layout_gravity="center_vertical"
-                android:id="@+id/xianxinbing"
+                android:id="@+id/xinjianbu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
@@ -103,12 +102,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="瓣膜病"
+                android:text="间隔"
                 android:textSize="14sp"
                 />
             <CheckBox
                 android:layout_gravity="center_vertical"
-                android:id="@+id/banmobing"
+                android:id="@+id/jiange"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
@@ -124,26 +123,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="心肌病"
+                android:text="前壁"
                 android:textSize="14sp"
                 />
             <CheckBox
                 android:layout_gravity="center_vertical"
-                android:id="@+id/xinjibing"
+                android:id="@+id/qianbi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 />
         </LinearLayout>
 
-
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="后壁"
+                android:textSize="14sp"
+                />
+            <CheckBox
+                android:layout_gravity="center_vertical"
+                android:id="@+id/houbi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                />
+        </LinearLayout>
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/beizhu"
+            android:id="@+id/qita"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="120dp"
-            android:hint="备注"
+            android:layout_height="120dp"
+            android:hint="其他"
             android:layout_marginTop="12dp"
             app:floatingLabel="highlight"
             />

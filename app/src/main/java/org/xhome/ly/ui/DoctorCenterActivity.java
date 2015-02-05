@@ -73,9 +73,9 @@ public class DoctorCenterActivity extends BaseActivity {
                         DoctorCenterActivity.this,
                         android.R.layout.simple_list_item_1
                 );
-                arrayAdapter.add("室速病");
-                arrayAdapter.add("房颤病");
-                arrayAdapter.add("房速病");
+                arrayAdapter.add("室速");
+                arrayAdapter.add("房颤");
+                arrayAdapter.add("房速");
                 ListView listView = new ListView(DoctorCenterActivity.this);
                 float scale = getResources().getDisplayMetrics().density;
                 int dpAsPixels = (int) (8 * scale + 0.5f);

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -66,6 +68,16 @@ public class MedicalHistoryInformationActivity extends BaseActivity {
     History2Adapter history2Adapter;
 
 
+
+    String jichujibingtext = "";
+    String gaoxueyatext = "";
+    String tangniaobingtext = "";
+    String guanxinbingtext = "";
+    String xianxinbingtext = "";
+    String banmobingtext = "";
+    String xinjibingtext = "";
+
+
     //case position
     private int position;
 
@@ -122,9 +134,10 @@ public class MedicalHistoryInformationActivity extends BaseActivity {
                                 .newInstance(new DatePickerDialog.OnDateSetListener() {
                                     @Override
                                     public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
-                                        Date date = new Date(year - 1900, month, day);
+                                        Date date = new Date(year - 1900, month + 1, day);
+                                        month++ ;
                                         medicalHistory.setOprateTime(date);
-                                        shoushushijian.setText(year+ "年" + month + "月" + day + "日");
+                                        shoushushijian.setText(year+ "年" + month + "月");
                                     }
                                 }, calendar.
                                         get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), false);
@@ -198,34 +211,94 @@ public class MedicalHistoryInformationActivity extends BaseActivity {
                         .setTitle("基础疾病")
                         .setContentView(v);
                 alert.show();
-                final EditText shoushushijian = (EditText) v.findViewById(R.id.shoushushijian);
 
-                final MaterialEditText shoushuxiangqing = (MaterialEditText) v.findViewById(R.id.shoushuxiangqing);
+                CheckBox gaoxueya = (CheckBox) v.findViewById(R.id.gaoxueya);
+                final CheckBox tangniaobing = (CheckBox) v.findViewById(R.id.tangniaobing);
+                final CheckBox guanxinbing = (CheckBox) v.findViewById(R.id.guanxinbing);
+                CheckBox xianxinbing = (CheckBox) v.findViewById(R.id.xianxinbing);
+                CheckBox banmobing = (CheckBox) v.findViewById(R.id.banmobing);
+                CheckBox xinjibing = (CheckBox) v.findViewById(R.id.xinjibing);
+
+                final MaterialEditText beizhu = (MaterialEditText) v.findViewById(R.id.beizhu);
+
                 CircularProgressButton confirm = (CircularProgressButton) v.findViewById(R.id.confirm);
 
-                shoushushijian.setOnClickListener(new View.OnClickListener() {
+                gaoxueya.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
-                    public void onClick(View view) {
-                        final Calendar calendar = Calendar.getInstance();
-                        final DatePickerDialog datePickerDialog = DatePickerDialog
-                                .newInstance(new DatePickerDialog.OnDateSetListener() {
-                                    @Override
-                                    public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
-                                        Date date = new Date(year - 1900, month, day);
-                                        medicalHistory.setOprateTime(date);
-                                        shoushushijian.setText(year+ "年" + month + "月" + day + "日");
-                                    }
-                                }, calendar.
-                                        get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), false);
-                        datePickerDialog.setYearRange(1985, 2028);
-                        datePickerDialog.show(getSupportFragmentManager(), DATEPICKER_TAG);
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b) {
+                            gaoxueyatext = "高血压";
+                        } else {
+                            gaoxueyatext = "";
+                        }
+                    }
+                });
+
+                tangniaobing.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b) {
+                            tangniaobingtext = "糖尿病";
+                        } else {
+                            tangniaobingtext = "";
+                        }
+                    }
+                });
+
+                guanxinbing.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b) {
+                            guanxinbingtext = "冠心病";
+                        } else {
+                            guanxinbingtext = "";
+                        }
+                    }
+                });
+
+                xianxinbing.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b) {
+                            xianxinbingtext = "先心病";
+                        } else {
+                            xianxinbingtext = "";
+                        }
+                    }
+                });
+
+                banmobing.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b) {
+                            banmobingtext = "瓣膜病";
+                        } else {
+                            banmobingtext = "";
+                        }
+                    }
+                });
+
+                xinjibing.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b) {
+                            xinjibingtext = "心肌病";
+                        } else {
+                            xinjibingtext = "";
+                        }
                     }
                 });
 
                 confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        medicalHistory.setDetail(replaceBlank(shoushuxiangqing.getText().toString()));
+                        jichujibingtext = "";
+                        jichujibingtext = gaoxueyatext + " " + tangniaobingtext + " "
+                                + guanxinbingtext + " " + xianxinbingtext + " "
+                                + banmobingtext + " " + xinjibingtext;
+
+                        medicalHistory.setDetail(replaceBlank(beizhu.getText().toString()));
+                        medicalHistory.setDiseaseName(replaceBlank(jichujibingtext));
                         String detail = medicalHistory.getDetail();
                         Log.e("detail", detail);
                         if (detail == null || detail.equals("")) {

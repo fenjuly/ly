@@ -30,7 +30,7 @@ public class ShowAblationResultFragment extends ShowBaseFragment {
     EditText xiaoRongZhongDian;
     EditText fangDianShiJian;
     EditText xXianBaoGuangShiJian;
-    EditText xiaoRongCiShu;
+//    EditText xiaoRongCiShu;
 
     CircularProgressButton confirm;
 
@@ -63,7 +63,7 @@ public class ShowAblationResultFragment extends ShowBaseFragment {
         xiaoRongZhongDian = (EditText) rootView.findViewById(R.id.xiaorongzhongdian);
         fangDianShiJian = (EditText) rootView.findViewById(R.id.fangdianshijian);
         xXianBaoGuangShiJian = (EditText) rootView.findViewById(R.id.xxianbaoguanshijia);
-        xiaoRongCiShu = (EditText) rootView.findViewById(R.id.xiaorongcishu);
+//        xiaoRongCiShu = (EditText) rootView.findViewById(R.id.xiaorongcishu);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
         if (case1.getTargetPosition() != null) {
@@ -85,9 +85,9 @@ public class ShowAblationResultFragment extends ShowBaseFragment {
         if (case1.getXrayExposureTime() != null) {
             xXianBaoGuangShiJian.setText(case1.getXrayExposureTime());
         }
-        if (case1.getAblationTimes() != null) {
-            xiaoRongCiShu.setText(String.valueOf(case1.getAblationTimes()) + "次");
-        }
+//        if (case1.getAblationTimes() != null) {
+//            xiaoRongCiShu.setText(String.valueOf(case1.getAblationTimes()) + "次");
+//        }
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +110,7 @@ public class ShowAblationResultFragment extends ShowBaseFragment {
             xiaoRongZhongDian.setText("");
             fangDianShiJian.setText("");
             xXianBaoGuangShiJian.setText("");
-            xiaoRongCiShu.setText("");
+//            xiaoRongCiShu.setText("");
 
             if (case1.getTargetPosition() != null) {
                 baDianBuWei.setText(case1.getTargetPosition());
@@ -131,9 +131,9 @@ public class ShowAblationResultFragment extends ShowBaseFragment {
             if (case1.getXrayExposureTime() != null) {
                 xXianBaoGuangShiJian.setText(case1.getXrayExposureTime());
             }
-            if (case1.getAblationTimes() != null) {
-                xiaoRongCiShu.setText(String.valueOf(case1.getAblationTimes()) + "次");
-            }
+//            if (case1.getAblationTimes() != null) {
+//                xiaoRongCiShu.setText(String.valueOf(case1.getAblationTimes()) + "次");
+//            }
         }
 
     }

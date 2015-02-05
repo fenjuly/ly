@@ -34,7 +34,6 @@ public class AblationResultFragment extends BaseFragment {
     EditText xiaoRongZhongDian;
     EditText fangDianShiJian;
     EditText xXianBaoGuangShiJian;
-    EditText xiaoRongCiShu;
 
     CircularProgressButton confirm;
 
@@ -64,6 +63,7 @@ public class AblationResultFragment extends BaseFragment {
     String suiliedianweiwanquanxiaoshitext;
     String lsqdiancijishisubunengbeiyoufatext;
     String diancijishisubunengyoufatext;
+    String diyaobunengyoufatext;
     String shuruqitatext;
 
     String fangdianshijiantext;
@@ -98,7 +98,6 @@ public class AblationResultFragment extends BaseFragment {
         xiaoRongZhongDian = (EditText) rootView.findViewById(R.id.xiaorongzhongdian);
         fangDianShiJian = (EditText) rootView.findViewById(R.id.fangdianshijian);
         xXianBaoGuangShiJian = (EditText) rootView.findViewById(R.id.xxianbaoguanshijia);
-        xiaoRongCiShu = (EditText) rootView.findViewById(R.id.xiaorongcishu);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
         nengYuanXiaoRong.setOnClickListener(new View.OnClickListener() {
@@ -225,6 +224,7 @@ public class AblationResultFragment extends BaseFragment {
                 suiliedianweiwanquanxiaoshitext = "";
                 lsqdiancijishisubunengbeiyoufatext = "";
                 diancijishisubunengyoufatext = "";
+                diyaobunengyoufatext = "";
                 shuruqitatext = "";
                 View v = LayoutInflater.from(getActivity()).inflate(R.layout.xiaorongzhongdian, null);
                 final MaterialDialog alert = new MaterialDialog(getActivity())
@@ -236,6 +236,7 @@ public class AblationResultFragment extends BaseFragment {
                 CheckBox suiliedianweiwanquanxiaoshi = (CheckBox) v.findViewById(R.id.suiliedianweiwanquanxiaoshi);
                 CheckBox lsqdiancijishisubunengbeiyoufa = (CheckBox) v.findViewById(R.id.lsqdiancijishisubunengbeiyoufa);
                 CheckBox diancijishisubunengyoufa = (CheckBox) v.findViewById(R.id.diancijishisubunengyoufa);
+                CheckBox diyaobunengyoufa = (CheckBox) v.findViewById(R.id.diyaobunengyoufa);
                 final MaterialEditText shuruqita = (MaterialEditText) v.findViewById(R.id.shuruqita);
                 CircularProgressButton confirm = (CircularProgressButton) v.findViewById(R.id.confirm);
 
@@ -294,6 +295,17 @@ public class AblationResultFragment extends BaseFragment {
                     }
                 });
 
+                diyaobunengyoufa.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        if (b) {
+                            diyaobunengyoufatext = "滴药不能诱发";
+                        } else {
+                            diyaobunengyoufatext = "";
+                        }
+                    }
+                });
+
                 confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -301,7 +313,7 @@ public class AblationResultFragment extends BaseFragment {
                         shuruqitatext = shuruqita.getText().toString();
                         xiaorongzhongdiantext = pdianweijiangdihuoxiaoshitext + " " + shuzhangqidianweixiaoshitext + " "
                                 + suiliedianweiwanquanxiaoshitext + " " + lsqdiancijishisubunengbeiyoufatext + " "
-                                + diancijishisubunengyoufatext + " " + shuruqitatext;
+                                + diancijishisubunengyoufatext + " " + diyaobunengyoufatext + " " + shuruqitatext;
                         xiaoRongZhongDian.setText("消融终点:" + xiaorongzhongdiantext);
                         alert.dismiss();
                     }
@@ -372,22 +384,6 @@ public class AblationResultFragment extends BaseFragment {
             }
         });
 
-        xiaoRongCiShu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NumberPickerBuilder numberPickerBuilder = new NumberPickerBuilder()
-                        .setFragmentManager(getFragmentManager())
-                        .setStyleResId(R.style.BetterPickersDialogFragment_Light);
-                numberPickerBuilder.show();
-                numberPickerBuilder.addNumberPickerDialogHandler(new NumberPickerDialogFragment.NumberPickerDialogHandler() {
-                    @Override
-                    public void onDialogNumberSet(int reference, int number, double decimal, boolean isNegative, double fullNumber) {
-                        xiaoRongCiShu.setText(number + "次");
-                        xiaorongcishu  = number + "";
-                    }
-                });
-            }
-        });
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -434,7 +430,6 @@ public class AblationResultFragment extends BaseFragment {
             xiaoRongZhongDian.setText("");
             fangDianShiJian.setText("");
             xXianBaoGuangShiJian.setText("");
-            xiaoRongCiShu.setText("");
         }
 
     }

@@ -26,7 +26,7 @@ public class ShowTranscatheterAblationFragment extends ShowBaseFragment {
 
     EditText xingQiangNeiZaoYing;
     EditText youFaFangShi;
-    MaterialEditText xinDongGuoSuFaZuoShiFouGuiZhe;
+    EditText xinDongGuoSuFaZuoShiFouGuiZhe;
     EditText zhouChang;
     EditText biaoCeFangFa;
     MaterialEditText shuZhangQiDianWei;
@@ -61,7 +61,7 @@ public class ShowTranscatheterAblationFragment extends ShowBaseFragment {
         init();
         xingQiangNeiZaoYing = (EditText) rootView.findViewById(R.id.xinqiangneizaoying);
         youFaFangShi = (EditText) rootView.findViewById(R.id.youfafangshi);
-        xinDongGuoSuFaZuoShiFouGuiZhe = (MaterialEditText) rootView.findViewById(R.id.xindongguosufazuoshifouguize);
+        xinDongGuoSuFaZuoShiFouGuiZhe = (EditText) rootView.findViewById(R.id.xindongguosufazuoshifouguize);
         zhouChang = (EditText) rootView.findViewById(R.id.zhouchang);
         biaoCeFangFa = (EditText) rootView.findViewById(R.id.biaocefangfa);
         shuZhangQiDianWei = (MaterialEditText) rootView.findViewById(R.id.shuzhangqidianwei);

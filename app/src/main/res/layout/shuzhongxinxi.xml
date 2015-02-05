@@ -10,7 +10,7 @@
         android:paddingTop="15dp"
         android:paddingBottom="15dp"
         >
-        <com.rengwuxian.materialedittext.MaterialEditText
+        <EditText
             android:id="@+id/shuzhongdianfulv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-            app:floatingLabel="highlight"
+            android:focusable="false"
             />
 
         <EditText
@@ -36,12 +36,12 @@
             />
 
         <EditText
-            android:id="@+id/shuzhongxinlv"
+            android:id="@+id/xiaoronghouxinlv"
             android:layout_below="@+id/xiaorongqianxinlv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="120dp"
-            android:hint="术中心律"
+            android:hint="消融后心率"
             android:gravity="top"
             android:layout_marginTop="12dp"
             android:layout_marginLeft="40dp"
@@ -51,7 +51,7 @@
 
         <EditText
             android:id="@+id/bingfazheng"
-            android:layout_below="@+id/shuzhongxinlv"
+            android:layout_below="@+id/xiaoronghouxinlv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="120dp"

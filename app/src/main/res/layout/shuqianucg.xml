@@ -104,6 +104,48 @@
             />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="IVS内径"
+            android:textSize="14sp"
+            />
+        <EditText
+            android:id="@+id/ivsneijing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:focusable="false"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="LVPW内径"
+            android:textSize="14sp"
+            />
+        <EditText
+            android:id="@+id/lvpwneijing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:focusable="false"
+            />
+    </LinearLayout>
+
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/beizhu"
         android:layout_width="match_parent"

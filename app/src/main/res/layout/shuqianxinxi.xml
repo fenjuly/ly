@@ -21,7 +21,7 @@
         android:focusable="false"
         />
 
-    <com.rengwuxian.materialedittext.MaterialEditText
+    <EditText
         android:id="@+id/ecgshuzhizuzhileixing"
         android:layout_below="@+id/shuqianucg"
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
-        app:floatingLabel="highlight"
+        android:focusable="false"
         />
 
     <com.rengwuxian.materialedittext.MaterialEditText
@@ -72,22 +72,11 @@
         android:layout_marginRight="40dp"
         android:focusable="false"
         />
-    <EditText
-        android:id="@+id/shuqianwuxiaodekangxinlvshichangyaowu"
-        android:layout_below="@+id/shuqiankangxinlvshichangyaowu"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:hint="术前无效的抗心律失常药物"
-        android:gravity="top"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:focusable="false"
-        />
+
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/shuqianhebingxinlvshichang"
-        android:layout_below="@+id/shuqianwuxiaodekangxinlvshichangyaowu"
+        android:layout_below="@+id/shuqiankangxinlvshichangyaowu"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:hint="术前合并心律失常"

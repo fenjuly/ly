@@ -23,11 +23,11 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
     private static ShowBeforeOperationMessageFragment fragment;
 
     EditText shuQiangUcg;
-    MaterialEditText ecgShuZhiZhuZhiLeiXing;
+    EditText ecgShuZhiZhuZhiLeiXing;
     MaterialEditText dianZhouPianYi;
     MaterialEditText shuQianQiTaJianChaZhongYaoYangXingMiaoShu;
     EditText shuQianKangXinLvShiChangYaoWu;
-    EditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
+//    EditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
     MaterialEditText shuQianHeBingXinLvShiChang;
     CircularProgressButton confirm;
 
@@ -55,11 +55,11 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
                 R.layout.shuqianxinxi, container, false);
         init();
         shuQiangUcg = (EditText) rootView.findViewById(R.id.shuqianucg);
-        ecgShuZhiZhuZhiLeiXing = (MaterialEditText) rootView.findViewById(R.id.ecgshuzhizuzhileixing);
+        ecgShuZhiZhuZhiLeiXing = (EditText) rootView.findViewById(R.id.ecgshuzhizuzhileixing);
         dianZhouPianYi = (MaterialEditText) rootView.findViewById(R.id.dianzhoupianyi);
         shuQianQiTaJianChaZhongYaoYangXingMiaoShu = (MaterialEditText) rootView.findViewById(R.id.shuqianqitajianchazhongyaoyangxingmiaoshu);
         shuQianKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqiankangxinlvshichangyaowu);
-        shuQianWuXiaoDeKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
+//        shuQianWuXiaoDeKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
         shuQianHeBingXinLvShiChang = (MaterialEditText) rootView.findViewById(R.id.shuqianhebingxinlvshichang);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
@@ -86,9 +86,9 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
         if (case1.getAntiArrhythmiaDrugs() != null) {
             shuQianKangXinLvShiChangYaoWu.setText(case1.getAntiArrhythmiaDrugs());
         }
-        if (case1.getInvaliDantiArrhythmiaDrugs() != null) {
-            shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText(case1.getInvaliDantiArrhythmiaDrugs());
-        }
+//        if (case1.getInvaliDantiArrhythmiaDrugs() != null) {
+//            shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText(case1.getInvaliDantiArrhythmiaDrugs());
+//        }
         if (case1.getMergerArrhythmia() != null) {
             shuQianHeBingXinLvShiChang.setText(case1.getMergerArrhythmia());
         }
@@ -115,7 +115,7 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
             dianZhouPianYi.setText("");
             shuQianQiTaJianChaZhongYaoYangXingMiaoShu.setText("");
             shuQianKangXinLvShiChangYaoWu.setText("");
-            shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("");
+//            shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("");
             shuQianHeBingXinLvShiChang.setText("");
 
             if (case1.getLaBore() != null || case1.getRaBore() != null
@@ -127,6 +127,8 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
                         + "LV内径:" + case1.getLvBore() + "\n\n"
                         + "RV内径:" + case1.getRvBore() + "\n\n"
                         + "LVEF内径:" + case1.getLvefBore() + "\n\n"
+                        + "IVS内径:" + case1.getLvsBore() + "\n\n"
+                        + "LVPW内径:" + case1.getLvpwBore() + "\n\n"
                         + "备注:" + case1.getUcgRemarks());
             }
             if (case1.getEcgType() != null) {
@@ -141,9 +143,9 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
             if (case1.getAntiArrhythmiaDrugs() != null) {
                 shuQianKangXinLvShiChangYaoWu.setText(case1.getAntiArrhythmiaDrugs());
             }
-            if (case1.getInvaliDantiArrhythmiaDrugs() != null) {
-                shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText(case1.getInvaliDantiArrhythmiaDrugs());
-            }
+//            if (case1.getInvaliDantiArrhythmiaDrugs() != null) {
+//                shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText(case1.getInvaliDantiArrhythmiaDrugs());
+//            }
             if (case1.getMergerArrhythmia() != null) {
                 shuQianHeBingXinLvShiChang.setText(case1.getMergerArrhythmia());
             }

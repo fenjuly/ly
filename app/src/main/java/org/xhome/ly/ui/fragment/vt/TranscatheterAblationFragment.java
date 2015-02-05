@@ -30,11 +30,11 @@ public class TranscatheterAblationFragment extends BaseFragment {
 
     private static TranscatheterAblationFragment fragment;
 
-    private static final String[] methods = {"标测方法一", "标测方法二", "标测方法三"};
+    private static final String[] methods = {"舒张期电位/P电位标测", "碎裂电位标测", "起膊标测", "电压标测", "激动标测"};
 
     EditText xingQiangNeiZaoYing;
     EditText youFaFangShi;
-    MaterialEditText xinDongGuoSuFaZuoShiFouGuiZhe;
+    EditText xinDongGuoSuFaZuoShiFouGuiZhe;
     EditText zhouChang;
     EditText biaoCeFangFa;
     MaterialEditText shuZhangQiDianWei;
@@ -109,7 +109,7 @@ public class TranscatheterAblationFragment extends BaseFragment {
         init();
         xingQiangNeiZaoYing = (EditText) rootView.findViewById(R.id.xinqiangneizaoying);
         youFaFangShi = (EditText) rootView.findViewById(R.id.youfafangshi);
-        xinDongGuoSuFaZuoShiFouGuiZhe = (MaterialEditText) rootView.findViewById(R.id.xindongguosufazuoshifouguize);
+        xinDongGuoSuFaZuoShiFouGuiZhe = (EditText) rootView.findViewById(R.id.xindongguosufazuoshifouguize);
         zhouChang = (EditText) rootView.findViewById(R.id.zhouchang);
         biaoCeFangFa = (EditText) rootView.findViewById(R.id.biaocefangfa);
         shuZhangQiDianWei = (MaterialEditText) rootView.findViewById(R.id.shuzhangqidianwei);
@@ -225,6 +225,39 @@ public class TranscatheterAblationFragment extends BaseFragment {
                     }
                 });
 
+            }
+        });
+
+        xinDongGuoSuFaZuoShiFouGuiZhe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                        getActivity(),
+                        android.R.layout.simple_list_item_1
+                );
+                arrayAdapter.add("是");
+                arrayAdapter.add("否");
+                ListView listView = new ListView(getActivity());
+                float scale = getResources().getDisplayMetrics().density;
+                int dpAsPixels = (int) (8 * scale + 0.5f);
+                listView.setPadding(0, dpAsPixels, 0, dpAsPixels);
+                listView.setDividerHeight(0);
+                listView.setAdapter(arrayAdapter);
+                final MaterialDialog alert = new MaterialDialog(getActivity())
+                        .setTitle("心动过速发作是否规则")
+                        .setContentView(listView);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                        if (position == 0) {
+                            xinDongGuoSuFaZuoShiFouGuiZhe.setText("是");
+                        } else {
+                            xinDongGuoSuFaZuoShiFouGuiZhe.setText("否");
+                        }
+                        alert.dismiss();
+                    }
+                });
+                alert.show();
             }
         });
 
@@ -478,7 +511,7 @@ public class TranscatheterAblationFragment extends BaseFragment {
                                 + zuofangjiangexiantext + " " + zuofangdibutext + " "
                                 + zuoyoufeijingmaixiaoronghuanjiantext + " "
                                 + shuruqitatext;
-                        xiaoRongJingXian.setText("消融术式:" + xiaorongjingxiantext);
+                        xiaoRongJingXian.setText("消融径线:" + xiaorongjingxiantext);
                         alert.dismiss();
                     }
                 });

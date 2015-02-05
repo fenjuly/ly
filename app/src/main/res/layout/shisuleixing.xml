@@ -24,6 +24,7 @@
         </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/pindu_aera"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -45,6 +46,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/meicifazuochixushijian_aera"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -66,6 +68,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/zuijinfazuochixushijian_aera"
         android:layout_marginTop="8dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -86,24 +89,30 @@
             />
     </LinearLayout>
 
-
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/cengyongzhuanfufangfa"
+    <LinearLayout
+        android:id="@+id/zaobofuhe_aera"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="曾用转复方法"
-        android:layout_marginTop="12dp"
-        app:floatingLabel="highlight"
-        />
+        android:layout_height="50dp"
+        android:visibility="gone"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="早搏负荷"
+            android:textSize="14sp"
+            android:layout_weight="2"
+            />
+        <EditText
+            android:id="@+id/zaobofuhe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:focusable="false"
+            />
+    </LinearLayout>
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/zhuanlvyongyao"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="转律用药"
-        android:layout_marginTop="12dp"
-        app:floatingLabel="highlight"
-        />
 
     <com.dd.CircularProgressButton
         android:id="@+id/confirm"

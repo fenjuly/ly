@@ -1,6 +1,10 @@
 package org.xhome.ly.bean;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by liurongchan on 14/12/15.
@@ -112,6 +116,14 @@ public class Case1Up extends Case{
 
     private String inRemarks;
 
+    private String globalRemarks;
+
+    private String keyword1;
+
+    private String keyword2;
+
+    private String keyword3;
+
     private String operationNumber;
 
     private String caseNumber;
@@ -128,15 +140,39 @@ public class Case1Up extends Case{
 
     private String complication;
 
-    private String globalRemarks;
+    private String vtDuration;
 
-    private String keyword1;
+    private String lvsBore;
 
-    private String keyword2;
+    private String lvpwBore;
 
-    private String keyword3;
+    private String prematureBeatLoad;
+
+
 
     private PatientUp patient;
+
+    private String operationDataStr;
+
+    private Doctor doctor;
+
+    public List<FollowUp> getFollowUps() {
+        return followUps;
+    }
+
+    public void setFollowUps(List<FollowUp> followUps) {
+        this.followUps = followUps;
+    }
+
+    List<FollowUp> followUps;
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
 
     public PatientUp getPatient() {
         return patient;
@@ -144,70 +180,6 @@ public class Case1Up extends Case{
 
     public void setPatient(PatientUp patient) {
         this.patient = patient;
-    }
-
-    public String getOperationNumber() {
-        return operationNumber;
-    }
-
-    public void setOperationNumber(String operationNumber) {
-        this.operationNumber = operationNumber;
-    }
-
-    public String getCaseNumber() {
-        return caseNumber;
-    }
-
-    public void setCaseNumber(String caseNumber) {
-        this.caseNumber = caseNumber;
-    }
-
-    public String getVtFrequency() {
-        return vtFrequency;
-    }
-
-    public void setVtFrequency(String vtFrequency) {
-        this.vtFrequency = vtFrequency;
-    }
-
-    public String getVtEveryAttackTime() {
-        return vtEveryAttackTime;
-    }
-
-    public void setVtEveryAttackTime(String vtEveryAttackTime) {
-        this.vtEveryAttackTime = vtEveryAttackTime;
-    }
-
-    public String getVtLastAttackTime() {
-        return vtLastAttackTime;
-    }
-
-    public void setVtLastAttackTime(String vtLastAttackTime) {
-        this.vtLastAttackTime = vtLastAttackTime;
-    }
-
-    public String getCardioversionMethod() {
-        return cardioversionMethod;
-    }
-
-    public void setCardioversionMethod(String cardioversionMethod) {
-        this.cardioversionMethod = cardioversionMethod;
-    }
-
-    public String getCardioversionMedication() {
-        return cardioversionMedication;
-    }
-
-    public void setCardioversionMedication(String cardioversionMedication) {
-        this.cardioversionMedication = cardioversionMedication;
-    }
-
-    public String getComplication() {
-        return complication;
-    }
-
-    public void setComplication(String complication) {
-        this.complication = complication;
     }
 
     public Integer getId() {
@@ -219,7 +191,7 @@ public class Case1Up extends Case{
     }
 
     public String getName() {
-        return name;
+        return "室速";
     }
 
     public void setName(String name) {
@@ -626,8 +598,6 @@ public class Case1Up extends Case{
         this.inRemarks = inRemarks == null ? null : inRemarks.trim();
     }
 
-
-
     public String getGlobalRemarks() {
         return globalRemarks;
     }
@@ -658,5 +628,104 @@ public class Case1Up extends Case{
 
     public void setKeyword3(String keyword3) {
         this.keyword3 = keyword3 == null ? null : keyword3.trim();
+    }
+
+    public String getOperationNumber() {
+        return operationNumber;
+    }
+
+    public void setOperationNumber(String operationNumber) {
+        this.operationNumber = operationNumber == null ? null : operationNumber.trim();
+    }
+
+    public String getCaseNumber() {
+        return caseNumber;
+    }
+
+    public void setCaseNumber(String caseNumber) {
+        this.caseNumber = caseNumber == null ? null : caseNumber.trim();
+    }
+
+    public String getVtFrequency() {
+        return vtFrequency;
+    }
+
+    public void setVtFrequency(String vtFrequency) {
+        this.vtFrequency = vtFrequency == null ? null : vtFrequency.trim();
+    }
+
+    public String getVtEveryAttackTime() {
+        return vtEveryAttackTime;
+    }
+
+    public void setVtEveryAttackTime(String vtEveryAttackTime) {
+        this.vtEveryAttackTime = vtEveryAttackTime == null ? null : vtEveryAttackTime.trim();
+    }
+
+    public String getVtLastAttackTime() {
+        return vtLastAttackTime;
+    }
+
+    public void setVtLastAttackTime(String vtLastAttackTime) {
+        this.vtLastAttackTime = vtLastAttackTime == null ? null : vtLastAttackTime.trim();
+    }
+
+    public String getCardioversionMethod() {
+        return cardioversionMethod;
+    }
+
+    public void setCardioversionMethod(String cardioversionMethod) {
+        this.cardioversionMethod = cardioversionMethod == null ? null : cardioversionMethod.trim();
+    }
+
+    public String getCardioversionMedication() {
+        return cardioversionMedication;
+    }
+
+    public void setCardioversionMedication(String cardioversionMedication) {
+        this.cardioversionMedication = cardioversionMedication == null ? null : cardioversionMedication.trim();
+    }
+
+    public String getComplication() {
+        return complication;
+    }
+
+    public void setComplication(String complication) {
+        this.complication = complication == null ? null : complication.trim();
+    }
+
+    public String getVtDuration() {
+        return vtDuration;
+    }
+
+    public void setVtDuration(String vtDuration) {
+        this.vtDuration = vtDuration == null ? null : vtDuration.trim();
+    }
+
+
+
+
+    public String getLvsBore() {
+        return lvsBore;
+    }
+
+    public void setLvsBore(String lvsBore) {
+        this.lvsBore = lvsBore == null ? null : lvsBore.trim();
+    }
+
+    public String getLvpwBore() {
+        return lvpwBore;
+    }
+
+    public void setLvpwBore(String lvpwBore) {
+        this.lvpwBore = lvpwBore == null ? null : lvpwBore.trim();
+    }
+
+    public String getPrematureBeatLoad() {
+        return prematureBeatLoad;
+    }
+
+    public void setPrematureBeatLoad(String prematureBeatLoad) {
+        this.prematureBeatLoad = prematureBeatLoad == null ? null : prematureBeatLoad.trim();
     }
 }

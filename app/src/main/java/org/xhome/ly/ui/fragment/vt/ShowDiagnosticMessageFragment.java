@@ -33,11 +33,12 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
     MaterialEditText shuZhe;
     EditText shiSuLeiXing;
     EditText shiSuBingCheng;
-    MaterialEditText linChuangXinLvShiChangZhenDuan;
-    MaterialEditText dianShengLiJianChaZhenDuan;
-    MaterialEditText shuHouZhenDuan;
-    MaterialEditText jiZhi;
-    MaterialEditText buWei;
+    EditText linChuangXinLvShiChangZhenDuan;
+//    MaterialEditText dianShengLiJianChaZhenDuan;
+//    MaterialEditText shuHouZhenDuan;
+//    MaterialEditText jiZhi;
+
+    EditText buWei;
 
     CircularProgressButton confirm;
 
@@ -70,11 +71,11 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
         shuZhe = (MaterialEditText) rootView.findViewById(R.id.shuzhe);
         shiSuLeiXing = (EditText) rootView.findViewById(R.id.shisuleixing);
         shiSuBingCheng = (EditText) rootView.findViewById(R.id.shisubingcheng);
-        linChuangXinLvShiChangZhenDuan = (MaterialEditText) rootView.findViewById(R.id.linchuangxinlvshichangzhenduan);
-        dianShengLiJianChaZhenDuan = (MaterialEditText) rootView.findViewById(R.id.dianshenglijianchazhenduan);
-        shuHouZhenDuan = (MaterialEditText) rootView.findViewById(R.id.shuhouzhenduan);
-        jiZhi = (MaterialEditText) rootView.findViewById(R.id.jizhi);
-        buWei = (MaterialEditText) rootView.findViewById(R.id.buwei);
+        linChuangXinLvShiChangZhenDuan = (EditText) rootView.findViewById(R.id.linchuangxinlvshichangzhenduan);
+//        dianShengLiJianChaZhenDuan = (MaterialEditText) rootView.findViewById(R.id.dianshenglijianchazhenduan);
+//        shuHouZhenDuan = (MaterialEditText) rootView.findViewById(R.id.shuhouzhenduan);
+//        jiZhi = (MaterialEditText) rootView.findViewById(R.id.jizhi);
+        buWei = (EditText) rootView.findViewById(R.id.buwei);
         confirm = (CircularProgressButton) rootView.findViewById(R.id.confirm);
 
         DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
@@ -101,15 +102,15 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
         if (case1.getArrhythmiaDiagnose() != null) {
             linChuangXinLvShiChangZhenDuan.setText(case1.getArrhythmiaDiagnose());
         }
-        if (case1.getElectrophysiologyDiagnose() != null) {
-            dianShengLiJianChaZhenDuan.setText(case1.getElectrophysiologyDiagnose());
-        }
-        if (case1.getPostoperationDiagnose() != null) {
-            shuHouZhenDuan.setText(case1.getPostoperationDiagnose());
-        }
-        if (case1.getMechanism() != null) {
-            jiZhi.setText(case1.getMechanism());
-        }
+//        if (case1.getElectrophysiologyDiagnose() != null) {
+//            dianShengLiJianChaZhenDuan.setText(case1.getElectrophysiologyDiagnose());
+//        }
+//        if (case1.getPostoperationDiagnose() != null) {
+//            shuHouZhenDuan.setText(case1.getPostoperationDiagnose());
+//        }
+//        if (case1.getMechanism() != null) {
+//            jiZhi.setText(case1.getMechanism());
+//        }
         if (case1.getPart() != null) {
             buWei.setText(case1.getPart());
         }
@@ -135,9 +136,9 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
             shiSuLeiXing.setText("");
             shiSuBingCheng.setText("");
             linChuangXinLvShiChangZhenDuan.setText("");
-            dianShengLiJianChaZhenDuan.setText("");
-            shuHouZhenDuan.setText("");
-            jiZhi.setText("");
+//            dianShengLiJianChaZhenDuan.setText("");
+//            shuHouZhenDuan.setText("");
+//            jiZhi.setText("");
             buWei.setText("");
 
             DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
@@ -164,15 +165,15 @@ public class ShowDiagnosticMessageFragment extends ShowBaseFragment {
             if (case1.getArrhythmiaDiagnose() != null) {
                 linChuangXinLvShiChangZhenDuan.setText(case1.getArrhythmiaDiagnose());
             }
-            if (case1.getElectrophysiologyDiagnose() != null) {
-                dianShengLiJianChaZhenDuan.setText(case1.getElectrophysiologyDiagnose());
-            }
-            if (case1.getPostoperationDiagnose() != null) {
-                shuHouZhenDuan.setText(case1.getPostoperationDiagnose());
-            }
-            if (case1.getMechanism() != null) {
-                jiZhi.setText(case1.getMechanism());
-            }
+//            if (case1.getElectrophysiologyDiagnose() != null) {
+//                dianShengLiJianChaZhenDuan.setText(case1.getElectrophysiologyDiagnose());
+//            }
+//            if (case1.getPostoperationDiagnose() != null) {
+//                shuHouZhenDuan.setText(case1.getPostoperationDiagnose());
+//            }
+//            if (case1.getMechanism() != null) {
+//                jiZhi.setText(case1.getMechanism());
+//            }
             if (case1.getPart() != null) {
                 buWei.setText(case1.getPart());
             }

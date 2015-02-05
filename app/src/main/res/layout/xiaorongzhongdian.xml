@@ -114,6 +114,27 @@
             />
     </LinearLayout>
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="滴药不能诱发"
+            android:textSize="14sp"
+            />
+        <CheckBox
+            android:layout_gravity="center_vertical"
+            android:id="@+id/diyaobunengyoufa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            />
+    </LinearLayout>
+
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/shuruqita"
         android:layout_width="match_parent"
