@@ -24,7 +24,6 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
     private static ShowBeforeOperationMessageFragment fragment;
 
     EditText shuQiangUcg;
-    MaterialEditText ecgShuZhiZhuZhiLeiXing;
     MaterialEditText dianZhouPianYi;
     EditText shuQianKangXinLvShiChangYaoWu;
     EditText shuQianWuXiaoDeKangXinLvShiChangYaoWu;
@@ -58,7 +57,6 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
                 R.layout.afshuqianxinxi, container, false);
         init();
         shuQiangUcg = (EditText) rootView.findViewById(R.id.shuqianucg);
-        ecgShuZhiZhuZhiLeiXing = (MaterialEditText) rootView.findViewById(R.id.ecgshuzhizuzhileixing);
         dianZhouPianYi = (MaterialEditText) rootView.findViewById(R.id.dianzhoupianyi);
         shuQianKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqiankangxinlvshichangyaowu);
         shuQianWuXiaoDeKangXinLvShiChangYaoWu = (EditText) rootView.findViewById(R.id.shuqianwuxiaodekangxinlvshichangyaowu);
@@ -115,7 +113,6 @@ public class ShowBeforeOperationMessageFragment extends ShowBaseFragment {
         if (!isInActivity) {
             isInActivity = true;
             shuQiangUcg.setText("");
-            ecgShuZhiZhuZhiLeiXing.setText("");
             dianZhouPianYi.setText("");
             shuQianKangXinLvShiChangYaoWu.setText("");
             shuQianWuXiaoDeKangXinLvShiChangYaoWu.setText("");

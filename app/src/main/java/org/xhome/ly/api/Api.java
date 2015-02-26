@@ -5,8 +5,9 @@ package org.xhome.ly.api;
  */
 public class Api {
     //public static final String HOST = "http://182.92.10.18:8080/yl";
-    public static final String HOST = "http://182.92.242.163:8080/yl";
+//    public static final String HOST = "http://182.92.242.163:8080/yl";
     //public  static final String HOST = "http://222.197.181.26:8080/yl";
+    public static final String HOST = "http://123.57.204.3:8080/yl";
 
     /**
      * 医生
