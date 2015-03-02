@@ -102,21 +102,10 @@
         android:focusable="false"
         />
 
-    <EditText
-        android:id="@+id/culture_degree"
-        android:layout_below="@+id/address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="文化程度"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
-        android:focusable="false"
-        />
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/profession"
-        android:layout_below="@+id/culture_degree"
+        android:layout_below="@+id/address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="职业"

@@ -54,7 +54,7 @@ import me.drakeet.materialdialog.MaterialDialog;
  */
 public class PatientInformationActivity extends BaseActivity {
 
-    private static final String[] xueli = {"小学", "初中", "高中", "大专", "硕士", "博士及以上"};
+//    private static final String[] xueli = {"小学", "初中", "高中", "大专", "硕士", "博士及以上"};
 
     MaterialEditText xingMing;
     MaterialEditText shenFenZheng;
@@ -63,7 +63,7 @@ public class PatientInformationActivity extends BaseActivity {
     MaterialEditText chuShengNianYue;
     MaterialEditText dianHua;
     EditText jiaTingZhuZhi;
-    EditText         wenHuaChengDu;
+//    EditText         wenHuaChengDu;
     MaterialEditText zhiYe;
     MaterialEditText bingLiBianHao;
     CircularProgressButton confirm;
@@ -128,7 +128,7 @@ public class PatientInformationActivity extends BaseActivity {
         chuShengNianYue = (MaterialEditText) findViewById(R.id.birthday);
         dianHua = (MaterialEditText) findViewById(R.id.phone_number);
         jiaTingZhuZhi = (EditText) findViewById(R.id.address);
-        wenHuaChengDu = (EditText) findViewById(R.id.culture_degree);
+//        wenHuaChengDu = (EditText) findViewById(R.id.culture_degree);
         zhiYe = (MaterialEditText) findViewById(R.id.profession);
         bingLiBianHao = (MaterialEditText) findViewById(R.id.case_number);
         confirm = (CircularProgressButton) findViewById(R.id.confirm);
@@ -182,36 +182,36 @@ public class PatientInformationActivity extends BaseActivity {
             }
         });
 
-        wenHuaChengDu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                        PatientInformationActivity.this,
-                        android.R.layout.simple_list_item_1
-                );
-                for (int i = 0; i < xueli.length; i++) {
-                    arrayAdapter.add(xueli[i]);
-                }
-                ListView listView = new ListView(PatientInformationActivity.this);
-                float scale = getResources().getDisplayMetrics().density;
-                int dpAsPixels = (int) (8 * scale + 0.5f);
-                listView.setPadding(0, dpAsPixels, 0, dpAsPixels);
-                listView.setDividerHeight(0);
-                listView.setAdapter(arrayAdapter);
-                final MaterialDialog alert = new MaterialDialog(PatientInformationActivity.this)
-                        .setTitle("选择类型")
-                        .setContentView(listView);
-                alert.show();
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                        wenHuaChengDu.setText(xueli[position]);
-                        alert.dismiss();
-                    }
-                });
-
-            }
-        });
+//        wenHuaChengDu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+//                        PatientInformationActivity.this,
+//                        android.R.layout.simple_list_item_1
+//                );
+//                for (int i = 0; i < xueli.length; i++) {
+//                    arrayAdapter.add(xueli[i]);
+//                }
+//                ListView listView = new ListView(PatientInformationActivity.this);
+//                float scale = getResources().getDisplayMetrics().density;
+//                int dpAsPixels = (int) (8 * scale + 0.5f);
+//                listView.setPadding(0, dpAsPixels, 0, dpAsPixels);
+//                listView.setDividerHeight(0);
+//                listView.setAdapter(arrayAdapter);
+//                final MaterialDialog alert = new MaterialDialog(PatientInformationActivity.this)
+//                        .setTitle("选择类型")
+//                        .setContentView(listView);
+//                alert.show();
+//                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+//                        wenHuaChengDu.setText(xueli[position]);
+//                        alert.dismiss();
+//                    }
+//                });
+//
+//            }
+//        });
 
         jiaTingZhuZhi.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -319,7 +319,7 @@ public class PatientInformationActivity extends BaseActivity {
                         nianling = nianLing.getText().toString();
                         dianhua = dianHua.getText().toString();
                         jiatingzhuzhi = jiaTingZhuZhi.getText().toString();
-                        wenhuachengdu = wenHuaChengDu.getText().toString();
+//                        wenhuachengdu = wenHuaChengDu.getText().toString();
                         zhiye = zhiYe.getText().toString();
                         binglibianhao = bingLiBianHao.getText().toString();
                         Patient patient = new Patient();
