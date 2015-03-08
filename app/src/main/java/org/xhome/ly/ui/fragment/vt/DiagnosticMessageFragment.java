@@ -134,7 +134,7 @@ public class DiagnosticMessageFragment extends BaseFragment  {
         int day = cal.get(Calendar.DATE);
 
         month++;
-        Date date = new Date(year - 1900, month, day);
+        Date date = new Date(year - 1900, month - 1, day);
         case1.setOperationData(date);
         shouShuRiQi.setText(year+ "年" + month + "月" + day + "日");
 
@@ -588,7 +588,7 @@ public class DiagnosticMessageFragment extends BaseFragment  {
         @Override
         public void onDateSet(DatePickerDialog datePickerDialog, int year, int month, int day) {
             month ++;
-            Date date = new Date(year - 1900, month, day);
+            Date date = new Date(year - 1900, month - 1, day);
             case1.setOperationData(date);
             shouShuRiQi.setText(year+ "年" + month + "月" + day + "日");
         }
